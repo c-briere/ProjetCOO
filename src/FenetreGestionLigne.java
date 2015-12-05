@@ -74,7 +74,7 @@ public class FenetreGestionLigne  extends JFrame implements ActionListener{
 		}
 		if(o==this.boutonAnnuler){
 			dispose();
-			new FenetreGestionLigne(this.connect);
+			new FenetreAdministration(this.connect);
 		}
 		if(o==this.boutonModification){
 			ArrayList<Ligne> ligne = this.connect.gestionLigne.allLigne();

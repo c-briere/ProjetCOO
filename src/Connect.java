@@ -9,6 +9,7 @@ public class Connect {
 	public GestionBDDCategorie gestionCategorie;
 	public GestionBDDChambre gestionChambre;
 	public GestionBDDLigne gestionLigne;
+	public GestionBDDTrajet gestionTrajet;
 	
   public Connect() {      
 
@@ -36,6 +37,7 @@ public class Connect {
       gestionCategorie = new GestionBDDCategorie(conn);
       gestionChambre = new GestionBDDChambre(conn);
       gestionLigne = new GestionBDDLigne(conn);
+      gestionTrajet = new GestionBDDTrajet(conn);
 
     } catch (Exception e) {
 

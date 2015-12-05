@@ -78,11 +78,14 @@ public class FenetreChoixLigne extends JFrame implements ActionListener{
 			new FenetreGestionLigne(connect);
 		}
 		
-/*		if(o==bouttonValider){
-			int cle2=this.connect.gestionHotel.cleHotel(choixHotel.getSelectedItem().toString(),cle);
+	if(o==bouttonValider){
+			String str[] = choixLigne.getSelectedItem().toString().split(" ");
+			String villeD = str[0];
+			String villeA = str[1];
+			int cleLigne = this.connect.gestionLigne.cleLigne(villeD,villeA);
 			dispose();
-			new FenetreGestionCategorie(choixHotel.getSelectedItem().toString(),cle2,this.connect);
-		}*/
+			new FenetreGestionPlanningLigne(this.connect,cleLigne, str);
+		}
 		
 	}
 	

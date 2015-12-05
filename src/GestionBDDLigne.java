@@ -82,4 +82,23 @@ public class GestionBDDLigne {
 		
 	}
 
+	public int cleLigne(String villeD, String villeA) {
+		int cle =0;
+		String requete = "select idligne from ligne  where nomvilledepart ='"+villeD+"' and nomvillearrive ='"+villeA+"'";
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet result = stmt.executeQuery(requete);
+			while(result.next()){
+				cle = result.getInt("idligne");
+			}
+			
+			return cle;
+
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return cle;
+	}
+
 }
