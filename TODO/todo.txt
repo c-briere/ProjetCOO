@@ -1,0 +1,9 @@
+-commentaire -javadoc -packtage
+-rendre le code plus lisible, cad : 
+
+*mettre les attributs en private dés que possible 
+*créer getter pour les boutons d'une vue pour pouvoir utiliser ses getters dans la vue plutot que .bouton directement 
+*améliorer les noms si c'est nécessaire 
+*éviter d'utiliser l attribut directement (passer par les getters au max, autre que pour les boutons (vue, attribut, textField etc etc etc )
+
+Si tu t'en sens améliorer le graphique, mais en gardant les mêmes noms (important car c'est sur celui si que le listener prends les attributs

@@ -1,0 +1,34 @@
+-- Table: ville
+-- DROP TABLE ville;
+CREATE TABLE ville (  idville serial NOT NULL,  nom text NOT NULL,  CONSTRAINT ville_pkey PRIMARY KEY (idville) ) WITH (  OIDS=FALSE ); ALTER TABLE ville  OWNER TO postgres;
+
+-- Table: ligne
+-- DROP TABLE ligne;
+CREATE TABLE ligne (  idligne serial NOT NULL,  idvillealler integer NOT NULL,  nomvilledepart text,  idvilleretour integer NOT NULL,  nomvillearrive text NOT NULL,  CONSTRAINT ligne_pkey PRIMARY KEY (idligne),  CONSTRAINT ligne_idvillealler_fkey FOREIGN KEY (idvillealler)      REFERENCES ville (idville) MATCH SIMPLE      ON UPDATE CASCADE ON DELETE CASCADE,  CONSTRAINT ligne_idvilleretour_fkey FOREIGN KEY (idvilleretour)
+      REFERENCES ville (idville) MATCH SIMPLE      ON UPDATE CASCADE ON DELETE CASCADE ) WITH (  OIDS=FALSE ); ALTER TABLE ligne  OWNER TO postgres;
+
+-- Table: hotel
+-- DROP TABLE hotel;
+CREATE TABLE hotel (  idville integer,  idhotel serial NOT NULL,  nom text,  CONSTRAINT hotel_pkey PRIMARY KEY (idhotel),  CONSTRAINT hotel_idville_fkey FOREIGN KEY (idville)      REFERENCES ville (idville) MATCH SIMPLE      ON UPDATE CASCADE ON DELETE CASCADE ) WITH (  OIDS=FALSE ); ALTER TABLE hotel  OWNER TO postgres;
+
+-- Table: categorie
+-- DROP TABLE categorie;
+CREATE TABLE categorie (  idhotel integer,  idcategorie serial NOT NULL,  nom text NOT NULL,  place integer NOT NULL,  prix real NOT NULL,  CONSTRAINT categorie_pkey PRIMARY KEY (idcategorie),  CONSTRAINT categorie_idhotel_fkey FOREIGN KEY (idhotel)      REFERENCES hotel (idhotel) MATCH SIMPLE      ON UPDATE CASCADE ON DELETE CASCADE ) WITH (  OIDS=FALSE ); ALTER TABLE categorie  OWNER TO postgres;
+
+-- Table: chambre
+-- DROP TABLE chambre;
+CREATE TABLE chambre (  id_chambre serial NOT NULL,  nom text NOT NULL,  idcategorie integer NOT NULL,  CONSTRAINT chambre_pkey PRIMARY KEY (id_chambre),  CONSTRAINT chambre_idcategorie_fkey FOREIGN KEY (idcategorie)      REFERENCES categorie (idcategorie) MATCH SIMPLE      ON UPDATE CASCADE ON DELETE CASCADE ) WITH (  OIDS=FALSE ); ALTER TABLE chambre  OWNER TO postgres;
+
+-- Table: client
+-- DROP TABLE client;
+CREATE TABLE client (
+  idclient integer NOT NULL DEFAULT nextval('"client_IDClient_seq"'::regclass),  nom text NOT NULL,  prenom text,  datenaissance date,  ville text,  CONSTRAINT client_pkey PRIMARY KEY (idclient) ) WITH (  OIDS=TRUE ); ALTER TABLE client  OWNER TO postgres; COMMENT ON TABLE client  IS 'Table contenant la liste des clients';
+
+-- Table: hotel
+-- DROP TABLE hotel;
+CREATE TABLE hotel (  idville integer,  idhotel serial NOT NULL,  nom text,  CONSTRAINT hotel_pkey PRIMARY KEY (idhotel),  CONSTRAINT hotel_idville_fkey FOREIGN KEY (idville)      REFERENCES ville (idville) MATCH SIMPLE      ON UPDATE CASCADE ON DELETE CASCADE ) WITH (  OIDS=FALSE ); ALTER TABLE hotel  OWNER TO postgres;
+
+
+-- Table: trajet
+-- DROP TABLE trajet;
+CREATE TABLE trajet (  idligne integer NOT NULL,  jour text NOT NULL,  heuredepart time without time zone NOT NULL,  duree integer NOT NULL,  nbpassagerpremiere integer NOT NULL,  prixpremierclasse real NOT NULL,  nbpassagerdeuxieme integer NOT NULL,  prixdeuxiemeclasse real NOT NULL,  annulable integer NOT NULL,  CONSTRAINT trajet_idligne_fkey FOREIGN KEY (idligne)      REFERENCES ligne (idligne) MATCH SIMPLE      ON UPDATE CASCADE ON DELETE CASCADE ) WITH (  OIDS=FALSE ); ALTER TABLE trajet  OWNER TO postgres;  OWNER TO postgres;
