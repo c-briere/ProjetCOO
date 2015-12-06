@@ -47,6 +47,10 @@ public class TraitementAjoutTrajet implements ActionListener {
 			}
 
 		}
+		if(o==fenetreAjouterPlanning.bouttonAnnuler){
+			this.fenetreAjouterPlanning.dispose();
+			new FenetreGestionLigne(this.connect);
+		}
 
 	}
 }

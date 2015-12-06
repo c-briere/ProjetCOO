@@ -80,29 +80,27 @@ public class FenetreGestionPlanningLigne extends JFrame implements ActionListene
 		if(o==boutonAdd){
 			dispose();
 			new FenetreAjouterPlanning(this.connect,this.cleLigne);
-		}/*
+		}
 		
 		if(o==boutonDelete){
 			dispose();
-			new FenetreSupprimerPlanning(this.connect);
-		}
+			new FenetreSupprimerPlanning(this.connect,this.cleLigne);
+		} 
 		if(o==boutonVoir){
-			ArrayList<Planning> planning = new ArrayList<Planning>();
-			planning = connect.gestionPlanning.voirListeVille();
+			ArrayList<Trajet> trajet = new ArrayList<Trajet>();
+			trajet = connect.gestionTrajet.voirListeVille(this.cleLigne);
 			dispose();
-			new FenetreVoirPlanning(this.connect, planning);
+			new FenetreVoirPlanning(this.connect, trajet);
 			
-		}*/
+		}
 		if(o==boutonAnnuler){
 			dispose();
 			new FenetreGestionLigne(connect);
 		}
-	/*	if(o==boutonModifier){
-			ArrayList<Ville> ville = new ArrayList<Ville>();
-			ville = connect.gestionVille.voirListeVille();
+		if(o==boutonModifier){
 			dispose();
-			new FenetreChoixVille(this.connect,ville);
-		}*/
+			new FenetreModifPlanning(this.connect,cleLigne);
+		}
 		
 	}
 
