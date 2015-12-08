@@ -10,6 +10,7 @@ public class Connect {
 	public GestionBDDChambre gestionChambre;
 	public GestionBDDLigne gestionLigne;
 	public GestionBDDTrajet gestionTrajet;
+	public GestionBDDDate gestionDate;
 	
   public Connect() {      
 
@@ -38,6 +39,7 @@ public class Connect {
       gestionChambre = new GestionBDDChambre(conn);
       gestionLigne = new GestionBDDLigne(conn);
       gestionTrajet = new GestionBDDTrajet(conn);
+      gestionDate = new GestionBDDDate(conn);
 
     } catch (Exception e) {
 

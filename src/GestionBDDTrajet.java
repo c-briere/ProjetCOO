@@ -140,6 +140,34 @@ public class GestionBDDTrajet {
 
 		}
 	}
+
+	public ArrayList<Trajet> allTrajetResa(String jourResa,
+			 int cleLigne) {
+		ArrayList<Trajet> trajet = new ArrayList<Trajet>();
+		String requete = "select * from trajet where idligne ="+cleLigne+" and jour ='"+jourResa+"'";
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet result = stmt.executeQuery(requete);
+			while(result.next()){
+				String jour = result.getString("jour");
+				String heuredepart = result.getString("heuredepart");
+				int duree = result.getInt("duree");
+				int nbPassager1 = result.getInt("nbpassagerpremiere");
+				double prix1 = result.getDouble("prixpremierclasse");
+				int nbPassager2 = result.getInt("nbpassagerdeuxieme");
+				double prix2 = result.getDouble("prixdeuxiemeclasse");
+				int annulable = result.getInt("annulable");
+				Trajet l = new Trajet(jour,heuredepart,duree,nbPassager1,prix1,nbPassager2,prix2,annulable);
+				trajet.add(l);
+			}
+
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return trajet;
+
+	}
 }
 
 
