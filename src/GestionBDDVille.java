@@ -8,7 +8,7 @@ import java.util.Date;
 
 
 public class GestionBDDVille {
-	
+
 	public Connection conn;
 
 	public GestionBDDVille(Connection conn) {
@@ -55,7 +55,7 @@ public class GestionBDDVille {
 			return false;
 
 		}
-		
+
 	}
 
 	public ArrayList<Ville> voirListeVille() {
@@ -76,7 +76,7 @@ public class GestionBDDVille {
 			e.printStackTrace();
 		}
 		return ville;
-		
+
 	}
 
 	public int cleVille(String ville) {
@@ -88,7 +88,7 @@ public class GestionBDDVille {
 			while(result.next()){
 				cle = result.getInt("idville");
 			}
-			
+
 			return cle;
 
 		}
@@ -96,6 +96,46 @@ public class GestionBDDVille {
 			e.printStackTrace();
 		}
 		return cle;
+	}
+
+	public int cleVilleResaDepart(int cle) {
+		int cleVille=0;
+	
+		String requete = "select idville from ville join client on lower(ville.nom) = lower(client.ville) where idclient ="+cle;
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet result = stmt.executeQuery(requete);
+			while(result.next()){
+				cleVille = result.getInt("idville");
+				
+			}
+			return cleVille;
+
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return cleVille;
+	}
+
+	public Ville getVille(int cleVille) {
+		Ville ville=null;
+		String requete = "select * from ville  where idville ="+cleVille;
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet result = stmt.executeQuery(requete);
+			while(result.next()){
+				String nom = result.getString("nom");
+
+				ville = new Ville(nom);
+			}
+			return ville;
+
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return ville;
 	}
 
 }

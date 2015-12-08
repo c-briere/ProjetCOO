@@ -101,4 +101,27 @@ public class GestionBDDLigne {
 		return cle;
 	}
 
+	public ArrayList<Ligne> voirLigneResaArrive(int cleVilleDepart) {
+		ArrayList<Ligne> ligne = new ArrayList<Ligne>();
+		String requete = "select nomvilledepart , nomvillearrive from ligne where idvillealler ="+cleVilleDepart;
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet result = stmt.executeQuery(requete);
+			while(result.next()){
+				String nom = result.getString("nomvilledepart");
+				String nom2 = result.getString("nomvillearrive");
+				Ville depart = new Ville(nom);
+				Ville arrive = new Ville(nom2);
+				Ligne l = new Ligne(depart,arrive);
+ 				ligne.add(l);
+			}
+
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return ligne;
+		
+	}
+
 }

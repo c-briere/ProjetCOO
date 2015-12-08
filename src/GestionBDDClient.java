@@ -131,6 +131,25 @@ public class GestionBDDClient {
 
 		}
 	}
+	
+	public int verifClientResa(String nom, String prenom, Date date) throws ParseException {
+		int cle = 0;
+		String requete2 = "select idclient from client  where lower(nom) ='"+nom+"' and lower(prenom) ='"+prenom+"' and datenaissance ='"+date+"'";
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet result = stmt.executeQuery(requete2);
+			while(result.next()){
+				cle=result.getInt("idclient");
+
+
+			}
+
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return cle;
+	}
 
 
 }

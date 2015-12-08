@@ -18,6 +18,7 @@ public class FenetreAdministration extends JFrame implements ActionListener{
 	JButton boutonVille = new JButton("Ville");
 	JButton boutonClient = new JButton("Client");
 	JButton boutonLigne = new JButton("Ligne");
+	JButton boutonAnnuler = new JButton("Annuler");
 	
 	public Connect connect;
 
@@ -30,10 +31,12 @@ public class FenetreAdministration extends JFrame implements ActionListener{
 		boutonVille.setPreferredSize(new Dimension(250,30));
 		boutonClient.setPreferredSize(new Dimension(250,30));
 		boutonLigne.setPreferredSize(new Dimension(250,30));
+		boutonAnnuler.setPreferredSize(new Dimension(250,30));
 		
 		boutonVille.addActionListener(this);
 		boutonClient.addActionListener(this);
 		boutonLigne.addActionListener(this);
+		boutonAnnuler.addActionListener(this);
 		JPanel panel = new JPanel();
 		BoxLayout box = new BoxLayout(panel,BoxLayout.PAGE_AXIS);
 		panel.setLayout(box);
@@ -48,6 +51,10 @@ public class FenetreAdministration extends JFrame implements ActionListener{
 		panel.add(Box.createVerticalGlue());
 		panel.add(boutonLigne);
 		boutonLigne.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panel.setLayout(box);
+		panel.add(Box.createVerticalGlue());
+		panel.add(boutonAnnuler);
+		boutonAnnuler.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panel.setLayout(box);
 		panel.add(Box.createVerticalGlue());
 
@@ -79,12 +86,11 @@ public class FenetreAdministration extends JFrame implements ActionListener{
 			new FenetreGestionLigne(this.connect);
 		}
 		
+		if(source==boutonAnnuler){
+			dispose();
+			new FenetreAccueil(this.connect);
+		}
+		
 	} 
 
-	public static void main(String [] args){
-		Connect connect = new Connect();
-		JFrame frame = new FenetreAdministration(connect);
-
-
-	}
 }
