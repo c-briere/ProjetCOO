@@ -135,8 +135,6 @@ public class FenetreAdministration extends JFrame implements ActionListener{
 		this.getContentPane().add(panel);
 		//taille de la fenêtre
 		setSize(800,600);
-		//La fenêtre n'est pas redimensionnable
-		setResizable(false);
 		setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
