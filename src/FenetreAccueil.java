@@ -2,6 +2,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,7 +17,7 @@ import javax.swing.border.LineBorder;
  *
  */
 public class FenetreAccueil extends JFrame implements ActionListener{
-	JButton boutonReservation = new JButton("Reservation");
+	JButton boutonReservation = new JButton("Réservation");
 	JButton boutonAdministration = new JButton("Administration");
 	
 	public Connect connect;
@@ -32,8 +34,7 @@ public class FenetreAccueil extends JFrame implements ActionListener{
 		// Regarder comment importer une police
 		Font font_bouton = new Font("Roboto", Font.PLAIN, 50);
 		
-		//Taille du bouton
-		boutonReservation.setPreferredSize(new Dimension(383,550));
+
 		//Fond transparent
 		boutonReservation.setOpaque(false);
 		boutonReservation.setContentAreaFilled(false);
@@ -44,7 +45,7 @@ public class FenetreAccueil extends JFrame implements ActionListener{
 		//Changement couleur Police
 		boutonReservation.setForeground(BlancPale);
 		
-		boutonAdministration.setPreferredSize(new Dimension(383,550));
+
 		boutonAdministration.setOpaque(false);
 		boutonAdministration.setContentAreaFilled(false);
 		boutonAdministration.setBorder(border);
@@ -55,23 +56,22 @@ public class FenetreAccueil extends JFrame implements ActionListener{
 		boutonAdministration.addActionListener(this);
 		
 		JPanel panel = new JPanel();		
-		
-		//BoxLayout box = new BoxLayout(panel,BoxLayout.LINE_AXIS);
-		
+		panel.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();		
 
-		//panel.setLayout(box);
-		//panel.add(Box.createHorizontalGlue());
-		panel.add(boutonReservation,BorderLayout.LINE_START);
-		//boutonReservation.setAlignmentX(Component.CENTER_ALIGNMENT);
-				
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.5;
+		c.weighty = 1;
+		c.gridx = 0;
+		c.gridy = 0;
+		panel.add(boutonReservation,c);
 		
-		//panel.setLayout(box);
-		//panel.add(Box.createHorizontalGlue());
-		panel.add(boutonAdministration,BorderLayout.LINE_END);
-		//boutonAdministration.setAlignmentX(Component.CENTER_ALIGNMENT);
-		
-		//panel.setLayout(box);
-		//panel.add(Box.createVerticalGlue());
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.5;
+		c.weighty = 1;
+		c.gridx = 1;
+		c.gridy = 0;
+		panel.add(boutonAdministration,c);
 	
 
 		// Fond du panel
