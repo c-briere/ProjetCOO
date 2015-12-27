@@ -28,6 +28,7 @@ public class TraitementAjoutVille implements ActionListener {
 				}
 			}
 		}
+		
 		if(o==this.fenetreAjouterVille.bouttonAnnuler){
 			this.fenetreAjouterVille.dispose();
 			new FenetreGestionVille(this.connect);
