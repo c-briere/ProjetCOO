@@ -75,7 +75,7 @@ public class FenetreVoirVille extends JFrame implements ActionListener{
 		panel.setBackground(GrisFonce);
 		
 		
-        this.setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(550, 250);
 		setVisible(true);

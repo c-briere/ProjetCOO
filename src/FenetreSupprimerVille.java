@@ -17,7 +17,11 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
-
+/**
+ * 
+ * @author BRIERE / CARDON
+ *
+ */
 public class FenetreSupprimerVille extends JFrame{
 
 	JTextField ville = new JTextField();

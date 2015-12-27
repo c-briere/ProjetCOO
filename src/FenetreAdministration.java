@@ -31,7 +31,7 @@ public class FenetreAdministration extends JFrame implements ActionListener{
 	JButton boutonVille = new JButton("Ville");
 	JButton boutonClient = new JButton("Client");
 	JButton boutonLigne = new JButton("Ligne");
-	JButton boutonAnnuler = new JButton("Annuler");
+	JButton boutonAnnuler = new JButton("Retour");
 	
 	public Connect connect;
 
