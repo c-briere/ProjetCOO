@@ -19,16 +19,21 @@ public class FenetreGestionReservation extends JFrame{
 
 	Connect connect;
 	JTextField nom,prenom,date,villeDepart,dateDepart, dateArrive, nbPersonne;
-	JButton bouttonNextClient,bouttonAnnuler,bouttonNextChoixDate,bouttonNextChoixAller,bouttonNextChoixRetour;
-	JPanel panelSelectionClient,panelSelectionDate,panelSelectionAller,panelSelectionRetour,recapitulatif;
-	int cleClient,cleVilleDepart,cleLigneAller,cleLigneRetour,nbPersonneVoyage;
+	JButton bouttonNextRecapitulif,bouttonNextChoixChambre,bouttonNextClient,bouttonAnnuler,bouttonNextChoixDate,bouttonNextChoixAller,bouttonNextChoixRetour,bouttonNextChoixHotel,bouttonNextChoixCategorie;
+	JPanel panelRecapitulatif,panelChoixChambre,panelSelectionClient,panelSelectionDate,panelSelectionAller,panelSelectionRetour,panelChoixHotel,panelChoixCategorie;
+	int cleChambre,cleClient,cleVilleDepart,cleLigneAller,cleLigneRetour,nbPersonneVoyage,cleVilleArrive,idHotel,idCategorie;
 	Ville VilleDepart;
 	ArrayList<Ligne> ligne;
-	JComboBox<String> choixVille,choixClasse;
+	ArrayList<HotelRestant> hotel;
+	ArrayList<Categorie> categorie;
+	JComboBox<String> choixVille,choixClasse,choixHotel,choixCategorie,choixChambre;
 	ArrayList<Trajet> trajet,trajetRetour;
 	String jourDepart,jourArrivee, heureAller,classeAller, heureRetour,classeRetour, villeRetour,dateAller,dateRetour;
 	JTable tableau;
 	Double prixAller, prixRetour;
+	ArrayList<Chambre> chambre;
+	Reservation reservation;
+	
 
 	public FenetreGestionReservation(Connect connect) {
 		super("gestion reservation");
@@ -107,6 +112,20 @@ public class FenetreGestionReservation extends JFrame{
 	public void clearChoixRetour(){
 		panelSelectionRetour.hide();
 	}
+	public void clearChoixHotel(){
+		panelChoixHotel.hide();
+	}
+	public void clearChoixCategorie(){
+		panelChoixCategorie.hide();
+	}
+	public void clearChoixChambre(){
+		panelChoixChambre.hide();
+	}
+	
+	public void clearRecapitulatif(){
+		panelRecapitulatif.hide();
+	}
+	
 
 	public void choixVilleDate(int cleClient, int cleVilleDepart, Ville VilleDepart, ArrayList<Ligne> ligne){
 		this.cleClient=cleClient;
@@ -234,8 +253,9 @@ public class FenetreGestionReservation extends JFrame{
 
 	}
 
-	public void choixAller(String dateAller, String dateRetour,int cleLigneAller,int cleLigneRetour, ArrayList<Trajet> trajet,
+	public void choixAller(int cleVilleArrive,String dateAller, String dateRetour,int cleLigneAller,int cleLigneRetour, ArrayList<Trajet> trajet,
 			ArrayList<Trajet> trajetRetour, String jourDepart, String jourArrivee, int nbPersonneVoyage, String villeRetour) {
+		this.cleVilleArrive=cleVilleArrive;
 		this.dateAller=dateAller;
 		this.dateRetour=dateRetour;
 		this.villeRetour=villeRetour;
@@ -253,7 +273,6 @@ public class FenetreGestionReservation extends JFrame{
 		bouttonAnnuler = new JButton("Annuler");
 		panelSelectionAller = new JPanel();
 		panelSelectionAller.setLayout(new BoxLayout(panelSelectionAller,BoxLayout.PAGE_AXIS));
-		System.out.println(nbPersonneVoyage);
 		tableau = new JTable(new TableTrajetPrixTotal(trajet,nbPersonneVoyage));
 		tableau.setPreferredScrollableViewportSize(new Dimension(500, 200));
 		tableau.setFillsViewportHeight(true);
@@ -283,34 +302,137 @@ public class FenetreGestionReservation extends JFrame{
 
 	}
 
-	public void recapitulatif(String heureRetour, String classeRetour,
-			double prixRetour){
+
+	@SuppressWarnings("unused")
+	public void choixHotel(String heureRetour,String classeRetour,double prixRetour, ArrayList<HotelRestant> hotel){
 		this.heureRetour=heureRetour;
 		this.classeRetour=classeRetour;
 		this.prixRetour=prixRetour;
+		choixHotel = new JComboBox<String>();
+		if(hotel.size()!=0 || hotel!=null){
+			this.hotel=hotel;
+			for(int i =0;i<hotel.size();i++){
+				choixHotel.addItem(hotel.get(i).getNom()+" "+hotel.get(i).getNbPlaceRestante()+"chambres restantes");
+			}
+			bouttonNextChoixHotel = new JButton("Next");
+			bouttonAnnuler = new JButton("Annuler");
+			JPanel panel3 = new JPanel();
+			panel3.add(new JLabel("choix de l'hotel"));
+			panel3.add(choixHotel);
+			JPanel panel2 = new JPanel();
+			panelChoixHotel = new JPanel();
+			panelChoixHotel.setLayout(new BoxLayout(panelChoixHotel,BoxLayout.PAGE_AXIS));
 
-		recapitulatif = new JPanel();
-		recapitulatif.add(new JLabel(this.VilleDepart.getNom()));
-		recapitulatif.add(new JLabel(this.dateAller));
-		recapitulatif.add(new JLabel(this.jourDepart));
-		recapitulatif.add(new JLabel(this.heureAller));
-		recapitulatif.add(new JLabel(this.classeAller));
-		recapitulatif.add(new JLabel(Double.toString(this.prixAller)));
-		recapitulatif.add(new JLabel(this.villeRetour));
-		recapitulatif.add(new JLabel(this.dateRetour));
-		recapitulatif.add(new JLabel(this.jourArrivee));
-		recapitulatif.add(new JLabel(this.heureRetour));
-		recapitulatif.add(new JLabel(this.classeRetour));
-		recapitulatif.add(new JLabel(Double.toString(this.prixRetour)));
-		add(recapitulatif);
+			panel2.add(bouttonNextChoixHotel);
+			bouttonNextChoixHotel.addActionListener(new TraitementReservation(this,this.connect));
+			panel2.add(bouttonAnnuler);
+			bouttonAnnuler.addActionListener(new TraitementReservation(this,this.connect));
+			panelChoixHotel.add(panel3, BorderLayout.CENTER);
+			panelChoixHotel.add(panel2, BorderLayout.SOUTH);
+			add(panelChoixHotel);
+			this.setLocationRelativeTo(null);
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setSize(550, 250);
+			setVisible(true);
+		}
+		else{
+			JPanel panel3 = new JPanel();
+			JPanel panel2 = new JPanel();
+
+			panel3.add(new JLabel("pas d hotel disponible"));
+			bouttonAnnuler = new JButton("Annuler");
+			panel2.add(bouttonAnnuler);
+			bouttonAnnuler.addActionListener(new TraitementReservation(this,this.connect));
+
+			panelChoixHotel = new JPanel();
+			panelChoixHotel.setLayout(new BoxLayout(panelChoixHotel,BoxLayout.PAGE_AXIS));
+			panelChoixHotel.add(panel3, BorderLayout.CENTER);
+			panelChoixHotel.add(panel2, BorderLayout.SOUTH);
+			add(panelChoixHotel);
+			this.setLocationRelativeTo(null);
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setSize(550, 250);
+			setVisible(true);
+		}
+	}
+
+	public void choixCategorie(int idHotel, ArrayList<Categorie> categorie){
+
+		choixCategorie = new JComboBox<String>();
+		this.idHotel=idHotel;
+		this.categorie=categorie;
+		for(int i =0;i<categorie.size();i++){
+			choixCategorie.addItem(categorie.get(i).getNom()+" "+categorie.get(i).getPlace()+"places"+" "+categorie.get(i).getPrix()+" euros");
+		}
+		bouttonNextChoixCategorie = new JButton("Next");
+		bouttonAnnuler = new JButton("Annuler");
+		JPanel panel3 = new JPanel();
+		panel3.add(new JLabel("choix de la categorie"));
+		panel3.add(choixCategorie);
+		JPanel panel2 = new JPanel();
+		panelChoixCategorie = new JPanel();
+		panelChoixCategorie.setLayout(new BoxLayout(panelChoixCategorie,BoxLayout.PAGE_AXIS));
+
+		panel2.add(bouttonNextChoixCategorie);
+		bouttonNextChoixCategorie.addActionListener(new TraitementReservation(this,this.connect));
+		panel2.add(bouttonAnnuler);
+		bouttonAnnuler.addActionListener(new TraitementReservation(this,this.connect));
+		panelChoixCategorie.add(panel3, BorderLayout.CENTER);
+		panelChoixCategorie.add(panel2, BorderLayout.SOUTH);
+		add(panelChoixCategorie);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(550, 250);
 		setVisible(true);
+	}
+	
+	public void choixChambre(int idCategorie,ArrayList<Chambre> chambre){
+		choixChambre = new JComboBox<String>();
+		this.idCategorie=idCategorie;
+		this.chambre=chambre;
+		for(int i =0;i<chambre.size();i++){
+			choixChambre.addItem(chambre.get(i).getDenomination());
+		}
+		bouttonNextChoixChambre = new JButton("Next");
+		bouttonAnnuler = new JButton("Annuler");
+		JPanel panel3 = new JPanel();
+		panel3.add(new JLabel("choix de la chambre"));
+		panel3.add(choixChambre);
+		JPanel panel2 = new JPanel();
+		panelChoixChambre = new JPanel();
+		panelChoixChambre.setLayout(new BoxLayout(panelChoixChambre,BoxLayout.PAGE_AXIS));
 
+		panel2.add(bouttonNextChoixChambre);
+		bouttonNextChoixChambre.addActionListener(new TraitementReservation(this,this.connect));
+		panel2.add(bouttonAnnuler);
+		bouttonAnnuler.addActionListener(new TraitementReservation(this,this.connect));
+		panelChoixChambre.add(panel3, BorderLayout.CENTER);
+		panelChoixChambre.add(panel2, BorderLayout.SOUTH);
+		add(panelChoixChambre);
+		this.setLocationRelativeTo(null);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(550, 250);
+		setVisible(true);
+	}
+	
+	public void recapilutatif(int cleChambre, Reservation reservation){
+		this.cleChambre=cleChambre;
+		this.reservation=reservation;
+		JPanel panel2 = new JPanel();
 
+		panel2.add(bouttonNextRecapitulif);
+		bouttonNextRecapitulif.addActionListener(new TraitementReservation(this,this.connect));
+		panel2.add(bouttonAnnuler);
+		bouttonAnnuler.addActionListener(new TraitementReservation(this,this.connect));
+		panelRecapitulatif.add(panel2, BorderLayout.SOUTH);
+		add(panelRecapitulatif);
+		this.setLocationRelativeTo(null);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(550, 250);
+		setVisible(true);
 	}
 
 
-
 }
+
+

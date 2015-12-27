@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 
 public class GestionBDDChambre {
-	
+
 	Connection conn;
 
 	public GestionBDDChambre(Connection conn) {
@@ -75,4 +75,61 @@ public class GestionBDDChambre {
 		return chambre;
 	}
 
+	public ArrayList<Chambre> listChambre(int idCategorie,ArrayList<Integer> liste) {
+		ArrayList<Chambre> chambre = new ArrayList<Chambre>();
+		String s = "";
+		if(liste!=null ){
+			for(int i=0;i<liste.size();i++){
+				s=s+Integer.toString(liste.get(i));
+			}
+
+		}
+
+		String requete;
+		System.out.println(idCategorie);
+		if(!s.equals("")){
+			requete = "select chambre.nom from chambre  where chambre.idcategorie ="+idCategorie+" and chambre.id_chambre not in (select id_chambre from chambre where id_chambre="+s+")" ;
+		}
+		else{
+			requete = "select chambre.nom from chambre where chambre.idcategorie ="+idCategorie;
+
+		}
+
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet result = stmt.executeQuery(requete);
+			while(result.next()){
+				String nom = result.getString(1);
+				chambre.add(new Chambre(nom));
+
+			}
+
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return chambre;
+	}
+
+	public int cleChambre(String denomination, int idCategorie) {
+		int cle2 =0;
+		String requete = "select idchambre from chambre  where idcategorie ="+idCategorie+" and nom ='"+denomination+"'";
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet result = stmt.executeQuery(requete);
+			while(result.next()){
+				cle2 = result.getInt(1);
+			}
+
+			return cle2;
+
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return cle2;
+
+	}
 }
+
+

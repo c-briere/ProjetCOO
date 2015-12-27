@@ -12,6 +12,8 @@ public class TraitementReservation implements ActionListener {
 
 	FenetreGestionReservation fenetreGestionReservation;
 	Connect connect;
+	Date aller;
+	Date retour;
 
 	public TraitementReservation(
 			FenetreGestionReservation fenetreGestionReservation, Connect connect) {
@@ -22,6 +24,7 @@ public class TraitementReservation implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object o = arg0.getSource();
+		ArrayList<Integer> chambreNonDispo;
 		if(o==this.fenetreGestionReservation.bouttonNextClient){
 			int cle=0;
 			String nom = this.fenetreGestionReservation.nom.getText();
@@ -62,16 +65,17 @@ public class TraitementReservation implements ActionListener {
 				String jourDepart = this.connect.gestionDate.dateEnjours(this.fenetreGestionReservation.dateDepart.getText());
 				String jourArrivee=this.connect.gestionDate.dateEnjours(this.fenetreGestionReservation.dateArrive.getText());
 				String dateDepart=this.fenetreGestionReservation.dateDepart.getText();
-				String dateArrive=this.fenetreGestionReservation.dateDepart.getText();
+				String dateArrive=this.fenetreGestionReservation.dateArrive.getText();
 				int cleLigneAller = this.connect.gestionLigne.cleLigne(this.fenetreGestionReservation.VilleDepart.getNom(), this.fenetreGestionReservation.choixVille.getSelectedItem().toString());
 				int cleLigneRetour =this.connect.gestionLigne.cleLigne(this.fenetreGestionReservation.choixVille.getSelectedItem().toString(),this.fenetreGestionReservation.VilleDepart.getNom() );
 				ArrayList<Trajet> ligne=this.connect.gestionTrajet.allTrajetResa(jourDepart,cleLigneAller);
 				ArrayList<Trajet> ligneRetour=this.connect.gestionTrajet.allTrajetResa(jourArrivee,cleLigneRetour);
 				String villeRetour = this.fenetreGestionReservation.choixVille.getSelectedItem().toString();
+				int cleVilleArrive = this.connect.gestionVille.cleVille(this.fenetreGestionReservation.choixVille.getSelectedItem().toString());
 				if(ligne.size()!=0 && ligneRetour.size()!=0){
 					this.fenetreGestionReservation.clearChoixDate();
 					int nbPersonne=Integer.parseInt(this.fenetreGestionReservation.nbPersonne.getText());
-					this.fenetreGestionReservation.choixAller(dateDepart,dateArrive,cleLigneAller,cleLigneRetour,ligne,ligneRetour,jourDepart,jourArrivee,nbPersonne,villeRetour);
+					this.fenetreGestionReservation.choixAller(cleVilleArrive,dateDepart,dateArrive,cleLigneAller,cleLigneRetour,ligne,ligneRetour,jourDepart,jourArrivee,nbPersonne,villeRetour);
 				}
 				else{
 					JOptionPane.showMessageDialog(null,"Aucun aller et/ou retour disponible à ses dates");
@@ -111,10 +115,77 @@ public class TraitementReservation implements ActionListener {
 				prixRetour= (Double)this.fenetreGestionReservation.tableau.getModel().getValueAt(this.fenetreGestionReservation.tableau.getSelectedRow(),9);
 
 			}
+			conversationDate();
+			chambreNonDispo=this.connect.gestionHotel.listChambreNonDipos(this.fenetreGestionReservation.cleVilleArrive, aller,retour);
 			
+			ArrayList<HotelRestant> hotel = this.connect.gestionHotel.listHotel(this.fenetreGestionReservation.cleVilleArrive, this.fenetreGestionReservation.nbPersonneVoyage, aller,retour,chambreNonDispo);
 			this.fenetreGestionReservation.clearChoixRetour();
-			this.fenetreGestionReservation.recapitulatif(heureRetour,classeRetour,prixRetour);
+			this.fenetreGestionReservation.choixHotel(heureRetour,classeRetour,prixRetour, hotel);
 
+		}
+		
+		if(o==this.fenetreGestionReservation.bouttonNextChoixHotel){
+			int idHotel;
+			idHotel=this.connect.gestionHotel.cleHotel(this.fenetreGestionReservation.hotel.get(this.fenetreGestionReservation.choixHotel.getSelectedIndex()).getNom(), this.fenetreGestionReservation.cleVilleArrive);
+			ArrayList<Categorie> categorie= new ArrayList<Categorie>();
+			conversationDate();
+			chambreNonDispo=this.connect.gestionHotel.listChambreNonDipos(this.fenetreGestionReservation.cleVilleArrive,aller,retour);
+
+			categorie= this.connect.gestionCategorie.listCategorie(idHotel,chambreNonDispo,this.fenetreGestionReservation.nbPersonneVoyage);
+			this.fenetreGestionReservation.clearChoixHotel();
+			this.fenetreGestionReservation.choixCategorie(idHotel, categorie);
+		}
+		
+		if(o==this.fenetreGestionReservation.bouttonNextChoixCategorie){
+			int idCategorie;
+			idCategorie=this.connect.gestionCategorie.cleCategorie(this.fenetreGestionReservation.categorie.get(this.fenetreGestionReservation.choixCategorie.getSelectedIndex()).getNom(), this.fenetreGestionReservation.idHotel);
+			conversationDate();
+			ArrayList<Chambre> chambre =new ArrayList<Chambre>();
+			chambreNonDispo=this.connect.gestionHotel.listChambreNonDipos(this.fenetreGestionReservation.cleVilleArrive,aller,retour);
+			chambre=this.connect.gestionChambre.listChambre(idCategorie,chambreNonDispo);
+			this.fenetreGestionReservation.clearChoixCategorie();
+			this.fenetreGestionReservation.choixChambre(idCategorie, chambre);
+		}
+		
+		if(o==this.fenetreGestionReservation.bouttonNextChoixChambre){
+			int idChambre,nbJour;
+			idChambre=this.connect.gestionChambre.cleChambre(this.fenetreGestionReservation.chambre.get(this.fenetreGestionReservation.choixChambre.getSelectedIndex()).getDenomination(),this.fenetreGestionReservation.idCategorie);
+			nbJour=this.connect.gestionDate.nbDeJour(this.fenetreGestionReservation.dateAller,this.fenetreGestionReservation.dateRetour);
+			Reservation reservation= this.connect.gestionReservation.createReservation(this.fenetreGestionReservation.heureAller,this.fenetreGestionReservation.heureRetour,this.fenetreGestionReservation.VilleDepart.getNom(),this.fenetreGestionReservation.dateAller,this.fenetreGestionReservation.villeRetour,this.fenetreGestionReservation.dateRetour,this.fenetreGestionReservation.prixAller,this.fenetreGestionReservation.prixRetour,this.fenetreGestionReservation.nbPersonneVoyage,this.fenetreGestionReservation.idHotel,this.fenetreGestionReservation.idCategorie,this.fenetreGestionReservation.cleClient,idChambre,nbJour);
+			this.fenetreGestionReservation.clearChoixChambre();
+			this.fenetreGestionReservation.recapilutatif(idChambre,reservation);
+			
+		}
+		if(o==this.fenetreGestionReservation.bouttonNextRecapitulif){
+			boolean verif =this.connect.gestionReservation.ajoutResa(this.fenetreGestionReservation.cleClient,this.fenetreGestionReservation.cleVilleDepart,this.fenetreGestionReservation.cleVilleArrive,this.fenetreGestionReservation.cleLigneAller,this.fenetreGestionReservation.cleLigneRetour,this.fenetreGestionReservation.classeAller,this.fenetreGestionReservation.classeRetour,this.fenetreGestionReservation.idHotel,this.fenetreGestionReservation.idCategorie,this.fenetreGestionReservation.cleChambre,this.fenetreGestionReservation.dateAller,this.fenetreGestionReservation.dateRetour,this.fenetreGestionReservation.reservation.getPrixTotal());
+			if(verif){
+				int cleResa=this.connect.gestionReservation.cleResa();
+				JOptionPane.showMessageDialog(null,"Insertion réussi : numero de resarvation : "+cleResa);
+				this.fenetreGestionReservation.clearRecapitulatif();
+				FenetreAccueil fenetreAccueil=new FenetreAccueil(connect);
+			}
+			else{
+				JOptionPane.showMessageDialog(null,"Echec de l ajout");
+
+			}
+		}
+	}
+	
+	public void conversationDate(){
+		aller = null;
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+		try {
+			aller = sdf.parse(this.fenetreGestionReservation.dateAller);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
+		retour = null;
+		try {
+			retour = sdf2.parse(this.fenetreGestionReservation.dateRetour);
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
 	}
 }

@@ -4,17 +4,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 public class GestionBDDHotel {
-	
+
 	Connection conn;
 
 	public GestionBDDHotel(Connection conn) {
 		this.conn=conn;
 	}
-	
-	
+
+
 	public boolean addHotel(int cle,String nom){
 		String requete = "insert into hotel (idville, nom) values ("+cle+",'"+nom+"')";
 		try{
@@ -57,7 +58,7 @@ public class GestionBDDHotel {
 			return false;
 
 		}
-		
+
 	}
 
 
@@ -79,7 +80,7 @@ public class GestionBDDHotel {
 			e.printStackTrace();
 		}
 		return hotel;
-		
+
 	}
 
 
@@ -92,7 +93,7 @@ public class GestionBDDHotel {
 			while(result.next()){
 				cle = result.getInt("idhotel");
 			}
-			
+
 			return cle;
 
 		}
@@ -100,6 +101,59 @@ public class GestionBDDHotel {
 			e.printStackTrace();
 		}
 		return cle;
+	}
+
+
+	public ArrayList<HotelRestant> listHotel(int cleVilleArrive, int nbPersonneVoyage, Date arrive, Date depart,ArrayList<Integer> liste) {
+		String s = "";
+		if(liste!=null ){
+			for(int i=0;i<liste.size();i++){
+				s=s+Integer.toString(liste.get(i));
+			}
+
+		}
+		ArrayList<HotelRestant> hotel = new ArrayList<HotelRestant>();
+		String requete;
+		if(!s.equals("")){
+			requete = "select hotel.nom,count(hotel.nom) as nombreRestant from hotel join categorie on hotel.idhotel = categorie.idhotel join chambre on categorie.idcategorie=chambre.idcategorie where hotel.idville ="+cleVilleArrive+" and chambre.id_chambre not in (select id_chambre from chambre where id_chambre="+s+") and categorie.place >= "+nbPersonneVoyage+" group by hotel.nom";
+		}
+		else{
+			requete = "select hotel.nom,count(hotel.nom) as nombreRestant from hotel join categorie on hotel.idhotel = categorie.idhotel join chambre on categorie.idcategorie = chambre.idcategorie where hotel.idville ="+cleVilleArrive+"  and categorie.place >= "+nbPersonneVoyage+" group by hotel.nom";
+
+		}
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet result = stmt.executeQuery(requete);
+			while(result.next()){
+				String nom = result.getString("nom");
+				int nb = result.getInt("nombreRestant");
+				hotel.add(new HotelRestant(nom,nb));
+
+			}
+
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return hotel;
+	}
+
+	public ArrayList<Integer> listChambreNonDipos(int cleVilleArrive,Date arrive, Date depart){
+		ArrayList<Integer> liste = null;
+		String requete = "select distinct idchambre from reservation natural join categorie where reservation.idvillearrive ="+cleVilleArrive+" and reservation.datearrive between '"+arrive+"' and '"+depart+"' or reservation.dateretour between '"+arrive+"' and '"+depart+"' or reservation.datearrive = '"+arrive+"'or reservation.datearrive = '"+depart+"' or reservation.dateretour = '"+arrive+"' or reservation.dateretour = '"+depart+"'";
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet result = stmt.executeQuery(requete);
+			liste = new ArrayList<Integer>();
+			while(result.next()){
+				int a = result.getInt("idchambre");
+				liste.add(a);
+			}
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return liste;
 	}
 
 

@@ -1,7 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.sql.Connection;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;

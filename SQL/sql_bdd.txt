@@ -32,3 +32,49 @@ CREATE TABLE hotel (  idville integer,  idhotel serial NOT NULL,  nom text,  CON
 -- Table: trajet
 -- DROP TABLE trajet;
 CREATE TABLE trajet (  idligne integer NOT NULL,  jour text NOT NULL,  heuredepart time without time zone NOT NULL,  duree integer NOT NULL,  nbpassagerpremiere integer NOT NULL,  prixpremierclasse real NOT NULL,  nbpassagerdeuxieme integer NOT NULL,  prixdeuxiemeclasse real NOT NULL,  annulable integer NOT NULL,  CONSTRAINT trajet_idligne_fkey FOREIGN KEY (idligne)      REFERENCES ligne (idligne) MATCH SIMPLE      ON UPDATE CASCADE ON DELETE CASCADE ) WITH (  OIDS=FALSE ); ALTER TABLE trajet  OWNER TO postgres;  OWNER TO postgres;
+
+-- Table: reservation
+
+-- DROP TABLE reservation;
+
+CREATE TABLE reservation
+(
+  idreservation serial NOT NULL,
+  cleclient integer NOT NULL,
+  idvilledepart integer NOT NULL,
+  idvillearrive integer NOT NULL,
+  clelignealler integer NOT NULL,
+  cleligneretour integer NOT NULL,
+  classealler text NOT NULL,
+  classeretour text NOT NULL,
+  idhotel integer NOT NULL,
+  idcategorie integer NOT NULL,
+  idchambre integer NOT NULL,
+  datearrive date NOT NULL,
+  dateretour date NOT NULL,
+  prixtotal real NOT NULL,
+  CONSTRAINT reservation_pkey PRIMARY KEY (idreservation),
+  CONSTRAINT reservation_cleclient_fkey FOREIGN KEY (cleclient)
+      REFERENCES client (idclient) MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT reservation_idcategorie_fkey FOREIGN KEY (idcategorie)
+      REFERENCES categorie (idcategorie) MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT reservation_idchambre_fkey FOREIGN KEY (idchambre)
+      REFERENCES chambre (id_chambre) MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT reservation_idhotel_fkey FOREIGN KEY (idhotel)
+      REFERENCES hotel (idhotel) MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT reservation_idvillearrive_fkey FOREIGN KEY (idvillearrive)
+      REFERENCES ville (idville) MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT reservation_idvilledepart_fkey FOREIGN KEY (idvilledepart)
+      REFERENCES ville (idville) MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE reservation
+  OWNER TO postgres;

@@ -128,7 +128,7 @@ public class GestionBDDCategorie {
 			while(result.next()){
 				cle2 = result.getInt("idcategorie");
 			}
-			
+
 			return cle2;
 
 		}
@@ -138,6 +138,43 @@ public class GestionBDDCategorie {
 		return cle2;
 
 
+	}
+
+	public ArrayList<Categorie> listCategorie(int idHotel,ArrayList<Integer> liste, int nbPersonneVoyage) {
+		ArrayList<Categorie> categorie = new ArrayList<Categorie>();
+		String s = "";
+		if(liste!=null ){
+			for(int i=0;i<liste.size();i++){
+				s=s+Integer.toString(liste.get(i));
+			}
+
+		}
+		
+		String requete;
+		if(!s.equals("")){
+			requete = "select categorie.nom,categorie.place, categorie.prix from categorie join chambre on categorie.idcategorie=chambre.idcategorie where categorie.idhotel ="+idHotel+" and chambre.id_chambre not in (select id_chambre from chambre where id_chambre="+s+") and categorie.place >= "+nbPersonneVoyage;
+		}
+		else{
+			requete = "select categorie.nom,categorie.place, categorie.prix from categorie where categorie.idhotel ="+idHotel+"  and categorie.place >= "+nbPersonneVoyage;
+
+		}
+		
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet result = stmt.executeQuery(requete);
+			while(result.next()){
+				String nom = result.getString(1);
+				int nb = result.getInt(2);
+				double prix = result.getDouble(3);
+				categorie.add(new Categorie(nom,nb,prix));
+
+			}
+
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return categorie;
 	}
 }
 
