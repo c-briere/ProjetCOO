@@ -55,8 +55,8 @@ public class GestionBDDReservation {
 			int cleVilleArrive, int cleLigneAller, int cleLigneRetour,
 			String classeAller, String classeRetour, int idHotel,
 			int idCategorie, int cleChambre, String dateAller,
-			String dateRetour, double prixTotal) {
-		String requete = "insert into reservation (cleclient,idvilledepart,idvillearrive,clelignealler,cleligneretour,classealler,classeretour,idhotel,idcategorie,idchambre,datearrive,dateretour,prixtotal) values ("+cleClient+","+cleVilleDepart+","+cleVilleArrive+","+cleLigneAller+","+cleLigneRetour+",'"+classeAller+"','"+classeRetour+"',"+idHotel+","+idCategorie+","+cleChambre+",'"+dateAller+"','"+dateRetour+"',"+prixTotal+")";
+			String dateRetour, double prixTotal,int nbPersonne) {
+		String requete = "insert into reservation (cleclient,idvilledepart,idvillearrive,clelignealler,cleligneretour,classealler,classeretour,idhotel,idcategorie,idchambre,datearrive,dateretour,prixtotal,nbpersonne) values ("+cleClient+","+cleVilleDepart+","+cleVilleArrive+","+cleLigneAller+","+cleLigneRetour+",'"+classeAller+"','"+classeRetour+"',"+idHotel+","+idCategorie+","+cleChambre+",'"+dateAller+"','"+dateRetour+"',"+prixTotal+","+nbPersonne+")";
 		try{
 			Statement stmt = conn.createStatement();
 			stmt.executeUpdate(requete);
@@ -138,6 +138,48 @@ public class GestionBDDReservation {
 			return false;
 
 		}
+	}
+
+
+	public ArrayList<Reservation> voirResa(int cle) {
+		ArrayList<Reservation> reservation= new ArrayList<Reservation>();
+		String requeteAller= "select reservation.idreservation, ville.nom, reservation.datearrive,reservation.prixtotal, reservation.nbpersonne, hotel.nom,categorie.nom,chambre.nom, client.nom, trajet.heuredepart from reservation join client on reservation.cleclient=client.idclient join hotel on reservation.idhotel=hotel.idhotel join categorie on reservation.idcategorie=categorie.idcategorie join chambre on reservation.idchambre=chambre.id_chambre join ville on reservation.idvilledepart = ville.idville join trajet on reservation.clelignealler=trajet.idligne where idclient ="+cle;
+		
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet result = stmt.executeQuery(requeteAller);
+			while(result.next()){
+				int cleResa=result.getInt(1);
+				String villeAller=result.getString(2);
+				String dateAller = result.getString(3);
+				double prix = result.getDouble(4);
+				int nbPersonne=result.getInt(5);
+				String nomHotel = result.getString(6);
+				String nomCategorie = result.getString(7);
+				String nomChambre = result.getString(8);
+				String nomClient = result.getString(9);
+				String heureArrive=result.getString(10);
+				String requeteRetour="select ville.nom,reservation.dateretour,trajet.heuredepart from reservation join trajet on reservation.cleligneretour=trajet.idligne join ville on reservation.idvillearrive=ville.idville where idreservation="+cleResa;
+				try{
+					Statement stmt2 = conn.createStatement();
+					ResultSet result2 = stmt2.executeQuery(requeteRetour);
+					while(result2.next()){
+						String villeRetour=result2.getString(1);
+						String dateRetour=result2.getString(2);
+						String heureRetour=result2.getString(3);
+						Reservation r= new Reservation(new Ville(villeAller),dateAller,new Ville(villeRetour),dateRetour,0,nbPersonne,new Hotel(nomHotel), new Categorie(nomCategorie, nbPersonne, 0),new Chambre(nomChambre),0,0,prix,nomClient,heureArrive,heureRetour);
+						reservation.add(r);
+					}
+				}
+				catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return reservation;
 	}
 
 }

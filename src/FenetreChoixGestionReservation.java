@@ -49,6 +49,15 @@ public class FenetreChoixGestionReservation extends JFrame implements ActionList
 			dispose();
 			new FenetreGestionSuppressionReservation(this.connect);
 		}
+		if(source==bouttonAnnuler){
+			dispose();
+			new FenetreAccueil(connect);
+		}
+		
+		if(source==bouttonVoirResa){
+			dispose();
+			new FenetreGestionVoirReservation(this.connect);
+		}
 		
 	}
 	

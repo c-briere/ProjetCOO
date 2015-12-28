@@ -157,7 +157,7 @@ public class TraitementReservation implements ActionListener {
 			
 		}
 		if(o==this.fenetreGestionReservation.bouttonValider){
-			boolean verif =this.connect.gestionReservation.ajoutResa(this.fenetreGestionReservation.cleClient,this.fenetreGestionReservation.cleVilleDepart,this.fenetreGestionReservation.cleVilleArrive,this.fenetreGestionReservation.cleLigneAller,this.fenetreGestionReservation.cleLigneRetour,this.fenetreGestionReservation.classeAller,this.fenetreGestionReservation.classeRetour,this.fenetreGestionReservation.idHotel,this.fenetreGestionReservation.idCategorie,this.fenetreGestionReservation.cleChambre,this.fenetreGestionReservation.dateAller,this.fenetreGestionReservation.dateRetour,this.fenetreGestionReservation.reservation.getPrixTotal());
+			boolean verif =this.connect.gestionReservation.ajoutResa(this.fenetreGestionReservation.cleClient,this.fenetreGestionReservation.cleVilleDepart,this.fenetreGestionReservation.cleVilleArrive,this.fenetreGestionReservation.cleLigneAller,this.fenetreGestionReservation.cleLigneRetour,this.fenetreGestionReservation.classeAller,this.fenetreGestionReservation.classeRetour,this.fenetreGestionReservation.idHotel,this.fenetreGestionReservation.idCategorie,this.fenetreGestionReservation.cleChambre,this.fenetreGestionReservation.dateAller,this.fenetreGestionReservation.dateRetour,this.fenetreGestionReservation.reservation.getPrixTotal(),this.fenetreGestionReservation.reservation.getNbPersonne());
 			if(verif){
 				int cleResa=this.connect.gestionReservation.cleResa();
 				JOptionPane.showMessageDialog(null,"Insertion réussi : numero de resarvation : "+cleResa);
