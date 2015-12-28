@@ -162,6 +162,7 @@ public class TraitementReservation implements ActionListener {
 				int cleResa=this.connect.gestionReservation.cleResa();
 				JOptionPane.showMessageDialog(null,"Insertion réussi : numero de resarvation : "+cleResa);
 				this.fenetreGestionReservation.clearRecapitulatif();
+				this.fenetreGestionReservation.dispose();
 				FenetreAccueil fenetreAccueil=new FenetreAccueil(connect);
 			}
 			else{

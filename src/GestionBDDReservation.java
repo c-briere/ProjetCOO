@@ -75,7 +75,7 @@ public class GestionBDDReservation {
 
 
 	public int cleResa() {
-		String requete= "select * from reservation where idreservation=max(idreservation)";
+		String requete= "SELECT idreservation FROM reservation ORDER BY idreservation DESC LIMIT 1 ";
 		int cle=0;
 		try{
 			Statement stmt = conn.createStatement();
@@ -88,6 +88,56 @@ public class GestionBDDReservation {
 			e.printStackTrace();
 		}
 		return cle;
+	}
+
+
+	public boolean verifSuppResa(String nom, String id) {
+		int i=0;
+		String requete ="select (reservation.datearrive-annulable)::date- current_date::date from reservation join trajet on reservation.clelignealler=trajet.idligne join client on reservation.cleclient=client.idclient where idreservation="+id+" and client.nom='"+nom+"'";
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet result = stmt.executeQuery(requete);
+			while(result.next()){
+				i=result.getInt(1);
+			}
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		if(i>0){
+			return true;
+		}
+		else{
+			return false;
+		}
+
+
+	}
+
+
+	public boolean suppResa(String text) {
+		String requete = "delete from reservation where idreservation ="+text;
+		String requete2 = "select * from reservation  where idreservation ="+text;
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(requete2);
+			if(rs.next()){
+				stmt.executeUpdate(requete);
+				stmt.close();
+			}
+			else{
+				stmt.close();
+				return false;
+			}
+			return  true;
+
+		}
+		catch (SQLException e) {
+
+			e.printStackTrace();
+			return false;
+
+		}
 	}
 
 }
