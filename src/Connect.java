@@ -12,6 +12,7 @@ public class Connect {
 	public GestionBDDTrajet gestionTrajet;
 	public GestionBDDDate gestionDate;
 	public GestionBDDReservation gestionReservation;
+	public GestionStat gestionStat;
 	
   public Connect() {      
 
@@ -42,6 +43,7 @@ public class Connect {
       gestionTrajet = new GestionBDDTrajet(conn);
       gestionDate = new GestionBDDDate(conn);
       gestionReservation = new GestionBDDReservation(conn);
+      gestionStat = new GestionStat(conn);
 
     } catch (Exception e) {
 
