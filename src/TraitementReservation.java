@@ -156,7 +156,7 @@ public class TraitementReservation implements ActionListener {
 			this.fenetreGestionReservation.recapilutatif(idChambre,reservation);
 			
 		}
-		if(o==this.fenetreGestionReservation.bouttonNextRecapitulif){
+		if(o==this.fenetreGestionReservation.bouttonValider){
 			boolean verif =this.connect.gestionReservation.ajoutResa(this.fenetreGestionReservation.cleClient,this.fenetreGestionReservation.cleVilleDepart,this.fenetreGestionReservation.cleVilleArrive,this.fenetreGestionReservation.cleLigneAller,this.fenetreGestionReservation.cleLigneRetour,this.fenetreGestionReservation.classeAller,this.fenetreGestionReservation.classeRetour,this.fenetreGestionReservation.idHotel,this.fenetreGestionReservation.idCategorie,this.fenetreGestionReservation.cleChambre,this.fenetreGestionReservation.dateAller,this.fenetreGestionReservation.dateRetour,this.fenetreGestionReservation.reservation.getPrixTotal());
 			if(verif){
 				int cleResa=this.connect.gestionReservation.cleResa();

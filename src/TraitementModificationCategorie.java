@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 
 
 public class TraitementModificationCategorie implements ActionListener {
-	
+
 	FenetreModifCategorie fenetreModifCategorie;
 	Connect connect;
 	int cleHotel;
@@ -26,11 +26,11 @@ public class TraitementModificationCategorie implements ActionListener {
 			String s = this.fenetreModifCategorie.bouttonValider.getText();
 			String nom = this.fenetreModifCategorie.nom.getText();
 			if(s.equals("Rechercher")){
-				
+
 				if(!nom.equals("")){
-						cle=connect.gestionCategorie.verifCategorie(cleHotel,nom);
-						System.out.println(cle);
-						
+					cle=connect.gestionCategorie.verifCategorie(cleHotel,nom);
+					System.out.println(cle);
+
 					if(cle != 0){
 						this.fenetreModifCategorie.bouttonValider.setText("Modifier");
 						this.fenetreModifCategorie.place.show();
@@ -41,8 +41,7 @@ public class TraitementModificationCategorie implements ActionListener {
 			}
 			if(s.equals("Modifier")){
 				boolean modif;
-				
-				if(!this.fenetreModifCategorie.nom.equals("") && !this.fenetreModifCategorie.place.equals("") && this.fenetreModifCategorie.prix.equals("") ){
+				if(!this.fenetreModifCategorie.nom.equals("") && !this.fenetreModifCategorie.place.equals("") && !this.fenetreModifCategorie.prix.equals("") ){
 					String nom2=this.fenetreModifCategorie.nom.getText();
 					Double place = Double.parseDouble(this.fenetreModifCategorie.place.getText());
 					int prix = Integer.parseInt(this.fenetreModifCategorie.prix.getText());
@@ -53,10 +52,18 @@ public class TraitementModificationCategorie implements ActionListener {
 
 						new FenetreGestionVille(connect);
 					}
+					else{
+						JOptionPane.showMessageDialog(null,"Echec modification");
+
+					}
 				}
 			}
 		}
+		if(e == this.fenetreModifCategorie.bouttonAnnuler){
+			this.fenetreModifCategorie.dispose();
+			new FenetreGestionVille(connect);
+
+		}
 
 	}
-
 }

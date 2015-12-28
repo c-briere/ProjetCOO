@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 
+import javax.swing.AbstractButton;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -14,13 +15,22 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
+
 
 public class FenetreGestionReservation extends JFrame{
 
 	Connect connect;
 	JTextField nom,prenom,date,villeDepart,dateDepart, dateArrive, nbPersonne;
-	JButton bouttonNextRecapitulif,bouttonNextChoixChambre,bouttonNextClient,bouttonAnnuler,bouttonNextChoixDate,bouttonNextChoixAller,bouttonNextChoixRetour,bouttonNextChoixHotel,bouttonNextChoixCategorie;
-	JPanel panelRecapitulatif,panelChoixChambre,panelSelectionClient,panelSelectionDate,panelSelectionAller,panelSelectionRetour,panelChoixHotel,panelChoixCategorie;
+	JButton bouttonValider,bouttonNextChoixChambre,bouttonNextClient,bouttonAnnuler,bouttonNextChoixDate,bouttonNextChoixAller,bouttonNextChoixRetour,bouttonNextChoixHotel,bouttonNextChoixCategorie;
+	JPanel panel,panelChoixChambre,panelSelectionClient,panelSelectionDate,panelSelectionAller,panelSelectionRetour,panelChoixHotel,panelChoixCategorie;
 	int cleChambre,cleClient,cleVilleDepart,cleLigneAller,cleLigneRetour,nbPersonneVoyage,cleVilleArrive,idHotel,idCategorie;
 	Ville VilleDepart;
 	ArrayList<Ligne> ligne;
@@ -34,6 +44,7 @@ public class FenetreGestionReservation extends JFrame{
 	ArrayList<Chambre> chambre;
 	Reservation reservation;
 	
+
 
 	public FenetreGestionReservation(Connect connect) {
 		super("gestion reservation");
@@ -121,11 +132,11 @@ public class FenetreGestionReservation extends JFrame{
 	public void clearChoixChambre(){
 		panelChoixChambre.hide();
 	}
-	
+
 	public void clearRecapitulatif(){
-		panelRecapitulatif.hide();
+		panel.hide();
 	}
-	
+
 
 	public void choixVilleDate(int cleClient, int cleVilleDepart, Ville VilleDepart, ArrayList<Ligne> ligne){
 		this.cleClient=cleClient;
@@ -385,7 +396,7 @@ public class FenetreGestionReservation extends JFrame{
 		this.setSize(550, 250);
 		setVisible(true);
 	}
-	
+
 	public void choixChambre(int idCategorie,ArrayList<Chambre> chambre){
 		choixChambre = new JComboBox<String>();
 		this.idCategorie=idCategorie;
@@ -414,25 +425,454 @@ public class FenetreGestionReservation extends JFrame{
 		this.setSize(550, 250);
 		setVisible(true);
 	}
-	
+
 	public void recapilutatif(int cleChambre, Reservation reservation){
 		this.cleChambre=cleChambre;
 		this.reservation=reservation;
-		JPanel panel2 = new JPanel();
+		Color GrisFonce = new Color(0x222222);
+		Color BlancPale = new Color (0xCFBFAD);
 
-		panel2.add(bouttonNextRecapitulif);
-		bouttonNextRecapitulif.addActionListener(new TraitementReservation(this,this.connect));
-		panel2.add(bouttonAnnuler);
+		//Bordure blanche d'épaisseur 3
+		Border border = new LineBorder(BlancPale, 3);
+		// Regarder comment importer une police
+		Font font_bouton = new Font("Roboto", Font.PLAIN, 24);
+		bouttonValider = new JButton("Valider");
+		bouttonAnnuler= new JButton("Annuler");
+		bouttonValider.addActionListener(new TraitementReservation(this,this.connect));
 		bouttonAnnuler.addActionListener(new TraitementReservation(this,this.connect));
-		panelRecapitulatif.add(panel2, BorderLayout.SOUTH);
-		add(panelRecapitulatif);
-		this.setLocationRelativeTo(null);
+
+		//Fond transparent
+		bouttonAnnuler.setOpaque(false);
+		bouttonAnnuler.setContentAreaFilled(false);
+		//Changement couleur bordure
+		bouttonAnnuler.setBorder(border);
+		//Changement Police
+		bouttonAnnuler.setFont(font_bouton);
+		//Changement couleur Police
+		bouttonAnnuler.setForeground(BlancPale);
+
+		//Fond transparent
+		bouttonValider.setOpaque(false);
+		bouttonValider.setContentAreaFilled(false);
+		//Changement couleur bordure
+		bouttonValider.setBorder(border);
+		//Changement Police
+		bouttonValider.setFont(font_bouton);
+		//Changement couleur Police
+		bouttonValider.setForeground(BlancPale);
+
+
+		panel = new JPanel();
+		panel.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+
+
+		JPanel panel3 = new JPanel(new FlowLayout());
+		panel3.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;		
+		JLabel GJLVilleAller = new JLabel("Ville Aller :");
+		GJLVilleAller.setFont(font_bouton);
+		GJLVilleAller.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		GJLVilleAller.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		panel3.add(GJLVilleAller,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		JLabel DJLVilleAller = new JLabel(""+reservation.getVilleAller().getNom());
+		DJLVilleAller.setFont(font_bouton);
+		DJLVilleAller.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		DJLVilleAller.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		c.gridx = 1;
+		c.gridy = 0;
+		panel3.add(DJLVilleAller,c);
+
+
+		JPanel panel4 = new JPanel(new FlowLayout());
+		panel4.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;		
+		JLabel GJLVilleRetour = new JLabel("Ville Retour");
+		GJLVilleRetour.setFont(font_bouton);
+		GJLVilleRetour.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		GJLVilleRetour.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		panel4.add(GJLVilleRetour,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		JLabel DJLVilleRetour = new JLabel(""+reservation.getVilleRetour().getNom());
+		DJLVilleRetour.setFont(font_bouton);
+		DJLVilleRetour.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		DJLVilleRetour.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		c.gridx = 1;
+		c.gridy = 0;
+		panel4.add(DJLVilleRetour,c);
+
+
+		JPanel panel5 = new JPanel(new FlowLayout());
+		panel5.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;		
+		JLabel GJLDateAller = new JLabel("Date Aller");
+		GJLDateAller.setFont(font_bouton);
+		GJLDateAller.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		GJLDateAller.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		panel5.add(GJLDateAller,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		JLabel DJLDateAller = new JLabel(""+reservation.getDateAller());
+		DJLDateAller.setFont(font_bouton);
+		DJLDateAller.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		DJLDateAller.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		c.gridx = 1;
+		c.gridy = 0;
+		panel5.add(DJLDateAller,c);
+
+		JPanel panel6 = new JPanel(new FlowLayout());
+		panel6.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;		
+		JLabel GJLDateRetour = new JLabel("Date Retour");
+		GJLDateRetour.setFont(font_bouton);
+		GJLDateRetour.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		GJLDateRetour.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		panel6.add(GJLDateRetour,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		JLabel DJLDateRetour = new JLabel(""+reservation.getDateRetour());
+		DJLDateRetour.setFont(font_bouton);
+		DJLDateRetour.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		DJLDateRetour.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		c.gridx = 1;
+		c.gridy = 0;
+		panel6.add(DJLDateRetour,c);
+
+		JPanel panel7 = new JPanel(new FlowLayout());
+		panel7.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;		
+		JLabel GJLPrixTransport = new JLabel("Prix Transport");
+		GJLPrixTransport.setFont(font_bouton);
+		GJLPrixTransport.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		GJLPrixTransport.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		panel7.add(GJLPrixTransport,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		JLabel DJLPrixTransport = new JLabel(""+reservation.getPrixTransport());
+		DJLPrixTransport.setFont(font_bouton);
+		DJLPrixTransport.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		DJLPrixTransport.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		c.gridx = 1;
+		c.gridy = 0;
+		panel7.add(DJLPrixTransport,c);		
+
+		JPanel panel8 = new JPanel(new FlowLayout());
+		panel8.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;		
+		JLabel GJLNbPersonnes = new JLabel("Nombre de personnes");
+		GJLNbPersonnes.setFont(font_bouton);
+		GJLNbPersonnes.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		GJLNbPersonnes.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		panel8.add(GJLNbPersonnes,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		JLabel DJLNbPersonnes = new JLabel(""+reservation.getNbPersonne());
+		DJLNbPersonnes.setFont(font_bouton);
+		DJLNbPersonnes.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		DJLNbPersonnes.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		c.gridx = 1;
+		c.gridy = 0;
+		panel8.add(DJLNbPersonnes,c);
+
+		JPanel panel9 = new JPanel(new FlowLayout());
+		panel9.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;		
+		JLabel GJLHotel = new JLabel("Hotel");
+		GJLHotel.setFont(font_bouton);
+		GJLHotel.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		GJLHotel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		panel9.add(GJLHotel,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		JLabel DJLHotel = new JLabel(""+reservation.getHotel().getNom());
+		DJLHotel.setFont(font_bouton);
+		DJLHotel.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		DJLHotel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		c.gridx = 1;
+		c.gridy = 0;
+		panel9.add(DJLHotel,c);
+
+
+		JPanel panel10 = new JPanel(new FlowLayout());
+		panel10.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;		
+		JLabel GJLCategorie = new JLabel("Catégorie");
+		GJLCategorie.setFont(font_bouton);
+		GJLCategorie.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		GJLCategorie.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		panel10.add(GJLHotel,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		JLabel DJLCategorie = new JLabel(""+reservation.getCategorie().getNom());
+		DJLCategorie.setFont(font_bouton);
+		DJLCategorie.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		DJLCategorie.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		c.gridx = 1;
+		c.gridy = 0;
+		panel10.add(DJLCategorie,c);
+
+		JPanel panel11 = new JPanel(new FlowLayout());
+		panel11.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;		
+		JLabel GJLChambre = new JLabel("Chambre");
+		GJLChambre.setFont(font_bouton);
+		GJLChambre.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		GJLChambre.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		panel11.add(GJLChambre,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		JLabel DJLChambre = new JLabel(""+reservation.getChambre().getDenomination());
+		DJLChambre.setFont(font_bouton);
+		DJLChambre.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		DJLChambre.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		c.gridx = 1;
+		c.gridy = 0;
+		panel11.add(DJLChambre,c);
+
+		JPanel panel12 = new JPanel(new FlowLayout());
+		panel12.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;		
+		JLabel GJLNbNuits = new JLabel("Nombre de nuits");
+		GJLNbNuits.setFont(font_bouton);
+		GJLNbNuits.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		GJLNbNuits.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		panel12.add(GJLNbNuits,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		JLabel DJLNbNuits = new JLabel(""+reservation.getNbDeNuit());
+		DJLNbNuits.setFont(font_bouton);
+		DJLNbNuits.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		DJLNbNuits.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		c.gridx = 1;
+		c.gridy = 0;
+		panel12.add(DJLNbNuits,c);
+
+		JPanel panel13 = new JPanel(new FlowLayout());
+		panel13.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;		
+		JLabel GJLPrixHotel = new JLabel("Prix Hotel");
+		GJLPrixHotel.setFont(font_bouton);
+		GJLPrixHotel.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		GJLPrixHotel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		panel13.add(GJLPrixHotel,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		JLabel DJLPrixHotel = new JLabel(""+reservation.getPrixHotel());
+		DJLPrixHotel.setFont(font_bouton);
+		DJLPrixHotel.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		DJLPrixHotel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		c.gridx = 1;
+		c.gridy = 0;
+		panel13.add(DJLPrixHotel,c);				
+
+		JPanel panel14 = new JPanel(new FlowLayout());
+		panel14.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;		
+		JLabel GJLPrixTotal = new JLabel("Prix total");
+		GJLPrixTotal.setFont(font_bouton);
+		GJLPrixTotal.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		GJLPrixTotal.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		panel14.add(GJLPrixTotal,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		JLabel DJLPrixTotal = new JLabel(""+reservation.getPrixTotal());
+		DJLPrixTotal.setFont(font_bouton);
+		DJLPrixTotal.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		DJLPrixTotal.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		c.gridx = 1;
+		c.gridy = 0;
+		panel14.add(DJLPrixTotal,c);	
+
+
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 0;
+		panel.add(panel3,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 1;
+		panel.add(panel4,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 2;
+		panel.add(panel5,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 3;
+		panel.add(panel6,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 4;
+		panel.add(panel7,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 5;
+		panel.add(panel8,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 6;
+		panel.add(panel9,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 7;
+		panel.add(panel10,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 8;
+		panel.add(panel11,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 9;
+		panel.add(panel12,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 10;
+		panel.add(panel13,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 11;
+		panel.add(panel14,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.15;
+		c.gridwidth = 1;
+		c.gridx = 0;
+		c.gridy = 12;
+		panel.add(bouttonValider,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.15;
+		c.gridwidth = 1;
+		c.gridx = 1;
+		c.gridy = 12;
+		panel.add(bouttonAnnuler,c);
+
+		// Fond du panel
+		// couleur : gris foncé
+
+		panel3.setBackground(GrisFonce);
+		panel4.setBackground(GrisFonce);
+		panel5.setBackground(GrisFonce);
+		panel6.setBackground(GrisFonce);
+		panel7.setBackground(GrisFonce);
+		panel8.setBackground(GrisFonce);
+		panel9.setBackground(GrisFonce);
+		panel10.setBackground(GrisFonce);
+		panel11.setBackground(GrisFonce);
+		panel12.setBackground(GrisFonce);
+		panel13.setBackground(GrisFonce);
+		panel14.setBackground(GrisFonce);
+		panel.setBackground(GrisFonce);
+
+		this.getContentPane().add(panel);
+		setSize(800,600);
+		setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(550, 250);
 		setVisible(true);
 	}
-
-
 }
+
+
+
 
 

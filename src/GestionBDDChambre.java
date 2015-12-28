@@ -113,7 +113,7 @@ public class GestionBDDChambre {
 
 	public int cleChambre(String denomination, int idCategorie) {
 		int cle2 =0;
-		String requete = "select idchambre from chambre  where idcategorie ="+idCategorie+" and nom ='"+denomination+"'";
+		String requete = "select id_chambre from chambre  where idcategorie ="+idCategorie+" and nom ='"+denomination+"'";
 		try{
 			Statement stmt = conn.createStatement();
 			ResultSet result = stmt.executeQuery(requete);

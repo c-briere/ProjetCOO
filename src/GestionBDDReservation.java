@@ -21,13 +21,14 @@ public class GestionBDDReservation {
 			int idCategorie, int cleClient, int idChambre, int nbJour) {
 		Reservation reservation = null;
 
-		String requete = "select hotel.nom,categorie.nom,chambre.nom, categorie.prix from hotel join categorie on hotel.idhotel=categorie.idhotel from chambre on categorie.idcategorie=chambre.idcategorie"
-				+ "where hotel.idhotel="+idHotel+" and categorie.idcategorie="+idCategorie+" and chambre.idchambre="+idChambre ;
+		String requete = "select hotel.nom,categorie.nom,chambre.nom, categorie.prix from hotel join categorie on hotel.idhotel=categorie.idhotel join chambre on categorie.idcategorie=chambre.idcategorie"
+				+ " where hotel.idhotel="+idHotel+" and categorie.idcategorie="+idCategorie+" and chambre.id_chambre="+idChambre ;
 		String requete2 ="select nom from client where idclient="+cleClient;
 		try{
 			Statement stmt = conn.createStatement();
+			Statement stmt2 = conn.createStatement();
 			ResultSet result = stmt.executeQuery(requete);
-			ResultSet result2=stmt.executeQuery(requete2);
+			ResultSet result2=stmt2.executeQuery(requete2);
 			while(result.next()){
 				String nomHotel=result.getString(1);
 				String nomCategorie=result.getString(2);
@@ -35,10 +36,12 @@ public class GestionBDDReservation {
 				double prix=result.getDouble(4);
 				while(result2.next()){
 					String nom=result2.getString(1);
-					reservation= new Reservation(new Ville(villeAller),dateAller,new Ville(villeRetour),dateRetour,prixAller+prixRetour,nbPersonneVoyage,new Hotel(nomHotel),new Categorie(nomCategorie,nbPersonneVoyage,prix),new Chambre(nomChambre),nbJour,prix,prix*nbJour,nom,heureAller,heureRetour);
+					reservation= new Reservation(new Ville(villeAller),dateAller,new Ville(villeRetour),dateRetour,prixAller+prixRetour,nbPersonneVoyage,new Hotel(nomHotel),new Categorie(nomCategorie,nbPersonneVoyage,prix),new Chambre(nomChambre),nbJour,prix,(prix*nbJour)+prixAller+prixRetour,nom,heureAller,heureRetour);
 
 				}
 			}
+			stmt.close();
+			stmt2.close();
 		}
 		catch(SQLException e){
 			e.printStackTrace();
