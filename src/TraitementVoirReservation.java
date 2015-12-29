@@ -40,7 +40,7 @@ public class TraitementVoirReservation implements ActionListener {
 				e.printStackTrace();
 			}
 			try {
-				cle = this.connect.gestionClient.verifClientResa(nom, prenom, d);
+				cle = this.connect.gestionClient.verifClientResa(nom, prenom, s);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

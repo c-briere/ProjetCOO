@@ -3,11 +3,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-<<<<<<< HEAD
-=======
+
 import java.util.Date;
-import java.util.List;
->>>>>>> origin/master
+
 
 
 public class GestionBDDHotel {
