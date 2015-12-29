@@ -1,13 +1,14 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-
 import javax.swing.JOptionPane;
 
-
+/**
+ * 
+ * @author BRIERE / CARDON
+ *
+ */
 public class TraitementReservation implements ActionListener {
 
 	FenetreGestionReservation fenetreGestionReservation;
@@ -27,17 +28,10 @@ public class TraitementReservation implements ActionListener {
 			String nom = this.fenetreGestionReservation.nom.getText();
 			String prenom=this.fenetreGestionReservation.prenom.getText();
 			String s = this.fenetreGestionReservation.date.getText();
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date d = null;
+
 			try {
-				d = sdf.parse(s);
+				cle = this.connect.gestionClient.verifClientResa(nom, prenom, s);
 			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			try {
-				cle = this.connect.gestionClient.verifClientResa(nom, prenom, d);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if(cle!=0){

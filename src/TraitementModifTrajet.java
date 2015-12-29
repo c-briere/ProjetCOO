@@ -3,7 +3,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-
+/**
+ * 
+ * @author BRIERE / CARDON
+ *
+ */
 public class TraitementModifTrajet implements ActionListener {
 
 	FenetreModifPlanning fenetreModifPlanning;

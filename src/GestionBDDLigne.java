@@ -33,8 +33,9 @@ public class GestionBDDLigne {
 	}
 
 	public boolean supLigne(int cleVilleAller, int cleVilleRetour) {
-		String requete = "delete from ligne where idvilledepart ="+cleVilleAller+" and idvillearrive ="+cleVilleRetour;
-		String requete2 = "select * from ligne where idvilledepart ="+cleVilleAller+" and idvillearrive ="+cleVilleRetour;
+		String requete = "delete from ligne where idvillealler ="+cleVilleAller+" and idvilleretour="+cleVilleRetour;
+		String requete2 = "select * from ligne where idvillealler ="+cleVilleAller+" and idvilleretour ="+cleVilleRetour;
+		System.out.println(requete);
 		try{
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(requete2);

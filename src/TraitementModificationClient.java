@@ -29,18 +29,18 @@ public class TraitementModificationClient implements ActionListener {
 			String date = this.fenetreModifierClient.date.getText();
 			String ville = this.fenetreModifierClient.ville.getText();
 			Date d = null;
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			/*SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 			try {
 				d = sdf.parse(date);
 			}catch (ParseException e1) {
 				e1.printStackTrace();
-			}
+			}*/
 			if(s.equals("Rechercher")){
 				
 				if(!nom.equals("") && !prenom.equals("") && !date.equals("") && !ville.equals("")){
 					try {
-						cle=connect.gestionClient.verifClient(nom,prenom,d,ville);
+						cle=connect.gestionClient.verifClient(nom,prenom,date,ville);
 						
 					} catch (ParseException e1) {
 						// TODO Auto-generated catch block
@@ -55,7 +55,7 @@ public class TraitementModificationClient implements ActionListener {
 			if(s.equals("Modifier")){
 				boolean modif;
 				if(!nom.equals("") && !prenom.equals("") && !date.equals("") && !ville.equals("")){
-					modif=connect.gestionClient.ModifClient(this.fenetreModifierClient.cle,nom,prenom,d,ville);
+					modif=connect.gestionClient.ModifClient(this.fenetreModifierClient.cle,nom,prenom,date,ville);
 					if(modif){
 						this.fenetreModifierClient.dispose();
 						JOptionPane.showMessageDialog(null,"Modification réussi");

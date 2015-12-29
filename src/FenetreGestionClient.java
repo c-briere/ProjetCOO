@@ -1,17 +1,20 @@
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 
 public class FenetreGestionClient extends JFrame implements ActionListener{
@@ -26,47 +29,121 @@ public class FenetreGestionClient extends JFrame implements ActionListener{
 		super("Gestion des clients");
 		this.connect=connect;
 
+		Color GrisFonce = new Color(0x222222);
+		Color BlancPale = new Color (0xCFBFAD);
 
+		//Bordure blanche d'épaisseur 3
+		Border border = new LineBorder(BlancPale, 3);
+		// Regarder comment importer une police
+		Font font_bouton = new Font("Roboto", Font.PLAIN, 24);
 
-		boutonAdd.setPreferredSize(new Dimension(250,30));
-		boutonDelete.setPreferredSize(new Dimension(250,30));
-		boutonModifier.setPreferredSize(new Dimension(250,30));
-		boutonVoir.setPreferredSize(new Dimension(250,30));
-		boutonAnnuler.setPreferredSize(new Dimension(250,30));
+		//Fond transparent
+		boutonAdd.setOpaque(false);
+		boutonAdd.setContentAreaFilled(false);
+		//Changement couleur bordure
+		boutonAdd.setBorder(border);
+		//Changement Police
+		boutonAdd.setFont(font_bouton);
+		//Changement couleur Police
+		boutonAdd.setForeground(BlancPale);
+		
+		//Fond transparent
+		boutonDelete.setOpaque(false);
+		boutonDelete.setContentAreaFilled(false);
+		//Changement couleur bordure
+		boutonDelete.setBorder(border);
+		//Changement Police
+		boutonDelete.setFont(font_bouton);
+		//Changement couleur Police
+		boutonDelete.setForeground(BlancPale);
+		
+		//Fond transparent
+		boutonVoir.setOpaque(false);
+		boutonVoir.setContentAreaFilled(false);
+		//Changement couleur bordure
+		boutonVoir.setBorder(border);
+		//Changement Police
+		boutonVoir.setFont(font_bouton);
+		//Changement couleur Police
+		boutonVoir.setForeground(BlancPale);
+		
+		//Fond transparent
+		boutonModifier.setOpaque(false);
+		boutonModifier.setContentAreaFilled(false);
+		//Changement couleur bordure
+		boutonModifier.setBorder(border);
+		//Changement Police
+		boutonModifier.setFont(font_bouton);
+		//Changement couleur Police
+		boutonModifier.setForeground(BlancPale);
+		
+		//Fond transparent
+		boutonAnnuler.setOpaque(false);
+		boutonAnnuler.setContentAreaFilled(false);
+		//Changement couleur bordure
+		boutonAnnuler.setBorder(border);
+		//Changement Police
+		boutonAnnuler.setFont(font_bouton);
+		//Changement couleur Police
+		boutonAnnuler.setForeground(BlancPale);
+		
 		boutonAdd.addActionListener(this);
-		boutonVoir.addActionListener(this);
 		boutonDelete.addActionListener(this);
+		boutonVoir.addActionListener(this);
 		boutonModifier.addActionListener(this);
 		boutonAnnuler.addActionListener(this);
+		
 		JPanel panel = new JPanel();
-		BoxLayout box = new BoxLayout(panel,BoxLayout.PAGE_AXIS);
-		panel.setLayout(box);
-		panel.add(Box.createVerticalGlue());
-		panel.add(boutonAdd);
-		boutonAdd.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panel.setLayout(box);
-		panel.add(Box.createVerticalGlue());
-		panel.add(boutonDelete);
-		boutonDelete.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panel.setLayout(box);
-		panel.add(Box.createVerticalGlue());
-		panel.add(boutonModifier);
-		boutonModifier.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panel.setLayout(box);
-		panel.add(Box.createVerticalGlue());
-		panel.add(boutonVoir);
-		boutonVoir.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panel.add(Box.createVerticalGlue());
-		panel.add(boutonAnnuler);
-		boutonAnnuler.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panel.setLayout(box);
-		panel.add(Box.createVerticalGlue());
-
-
-
-
+		panel.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.15;
+		c.gridwidth = 1;
+		c.gridx = 0;
+		c.gridy = 0;
+		panel.add(boutonAdd,c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		//c.weightx = 0.15;
+		c.weighty = 0.15;
+		c.gridwidth = 1;
+		c.gridx = 1;
+		c.gridy = 0;
+		panel.add(boutonDelete,c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		//c.weightx = 0.15;
+		c.weighty = 0.15;
+		c.gridwidth = 1;
+		c.gridx = 0;
+		c.gridy = 1;
+		panel.add(boutonVoir,c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		//c.weightx = 0.15;
+		c.weighty = 0.15;
+		c.gridwidth = 1;
+		c.gridx = 1;
+		c.gridy = 1;
+		panel.add(boutonModifier,c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		//c.weightx = 0.15;
+		c.weighty = 0.02;
+		c.gridwidth = 1;
+		c.gridx = 0;
+		c.gridy = 2;
+		panel.add(boutonAnnuler,c);
+		
 		this.getContentPane().add(panel);
-		setSize(350,200);
+
+		// Fond du panel
+		// couleur : gris foncé
+		panel.setBackground(GrisFonce);
+		
+		setSize(800,600);
 		setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);

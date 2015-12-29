@@ -1,8 +1,5 @@
 import java.util.ArrayList;
 
-import javax.swing.ListCellRenderer;
-
-
 public class Categorie {
   String nom;
   int place;
