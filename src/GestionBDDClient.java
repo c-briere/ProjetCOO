@@ -7,7 +7,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 
 public class GestionBDDClient {
@@ -90,10 +89,11 @@ public class GestionBDDClient {
 	}
 
 
-	public int verifClient(String nom, String prenom, Date date, String ville) throws ParseException {
+	public int verifClient(String nom, String prenom, String date, String ville) throws ParseException {
 		int cle = 0;
-		String requete2 = "select idclient from client  where lower(nom) ='"+nom+"' and lower(prenom) ='"+prenom+"' and datenaissance ='"+date+"' and lower(ville) ='"+ville+"'";
+		String requete2 = "select idclient from client  where nom ='"+nom+"' and prenom ='"+prenom+"' and datenaissance =TO_DATE('"+date+"','dd/mm/yyyy') and ville ='"+ville+"'";
 		try{
+			System.out.println(requete2);
 			Statement stmt = conn.createStatement();
 			ResultSet result = stmt.executeQuery(requete2);
 			while(result.next()){
@@ -110,10 +110,10 @@ public class GestionBDDClient {
 	}
 
 
-	public boolean ModifClient(int cle,String nom, String prenom, Date d, String ville) {
+	public boolean ModifClient(int cle,String nom, String prenom, String d, String ville) {
 		
 		try{
-			PreparedStatement stmt = conn.prepareStatement("update client set nom='"+nom+"', prenom='"+prenom+"',datenaissance='"+d+"', ville='"+ville+"' where idclient ="+cle);
+			PreparedStatement stmt = conn.prepareStatement("update client set nom='"+nom+"', prenom='"+prenom+"',datenaissance=TO_DATE('"+d+"','dd/mm/yyyy'), ville='"+ville+"' where idclient ="+cle);
 			
 
 			stmt.executeUpdate();
@@ -132,9 +132,11 @@ public class GestionBDDClient {
 		}
 	}
 	
-	public int verifClientResa(String nom, String prenom, Date date) throws ParseException {
+	public int verifClientResa(String nom, String prenom, String s) throws ParseException {
 		int cle = 0;
-		String requete2 = "select idclient from client  where lower(nom) ='"+nom+"' and lower(prenom) ='"+prenom+"' and datenaissance ='"+date+"'";
+		//String requete2 = "select idclient from client  where lower(nom) ='"+nom+"' and lower(prenom) ='"+prenom+"' and datenaissance ='"+date+"'";
+		String requete2 = "select idclient from client  where nom='"+nom+"' and prenom='"+prenom+"' and datenaissance =TO_DATE('"+s+"','dd/MM/yyyy')";
+		System.out.println(requete2);
 		try{
 			Statement stmt = conn.createStatement();
 			ResultSet result = stmt.executeQuery(requete2);
