@@ -187,11 +187,13 @@ public class FenetreAjouterClient extends JFrame{
 		c.gridy = 4;
 		panel.add(panel6,c);
 		
+		c.fill = GridBagConstraints.BOTH;
 		c.gridwidth= 1;
 		c.gridx = 0;
 		c.gridy = 5;
 		panel.add(bouttonValider,c);
 		
+		c.fill = GridBagConstraints.BOTH;
 		c.gridx = 1;
 		c.gridy = 5;
 		panel.add(bouttonAnnuler,c);

@@ -1,6 +1,4 @@
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -17,6 +15,7 @@ import javax.swing.border.LineBorder;
  *
  */
 public class FenetreAccueil extends JFrame implements ActionListener{
+
 	JButton boutonReservation = new JButton("Réservation");
 	JButton boutonAdministration = new JButton("Administration");
 	
@@ -106,7 +105,6 @@ public class FenetreAccueil extends JFrame implements ActionListener{
 	public static void main(String [] args){
 		Connect connect = new Connect();
 		JFrame frame = new FenetreAccueil(connect);
-		
 		
 	}
 }
