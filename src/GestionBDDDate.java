@@ -47,4 +47,23 @@ public class GestionBDDDate {
 
 	}
 
+
+	public int nbDeJour(String dateAller, String dateRetour) {
+		int a = 0;
+		String requete = "select '"+dateRetour+"'::date - '"+dateAller+"'::date-1";
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet result = stmt.executeQuery(requete);
+			while(result.next()){
+				a = result.getInt(1);
+			}
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+
+		
+		return a;
+	}
+
 }

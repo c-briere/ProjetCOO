@@ -1,5 +1,8 @@
 import java.awt.BorderLayout;
+<<<<<<< HEAD
 import java.awt.Color;
+=======
+>>>>>>> origin/master
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;

@@ -1,9 +1,13 @@
 import java.awt.BorderLayout;
+<<<<<<< HEAD
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+=======
+import java.awt.FlowLayout;
+>>>>>>> origin/master
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;

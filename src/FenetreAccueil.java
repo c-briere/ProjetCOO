@@ -89,7 +89,8 @@ public class FenetreAccueil extends JFrame implements ActionListener{
 		Object source = e.getSource();
 		if(source==boutonReservation){
 			dispose();
-			new FenetreGestionReservation(this.connect);
+			new FenetreChoixGestionReservation(this.connect);
+			
 		}
 
 	
