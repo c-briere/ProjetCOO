@@ -15,8 +15,9 @@ public class GestionStat {
 
 	public ArrayList<Ville> villeLesPlusDemandes(String date1, String date2) {
 		ArrayList<Ville> ville = new ArrayList<Ville>();
-		String requete = "select count(ville.nom) as total,ville.nom from reservation join ville on reservation.idvillearrive=ville.idville where reservation.datearrive between '"+date1+"' and '"+date2+"' or reservation.dateretour between '"+date1+"' and '"+date2+"' or reservation.datearrive = '"+date1+"'or reservation.datearrive = '"+date2+"' or reservation.dateretour = '"+date1+"' or reservation.dateretour = '"+date2+"' group by ville.nom FETCH FIRST 3 ROWS ONLY order by total desc";
+		String requete = "select count(ville.nom) as total,ville.nom from reservation join ville on reservation.idvillearrive=ville.idville where reservation.datearrive between '"+date1+"' and '"+date2+"' or reservation.dateretour between '"+date1+"' and '"+date2+"' or reservation.datearrive = '"+date1+"' or reservation.datearrive = '"+date2+"' or reservation.dateretour = '"+date1+"' or reservation.dateretour = '"+date2+"' group by ville.nom order by total desc";
 		try{
+			System.out.println(">>> STATS REQUETE VILLE : OK");
 			Statement stmt = conn.createStatement();
 			ResultSet result = stmt.executeQuery(requete);
 			while(result.next()){
@@ -33,8 +34,9 @@ public class GestionStat {
 
 	public int nbDeVoyageur(String date1, String date2) {
 		int nb=0;
-		String requete ="select sum(reservation.nbpersonne) from reservation where reservation.datearrive between '"+date1+"' and '"+date2+"' or reservation.dateretour between '"+date1+"' and '"+date2+"' or reservation.datearrive = '"+date1+"'or reservation.datearrive = '"+date2+"' or reservation.dateretour = '"+date1+"' or reservation.dateretour = '"+date2;
+		String requete ="select sum(reservation.nbpersonne) from reservation where reservation.datearrive between '"+date1+"' and '"+date2+"' or reservation.dateretour between '"+date1+"' and '"+date2+"' or reservation.datearrive = '"+date1+"' or reservation.datearrive = '"+date2+"' or reservation.dateretour = '"+date1+"' or reservation.dateretour = '"+date2+"'";
 		try{
+			System.out.println(">>> STATS REQUETE NB VOYAGEURS : OK");
 			Statement stmt = conn.createStatement();
 			ResultSet result = stmt.executeQuery(requete);
 			while(result.next()){
@@ -60,13 +62,13 @@ public class GestionStat {
 		ArrayList<Trajet> trajet = new ArrayList<Trajet>();
 		String requete; 
 		if(!s.equals("")){
-			requete = "select * from trajet where idligne not in (select idligne from ctrajet where idligne="+s+")";
+			requete = "select * from trajet where idligne not in (select idligne from trajet where idligne="+s+")";
 		}
 		else{
 			requete = "select * from trajet";
-
 		}
 		try{
+			System.out.println(">>> STATS REQUETE TRAJET : OK");
 			Statement stmt = conn.createStatement();
 			ResultSet result = stmt.executeQuery(requete);
 			while(result.next()){
@@ -93,8 +95,9 @@ public class GestionStat {
 
 	public ArrayList<Integer> ligneUtilise(String date1, String date2){
 		ArrayList<Integer> liste = null;
-		String requete= "select distinct reservation.clelignealler, reservation.cleligneretour from reservation  where reservation.datearrive between '"+date1+"' and '"+date2+"' or reservation.dateretour between '"+date1+"' and '"+date2+"' or reservation.datearrive = '"+date1+"'or reservation.datearrive = '"+date2+"' or reservation.dateretour = '"+date1+"' or reservation.dateretour = '"+date2;
+		String requete= "select distinct reservation.clelignealler, reservation.cleligneretour from reservation  where reservation.datearrive between '"+date1+"' and '"+date2+"' or reservation.dateretour between '"+date1+"' and '"+date2+"' or reservation.datearrive = '"+date1+"'or reservation.datearrive = '"+date2+"' or reservation.dateretour = '"+date1+"' or reservation.dateretour = '"+date2+"'";
 		try{
+			System.out.println(">>> STATS REQUETE LIGNE : OK");
 			Statement stmt = conn.createStatement();
 			ResultSet result = stmt.executeQuery(requete);
 			liste = new ArrayList<Integer>();
