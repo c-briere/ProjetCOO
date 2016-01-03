@@ -29,7 +29,6 @@ import javax.swing.table.AbstractTableModel;
           public Object getValueAt(int row, int col) {
 
                Trajet trajet = list.get(row);
-
                switch (col) {
                case 0:
                     return trajet.getJour();

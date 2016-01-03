@@ -133,7 +133,7 @@ public class FenetreSupprimerClient extends JFrame{
 		c.weighty = 0.50;
 		c.gridwidth = 2;
 		c.gridx = 0;
-		c.gridy = 0;
+		c.gridy = 2;
 		panel.add(panel4,c);
 		
 		c.fill = GridBagConstraints.BOTH;
@@ -141,7 +141,7 @@ public class FenetreSupprimerClient extends JFrame{
 		c.weighty = 0.50;
 		c.gridwidth = 2;
 		c.gridx = 0;
-		c.gridy = 1;
+		c.gridy = 0;
 		panel.add(panel5,c);
 		
 		c.fill = GridBagConstraints.BOTH;
@@ -149,7 +149,7 @@ public class FenetreSupprimerClient extends JFrame{
 		c.weighty = 0.50;
 		c.gridwidth = 2;
 		c.gridx = 0;
-		c.gridy = 2;
+		c.gridy = 1;
 		panel.add(panel6,c);
 		
 		c.gridwidth= 1;

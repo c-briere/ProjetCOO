@@ -22,6 +22,7 @@ import java.awt.GridBagLayout;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
+import javax.swing.table.JTableHeader;
 
 
 public class FenetreGestionReservation extends JFrame{
@@ -57,7 +58,14 @@ public class FenetreGestionReservation extends JFrame{
 		prenom = new JTextField();
 		date = new JTextField();
 
+		Color GrisFonce = new Color(0x222222);
+		Color BlancPale = new Color (0xCFBFAD);
 
+		//Bordure blanche d'épaisseur 3
+		Border border = new LineBorder(BlancPale, 3);
+		// Regarder comment importer une police
+		Font font_bouton = new Font("Roboto", Font.PLAIN, 24);
+		
 		bouttonNextClient = new JButton("Next");
 		bouttonAnnuler = new JButton("Annuler");
 
@@ -68,36 +76,125 @@ public class FenetreGestionReservation extends JFrame{
 		prenom.setPreferredSize(new Dimension(250,30));
 		date.setPreferredSize(new Dimension(250,30));
 
+		//Fond transparent
+		bouttonAnnuler.setOpaque(false);
+		bouttonAnnuler.setContentAreaFilled(false);
+		//Changement couleur bordure
+		bouttonAnnuler.setBorder(border);
+		//Changement Police
+		bouttonAnnuler.setFont(font_bouton);
+		//Changement couleur Police
+		bouttonAnnuler.setForeground(BlancPale);
+		
+		//Fond transparent
+		bouttonNextClient.setOpaque(false);
+		bouttonNextClient.setContentAreaFilled(false);
+		//Changement couleur bordure
+		bouttonNextClient.setBorder(border);
+		//Changement Police
+		bouttonNextClient.setFont(font_bouton);
+		//Changement couleur Police
+		bouttonNextClient.setForeground(BlancPale);
+		
 		panelSelectionClient = new JPanel();
-		panelSelectionClient.setLayout(new BoxLayout(panelSelectionClient, BoxLayout.Y_AXIS));
+		panelSelectionClient.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
 
 
-		JPanel panel = new JPanel(new FlowLayout());
-		JPanel panel1 = new JPanel(new FlowLayout());
-		JPanel panel3 = new JPanel(new FlowLayout());
+		JPanel panel4 = new JPanel(new FlowLayout());
+		panel4.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;		
+		JLabel d = new JLabel("Date de naissance");
+		d.setFont(font_bouton);
+		d.setForeground(BlancPale);
+		// similaire à un margin-left
+		d.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		panel4.add(d,c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 1;
+		c.gridy = 0;
+		panel4.add(date);
 
-		JPanel panel6 = new JPanel(new BorderLayout());
+		
+		JPanel panel5 = new JPanel(new FlowLayout());
+		panel5.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;		
+		JLabel n = new JLabel("Nom");
+		n.setFont(font_bouton);
+		n.setForeground(BlancPale);
+		// similaire à un margin-left
+		n.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 170));
+		panel5.add(n,c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 1;
+		c.gridy = 0;		
+		panel5.add(nom);
+		
+		JPanel panel6 = new JPanel(new FlowLayout());
+		panel6.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;		
+		JLabel p = new JLabel("Prénom");
+		p.setFont(font_bouton);
+		p.setForeground(BlancPale);
+		// similaire à un margin-left
+		p.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 140));
+		panel6.add(p,c);
 
-		panel.add(new JLabel("nom"));
-		panel.add(nom);
-		panel1.add(new JLabel("prenom"));
-		panel1.add(prenom);
-		panel3.add(new JLabel("Date de naissance"));
-		panel3.add(date);
-		panel6.add(panel,BorderLayout.NORTH);
-		panel6.add(panel1,BorderLayout.CENTER);
-		panel6.add(panel3,BorderLayout.SOUTH);
-
-		JPanel panel8 = new JPanel(new BorderLayout());
-		panel8.add(panel6,BorderLayout.NORTH);
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 1;
+		c.gridy = 0;	
+		panel6.add(prenom);	
 
 
-		JPanel panel7 = new JPanel();
-		panel7.add(bouttonNextClient);
-		panel7.add(bouttonAnnuler);
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 2;
+		panelSelectionClient.add(panel4,c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 0;
+		panelSelectionClient.add(panel5,c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 1;
+		panelSelectionClient.add(panel6,c);
+		
+		c.gridwidth= 1;
+		c.gridx = 0;
+		c.gridy = 3;
+		panelSelectionClient.add(bouttonNextClient,c);
+		
+		c.gridwidth= 1;
+		c.gridx = 1;
+		c.gridy = 3;
+		panelSelectionClient.add(bouttonAnnuler,c);
 
-		panelSelectionClient.add(panel8, BorderLayout.NORTH);
-		panelSelectionClient.add(panel7, BorderLayout.SOUTH);
+		// Fond du panel
+		// couleur : gris foncé
+		panel4.setBackground(GrisFonce);
+		panel5.setBackground(GrisFonce);
+		panel6.setBackground(GrisFonce);
+		panelSelectionClient.setBackground(GrisFonce);
+
 
 
 		this.getContentPane().add(panelSelectionClient);
@@ -108,32 +205,32 @@ public class FenetreGestionReservation extends JFrame{
 	}
 
 	public void cleartSelectionClient(){
-		panelSelectionClient.hide();
+		this.panelSelectionClient.setVisible(false);
 	}
 
 	public void clearChoixDate(){
-		panelSelectionDate.hide();
+		this.panelSelectionDate.setVisible(false);
 	}
 
 	public void clearChoixAller(){
-		panelSelectionAller.hide();
+		this.panelSelectionAller.setVisible(false);
 	}
 
 	public void clearChoixRetour(){
-		panelSelectionRetour.hide();
+		this.panelSelectionRetour.setVisible(false);
 	}
 	public void clearChoixHotel(){
-		panelChoixHotel.hide();
+		this.panelChoixHotel.setVisible(false);
 	}
 	public void clearChoixCategorie(){
-		panelChoixCategorie.hide();
+		this.panelChoixCategorie.setVisible(false);
 	}
 	public void clearChoixChambre(){
-		panelChoixChambre.hide();
+		this.panelChoixChambre.setVisible(false);
 	}
 
 	public void clearRecapitulatif(){
-		panel.hide();
+		this.panel.setVisible(false);
 	}
 
 
@@ -153,68 +250,200 @@ public class FenetreGestionReservation extends JFrame{
 		bouttonNextChoixDate.addActionListener(new TraitementReservation(this,this.connect));
 		bouttonAnnuler.addActionListener(new TraitementReservation(this,this.connect));
 
+		Color GrisFonce = new Color(0x222222);
+		Color BlancPale = new Color (0xCFBFAD);
 
+		//Bordure blanche d'épaisseur 3
+		Border border = new LineBorder(BlancPale, 3);
+		// Regarder comment importer une police
+		Font font_bouton = new Font("Roboto", Font.PLAIN, 24);
+		
+		//Fond transparent
+		bouttonAnnuler.setOpaque(false);
+		bouttonAnnuler.setContentAreaFilled(false);
+		//Changement couleur bordure
+		bouttonAnnuler.setBorder(border);
+		//Changement Police
+		bouttonAnnuler.setFont(font_bouton);
+		//Changement couleur Police
+		bouttonAnnuler.setForeground(BlancPale);
+		
+		//Fond transparent
+		bouttonNextChoixDate.setOpaque(false);
+		bouttonNextChoixDate.setContentAreaFilled(false);
+		//Changement couleur bordure
+		bouttonNextChoixDate.setBorder(border);
+		//Changement Police
+		bouttonNextChoixDate.setFont(font_bouton);
+		//Changement couleur Police
+		bouttonNextChoixDate.setForeground(BlancPale);
 
 
 		panelSelectionDate = new JPanel();
-		panelSelectionDate.setLayout(new BoxLayout(panelSelectionDate, BoxLayout.Y_AXIS));
+		panelSelectionDate.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
 
 
-
-		JPanel panel3 = new JPanel(new FlowLayout());
-		JPanel panel1= new JPanel(new FlowLayout());
-		JPanel panel2 = new JPanel(new FlowLayout());
 		dateDepart= new JTextField();
 		dateArrive= new JTextField();
 		nbPersonne = new JTextField();
 		villeDepart = new JTextField();
+		
+		choixVille.setPreferredSize(new Dimension (250,30));
 		dateDepart.setPreferredSize(new Dimension(250,30));
 		dateArrive.setPreferredSize(new Dimension(250,30));
 		nbPersonne.setPreferredSize(new Dimension(250,30));
 		villeDepart.setPreferredSize(new Dimension(250,30));
 		villeDepart.setText(VilleDepart.getNom());
 
-		panel3.add(new JLabel("choix de la ville"));
-		panel3.add(choixVille);
-		panel1.add(new JLabel("ville de depart"));
-
-		panel1.add(villeDepart);
-
-		panel2.add(new JLabel("choix date depart"));
-		panel2.add(dateDepart);
-		JPanel panel5 = new JPanel(new BorderLayout());
-		panel5.add(panel1,BorderLayout.NORTH);
-		panel5.add(panel3,BorderLayout.CENTER);
-		panel5.add(panel2,BorderLayout.SOUTH);
-
 		JPanel panel4 = new JPanel(new FlowLayout());
-		JPanel panel6= new JPanel(new FlowLayout());
-		panel4.add(new JLabel("choix date retour"));
+		panel4.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;		
+		JLabel d = new JLabel("Choix de la ville");
+		d.setFont(font_bouton);
+		d.setForeground(BlancPale);
+		// similaire à un margin-left
+		d.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 205));
+		panel4.add(d,c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 1;
+		c.gridy = 0;
+		panel4.add(choixVille);
+		
 
-		panel4.add(dateArrive);
-		panel6.add(new JLabel("nombre de personne"));
-		panel6.add(nbPersonne);
-		JPanel panel8 = new JPanel(new BorderLayout());
-		panel8.add(panel4,BorderLayout.NORTH);
-		panel8.add(panel6,BorderLayout.CENTER);
+		JPanel panel5 = new JPanel(new FlowLayout());
+		panel5.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;		
+		JLabel vd = new JLabel("Ville de départ");
+		vd.setFont(font_bouton);
+		vd.setForeground(BlancPale);
+		// similaire à un margin-left
+		vd.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 220));
+		panel5.add(vd,c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 1;
+		c.gridy = 0;
+		panel5.add(villeDepart);
+		
+		JPanel panel6 = new JPanel(new FlowLayout());
+		panel6.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;		
+		JLabel p = new JLabel("Choix date départ");
+		p.setFont(font_bouton);
+		p.setForeground(BlancPale);
+		// similaire à un margin-left
+		p.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 185));
+		panel6.add(p,c);
 
-		JPanel panel9 = new JPanel(new BorderLayout());
-		panel9.add(panel5,BorderLayout.NORTH);
-		panel9.add(panel8,BorderLayout.CENTER);
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 1;
+		c.gridy = 0;	
+		panel6.add(dateDepart);	
 
+		JPanel panel7 = new JPanel(new FlowLayout());
+		panel7.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;		
+		JLabel dr = new JLabel("Choix date retour");
+		dr.setFont(font_bouton);
+		dr.setForeground(BlancPale);
+		// similaire à un margin-left
+		dr.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 192));
+		panel7.add(dr,c);
 
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 1;
+		c.gridy = 0;	
+		panel7.add(dateArrive);	
 
+		JPanel panel8 = new JPanel(new FlowLayout());
+		panel8.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;		
+		JLabel nbp = new JLabel("Nombre de personnes");
+		nbp.setFont(font_bouton);
+		nbp.setForeground(BlancPale);
+		// similaire à un margin-left
+		nbp.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 140));
+		panel8.add(nbp,c);
 
-		JPanel panel7 = new JPanel();
-		panel7.add(bouttonNextChoixDate);
-		panel7.add(bouttonAnnuler);
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 1;
+		c.gridy = 0;	
+		panel8.add(nbPersonne);	
+		
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 0;
+		panelSelectionDate.add(panel5,c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 1;
+		panelSelectionDate.add(panel4,c);
 
-		panelSelectionDate.add(panel9, BorderLayout.NORTH);
-		panelSelectionDate.add(panel7, BorderLayout.SOUTH);
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 2;
+		panelSelectionDate.add(panel6,c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 3;
+		panelSelectionDate.add(panel7,c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 4;
+		panelSelectionDate.add(panel8,c);
+		
+		c.gridwidth= 1;
+		c.gridx = 0;
+		c.gridy = 5;
+		panelSelectionDate.add(bouttonNextChoixDate,c);
+		
+		c.gridwidth= 1;
+		c.gridx = 1;
+		c.gridy = 5;
+		panelSelectionDate.add(bouttonAnnuler,c);
+
+		// Fond du panel
+		// couleur : gris foncé
+		panel4.setBackground(GrisFonce);
+		panel5.setBackground(GrisFonce);
+		panel6.setBackground(GrisFonce);
+		panel7.setBackground(GrisFonce);
+		panel8.setBackground(GrisFonce);
+		panelSelectionDate.setBackground(GrisFonce);
 
 
 		this.getContentPane().add(panelSelectionDate);
-		setSize(500,300);
+		setSize(800,300);
 		setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -227,6 +456,12 @@ public class FenetreGestionReservation extends JFrame{
 		this.classeAller=classeAller;
 		this.prixAller=prixAller;
 
+		Color GrisFonce = new Color(0x222222);
+		Color BlancPale = new Color (0xCFBFAD);
+		
+		// Regarder comment importer une police
+		Font font_bouton = new Font("Roboto", Font.PLAIN, 16);
+		
 		String [] classe = {"1ere classe" , "2eme classe"};
 		choixClasse = new JComboBox<>(classe);
 		bouttonNextChoixRetour = new JButton("Next");
@@ -237,13 +472,20 @@ public class FenetreGestionReservation extends JFrame{
 		tableau = new JTable(new TableTrajetPrixTotal(trajetRetour,nbPersonneVoyage));
 		tableau.setPreferredScrollableViewportSize(new Dimension(500, 200));
 		tableau.setFillsViewportHeight(true);
+        //Modification du HEADER du tableau
+        JTableHeader header = tableau.getTableHeader();
+        header.setBackground(GrisFonce);
+        header.setForeground(BlancPale);
 		JScrollPane scrollPane = new JScrollPane(tableau);
 
 		JPanel panel3 = new JPanel();
-		panel3.add(new JLabel("choix de la classe"));
+		JLabel v = new JLabel("Choix de la classe");
+		v.setFont(font_bouton);
+		v.setForeground(BlancPale);
+		panel3.add(v);
 		panel3.add(choixClasse);
+		
 		JPanel panel2 = new JPanel();
-
 		panel2.add(bouttonNextChoixRetour);
 		bouttonNextChoixRetour.addActionListener(new TraitementReservation(this,this.connect));
 		panel2.add(bouttonAnnuler);
@@ -253,9 +495,16 @@ public class FenetreGestionReservation extends JFrame{
 		panelSelectionRetour.add(panel3, BorderLayout.CENTER);
 		panelSelectionRetour.add(panel2, BorderLayout.SOUTH);
 		add(panelSelectionRetour);
+	
+		// Fond du panel
+		// couleur : gris foncé
+		panelSelectionRetour.setBackground(GrisFonce);
+		panel3.setBackground(GrisFonce);
+		panel2.setBackground(GrisFonce);
+		
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(550, 250);
+		this.setSize(800, 250);
 		setVisible(true);
 
 
@@ -277,6 +526,12 @@ public class FenetreGestionReservation extends JFrame{
 		this.jourArrivee=jourArrivee;
 		this.nbPersonneVoyage=nbPersonneVoyage;
 
+		Color GrisFonce = new Color(0x222222);
+		Color BlancPale = new Color (0xCFBFAD);
+		
+		// Regarder comment importer une police
+		Font font_bouton = new Font("Roboto", Font.PLAIN, 16);
+		
 		String [] classe = {"1ere classe" , "2eme classe"};
 		choixClasse = new JComboBox<>(classe);
 		bouttonNextChoixAller = new JButton("Next");
@@ -286,10 +541,17 @@ public class FenetreGestionReservation extends JFrame{
 		tableau = new JTable(new TableTrajetPrixTotal(trajet,nbPersonneVoyage));
 		tableau.setPreferredScrollableViewportSize(new Dimension(500, 200));
 		tableau.setFillsViewportHeight(true);
+        //Modification du HEADER du tableau
+        JTableHeader header = tableau.getTableHeader();
+        header.setBackground(GrisFonce);
+        header.setForeground(BlancPale);
 		JScrollPane scrollPane = new JScrollPane(tableau);
 
 		JPanel panel3 = new JPanel();
-		panel3.add(new JLabel("choix de la classe"));
+		JLabel v = new JLabel("Choix de la classe");
+		v.setFont(font_bouton);
+		v.setForeground(BlancPale);
+		panel3.add(v);
 		panel3.add(choixClasse);
 		JPanel panel2 = new JPanel();
 
@@ -298,17 +560,22 @@ public class FenetreGestionReservation extends JFrame{
 		panel2.add(bouttonAnnuler);
 		bouttonAnnuler.addActionListener(new TraitementReservation(this,this.connect));
 
+	
 		panelSelectionAller.add(scrollPane, BorderLayout.NORTH);
 		panelSelectionAller.add(panel3, BorderLayout.CENTER);
 		panelSelectionAller.add(panel2, BorderLayout.SOUTH);
 		add(panelSelectionAller);
+		
+		// Fond du panel
+		// couleur : gris foncé
+		panelSelectionAller.setBackground(GrisFonce);
+		panel3.setBackground(GrisFonce);
+		panel2.setBackground(GrisFonce);
+		
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(550, 250);
+		this.setSize(800, 250);
 		setVisible(true);
-
-
-
 
 	}
 
@@ -322,42 +589,156 @@ public class FenetreGestionReservation extends JFrame{
 		if(hotel.size()!=0 || hotel!=null){
 			this.hotel=hotel;
 			for(int i =0;i<hotel.size();i++){
-				choixHotel.addItem(hotel.get(i).getNom()+" "+hotel.get(i).getNbPlaceRestante()+"chambres restantes");
+				choixHotel.addItem(hotel.get(i).getNom()+" "+hotel.get(i).getNbPlaceRestante()+" chambres restantes");
 			}
 			bouttonNextChoixHotel = new JButton("Next");
 			bouttonAnnuler = new JButton("Annuler");
-			JPanel panel3 = new JPanel();
-			panel3.add(new JLabel("choix de l'hotel"));
-			panel3.add(choixHotel);
-			JPanel panel2 = new JPanel();
-			panelChoixHotel = new JPanel();
-			panelChoixHotel.setLayout(new BoxLayout(panelChoixHotel,BoxLayout.PAGE_AXIS));
 
-			panel2.add(bouttonNextChoixHotel);
+			Color GrisFonce = new Color(0x222222);
+			Color BlancPale = new Color (0xCFBFAD);
+
+			//Bordure blanche d'épaisseur 3
+			Border border = new LineBorder(BlancPale, 3);
+			// Regarder comment importer une police
+			Font font_bouton = new Font("Roboto", Font.PLAIN, 24);
+
+			//Fond transparent
+			bouttonAnnuler.setOpaque(false);
+			bouttonAnnuler.setContentAreaFilled(false);
+			//Changement couleur bordure
+			bouttonAnnuler.setBorder(border);
+			//Changement Police
+			bouttonAnnuler.setFont(font_bouton);
+			//Changement couleur Police
+			bouttonAnnuler.setForeground(BlancPale);
+			
+			//Fond transparent
+			bouttonNextChoixHotel.setOpaque(false);
+			bouttonNextChoixHotel.setContentAreaFilled(false);
+			//Changement couleur bordure
+			bouttonNextChoixHotel.setBorder(border);
+			//Changement Police
+			bouttonNextChoixHotel.setFont(font_bouton);
+			//Changement couleur Police
+			bouttonNextChoixHotel.setForeground(BlancPale);
+			
 			bouttonNextChoixHotel.addActionListener(new TraitementReservation(this,this.connect));
-			panel2.add(bouttonAnnuler);
 			bouttonAnnuler.addActionListener(new TraitementReservation(this,this.connect));
-			panelChoixHotel.add(panel3, BorderLayout.CENTER);
-			panelChoixHotel.add(panel2, BorderLayout.SOUTH);
+
+			panelChoixHotel = new JPanel();
+			panelChoixHotel.setLayout(new GridBagLayout());
+			GridBagConstraints c = new GridBagConstraints();
+			
+			JPanel panel3 = new JPanel(new FlowLayout());
+			panel3.setLayout(new GridBagLayout());
+			c.fill = GridBagConstraints.BOTH;
+			c.gridx = 0;
+			c.gridy = 0;
+			JLabel v = new JLabel("Choix de la l'hôtel");
+			v.setFont(font_bouton);
+			v.setForeground(BlancPale);
+			// similaire à un margin-left : 25px;
+			v.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+			panel3.add(v,c);
+			
+			c.fill = GridBagConstraints.BOTH;
+			c.gridx = 1;
+			c.gridy = 0;
+			panel3.add(choixHotel,c);
+
+			c.fill = GridBagConstraints.BOTH;
+			c.weightx = 0.25;
+			c.weighty = 0.50;
+			c.gridwidth = 2;
+			c.gridx = 0;
+			c.gridy = 0;
+			panelChoixHotel.add(panel3,c);
+			
+			c.fill = GridBagConstraints.BOTH;
+			c.weightx = 0.25;
+			c.weighty = 0.15;
+			c.gridwidth = 1;
+			c.gridx = 0;
+			c.gridy = 1;
+			panelChoixHotel.add(bouttonNextChoixHotel,c);
+			
+			c.fill = GridBagConstraints.BOTH;
+			c.weightx = 0.25;
+			c.weighty = 0.15;
+			c.gridwidth = 1;
+			c.gridx = 1;
+			c.gridy = 1;		
+			panelChoixHotel.add(bouttonAnnuler,c);
+
+			// Fond du panel
+			// couleur : gris foncé
+			panel3.setBackground(GrisFonce);
+			panelChoixHotel.setBackground(GrisFonce);
+
 			add(panelChoixHotel);
+			
 			this.setLocationRelativeTo(null);
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.setSize(550, 250);
 			setVisible(true);
 		}
 		else{
-			JPanel panel3 = new JPanel();
-			JPanel panel2 = new JPanel();
+			Color GrisFonce = new Color(0x222222);
+			Color BlancPale = new Color (0xCFBFAD);
 
-			panel3.add(new JLabel("pas d hotel disponible"));
+			//Bordure blanche d'épaisseur 3
+			Border border = new LineBorder(BlancPale, 3);
+			// Regarder comment importer une police
+			Font font_bouton = new Font("Roboto", Font.PLAIN, 24);
+
+			//Fond transparent
+			bouttonAnnuler.setOpaque(false);
+			bouttonAnnuler.setContentAreaFilled(false);
+			//Changement couleur bordure
+			bouttonAnnuler.setBorder(border);
+			//Changement Police
+			bouttonAnnuler.setFont(font_bouton);
+			//Changement couleur Police
+			bouttonAnnuler.setForeground(BlancPale);
+			
+			panelChoixHotel = new JPanel();
+			panelChoixHotel.setLayout(new GridBagLayout());
+			GridBagConstraints c = new GridBagConstraints();
+			
+			JPanel panel3 = new JPanel(new FlowLayout());
+			panel3.setLayout(new GridBagLayout());
+			c.fill = GridBagConstraints.BOTH;
+			c.gridx = 0;
+			c.gridy = 0;
+			JLabel v = new JLabel("Aucun hôtel disponible");
+			v.setFont(font_bouton);
+			v.setForeground(BlancPale);
+			panel3.add(v,c);
 			bouttonAnnuler = new JButton("Annuler");
-			panel2.add(bouttonAnnuler);
+			
+			c.fill = GridBagConstraints.BOTH;
+			c.weightx = 0.25;
+			c.weighty = 0.50;
+			c.gridwidth = 2;
+			c.gridx = 0;
+			c.gridy = 0;
+			panelChoixHotel.add(panel3,c);
+			
+			c.fill = GridBagConstraints.BOTH;
+			c.weightx = 0.25;
+			c.weighty = 0.15;
+			c.gridwidth = 1;
+			c.gridx = 0;
+			c.gridy = 1;		
+			panelChoixHotel.add(bouttonAnnuler,c);
+
 			bouttonAnnuler.addActionListener(new TraitementReservation(this,this.connect));
 
-			panelChoixHotel = new JPanel();
-			panelChoixHotel.setLayout(new BoxLayout(panelChoixHotel,BoxLayout.PAGE_AXIS));
-			panelChoixHotel.add(panel3, BorderLayout.CENTER);
-			panelChoixHotel.add(panel2, BorderLayout.SOUTH);
+			// Fond du panel
+			// couleur : gris foncé
+			panel3.setBackground(GrisFonce);
+			panelChoixHotel.setBackground(GrisFonce);
+			
 			add(panelChoixHotel);
 			this.setLocationRelativeTo(null);
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -374,21 +755,93 @@ public class FenetreGestionReservation extends JFrame{
 		for(int i =0;i<categorie.size();i++){
 			choixCategorie.addItem(categorie.get(i).getNom()+" "+categorie.get(i).getPlace()+"places"+" "+categorie.get(i).getPrix()+" euros");
 		}
+		
 		bouttonNextChoixCategorie = new JButton("Next");
 		bouttonAnnuler = new JButton("Annuler");
-		JPanel panel3 = new JPanel();
-		panel3.add(new JLabel("choix de la categorie"));
-		panel3.add(choixCategorie);
-		JPanel panel2 = new JPanel();
-		panelChoixCategorie = new JPanel();
-		panelChoixCategorie.setLayout(new BoxLayout(panelChoixCategorie,BoxLayout.PAGE_AXIS));
-
-		panel2.add(bouttonNextChoixCategorie);
-		bouttonNextChoixCategorie.addActionListener(new TraitementReservation(this,this.connect));
-		panel2.add(bouttonAnnuler);
+		
 		bouttonAnnuler.addActionListener(new TraitementReservation(this,this.connect));
-		panelChoixCategorie.add(panel3, BorderLayout.CENTER);
-		panelChoixCategorie.add(panel2, BorderLayout.SOUTH);
+		bouttonNextChoixCategorie.addActionListener(new TraitementReservation(this,this.connect));
+		
+		Color GrisFonce = new Color(0x222222);
+		Color BlancPale = new Color (0xCFBFAD);
+
+		//Bordure blanche d'épaisseur 3
+		Border border = new LineBorder(BlancPale, 3);
+		// Regarder comment importer une police
+		Font font_bouton = new Font("Roboto", Font.PLAIN, 24);
+
+		//Fond transparent
+		bouttonAnnuler.setOpaque(false);
+		bouttonAnnuler.setContentAreaFilled(false);
+		//Changement couleur bordure
+		bouttonAnnuler.setBorder(border);
+		//Changement Police
+		bouttonAnnuler.setFont(font_bouton);
+		//Changement couleur Police
+		bouttonAnnuler.setForeground(BlancPale);
+		
+		//Fond transparent
+		bouttonNextChoixCategorie.setOpaque(false);
+		bouttonNextChoixCategorie.setContentAreaFilled(false);
+		//Changement couleur bordure
+		bouttonNextChoixCategorie.setBorder(border);
+		//Changement Police
+		bouttonNextChoixCategorie.setFont(font_bouton);
+		//Changement couleur Police
+		bouttonNextChoixCategorie.setForeground(BlancPale);
+		
+		panelChoixCategorie = new JPanel();
+		panelChoixCategorie.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		
+		JPanel panel3 = new JPanel(new FlowLayout());
+		panel3.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;
+		JLabel v = new JLabel("Choix de la catégorie");
+		v.setFont(font_bouton);
+		v.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		v.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		panel3.add(v,c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 1;
+		c.gridy = 0;
+		panel3.add(choixCategorie,c);
+		
+
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 0;
+		panelChoixCategorie.add(panel3,c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.15;
+		c.gridwidth = 1;
+		c.gridx = 0;
+		c.gridy = 1;
+		panelChoixCategorie.add(bouttonNextChoixCategorie,c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.15;
+		c.gridwidth = 1;
+		c.gridx = 1;
+		c.gridy = 1;		
+		panelChoixCategorie.add(bouttonAnnuler,c);
+
+		// Fond du panel
+		// couleur : gris foncé
+		panel3.setBackground(GrisFonce);
+		panelChoixCategorie.setBackground(GrisFonce);
+
+		
 		add(panelChoixCategorie);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -403,21 +856,96 @@ public class FenetreGestionReservation extends JFrame{
 		for(int i =0;i<chambre.size();i++){
 			choixChambre.addItem(chambre.get(i).getDenomination());
 		}
+		
 		bouttonNextChoixChambre = new JButton("Next");
 		bouttonAnnuler = new JButton("Annuler");
-		JPanel panel3 = new JPanel();
-		panel3.add(new JLabel("choix de la chambre"));
-		panel3.add(choixChambre);
-		JPanel panel2 = new JPanel();
-		panelChoixChambre = new JPanel();
-		panelChoixChambre.setLayout(new BoxLayout(panelChoixChambre,BoxLayout.PAGE_AXIS));
-
-		panel2.add(bouttonNextChoixChambre);
+		
 		bouttonNextChoixChambre.addActionListener(new TraitementReservation(this,this.connect));
-		panel2.add(bouttonAnnuler);
 		bouttonAnnuler.addActionListener(new TraitementReservation(this,this.connect));
-		panelChoixChambre.add(panel3, BorderLayout.CENTER);
-		panelChoixChambre.add(panel2, BorderLayout.SOUTH);
+		
+		Color GrisFonce = new Color(0x222222);
+		Color BlancPale = new Color (0xCFBFAD);
+
+		//Bordure blanche d'épaisseur 3
+		Border border = new LineBorder(BlancPale, 3);
+		// Regarder comment importer une police
+		Font font_bouton = new Font("Roboto", Font.PLAIN, 24);
+		bouttonValider = new JButton("Valider");
+		bouttonAnnuler= new JButton("Annuler");
+		bouttonValider.addActionListener(new TraitementReservation(this,this.connect));
+		bouttonAnnuler.addActionListener(new TraitementReservation(this,this.connect));
+
+		//Fond transparent
+		bouttonAnnuler.setOpaque(false);
+		bouttonAnnuler.setContentAreaFilled(false);
+		//Changement couleur bordure
+		bouttonAnnuler.setBorder(border);
+		//Changement Police
+		bouttonAnnuler.setFont(font_bouton);
+		//Changement couleur Police
+		bouttonAnnuler.setForeground(BlancPale);
+
+		//Fond transparent
+		bouttonNextChoixChambre.setOpaque(false);
+		bouttonNextChoixChambre.setContentAreaFilled(false);
+		//Changement couleur bordure
+		bouttonNextChoixChambre.setBorder(border);
+		//Changement Police
+		bouttonNextChoixChambre.setFont(font_bouton);
+		//Changement couleur Police
+		bouttonNextChoixChambre.setForeground(BlancPale);
+		
+		panelChoixChambre = new JPanel();
+		panelChoixChambre.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		
+		JPanel panel3 = new JPanel(new FlowLayout());
+		panel3.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;
+		JLabel v = new JLabel("Choix de la chambre");
+		v.setFont(font_bouton);
+		v.setForeground(BlancPale);
+		// similaire à un margin-left : 25px;
+		v.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+		panel3.add(v,c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 1;
+		c.gridy = 0;
+		panel3.add(choixChambre,c);
+
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.50;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 0;
+		panelChoixChambre.add(panel3,c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.15;
+		c.gridwidth = 1;
+		c.gridx = 0;
+		c.gridy = 1;
+		panelChoixChambre.add(bouttonNextChoixChambre,c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.25;
+		c.weighty = 0.15;
+		c.gridwidth = 1;
+		c.gridx = 1;
+		c.gridy = 1;		
+		panelChoixChambre.add(bouttonAnnuler,c);
+
+		// Fond du panel
+		// couleur : gris foncé
+		panel3.setBackground(GrisFonce);
+		panelChoixChambre.setBackground(GrisFonce);
+		
+
 		add(panelChoixChambre);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -471,7 +999,7 @@ public class FenetreGestionReservation extends JFrame{
 		c.fill = GridBagConstraints.BOTH;
 		c.gridx = 0;
 		c.gridy = 0;		
-		JLabel GJLVilleAller = new JLabel("Ville Aller :");
+		JLabel GJLVilleAller = new JLabel("Ville Aller ");
 		GJLVilleAller.setFont(font_bouton);
 		GJLVilleAller.setForeground(BlancPale);
 		// similaire à un margin-left : 25px;

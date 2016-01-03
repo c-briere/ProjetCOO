@@ -143,8 +143,10 @@ public class GestionBDDReservation {
 
 	public ArrayList<Reservation> voirResa(int cle) {
 		ArrayList<Reservation> reservation= new ArrayList<Reservation>();
+		//String requeteAller= "select reservation.idreservation, ville.nom, reservation.datearrive,reservation.prixtotal, hotel.nom,categorie.nom,chambre.nom, client.nom, trajet.heuredepart from reservation join client on reservation.cleclient=client.idclient join hotel on reservation.idhotel=hotel.idhotel join categorie on reservation.idcategorie=categorie.idcategorie join chambre on reservation.idchambre=chambre.id_chambre join ville on reservation.idvilledepart = ville.idville join trajet on reservation.clelignealler=trajet.idligne where idclient ="+cle;
+		// reservation.nbpersonne n'existe pas
 		String requeteAller= "select reservation.idreservation, ville.nom, reservation.datearrive,reservation.prixtotal, reservation.nbpersonne, hotel.nom,categorie.nom,chambre.nom, client.nom, trajet.heuredepart from reservation join client on reservation.cleclient=client.idclient join hotel on reservation.idhotel=hotel.idhotel join categorie on reservation.idcategorie=categorie.idcategorie join chambre on reservation.idchambre=chambre.id_chambre join ville on reservation.idvilledepart = ville.idville join trajet on reservation.clelignealler=trajet.idligne where idclient ="+cle;
-		
+		System.out.println(requeteAller);
 		try{
 			Statement stmt = conn.createStatement();
 			ResultSet result = stmt.executeQuery(requeteAller);
