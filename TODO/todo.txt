@@ -7,3 +7,9 @@
 *éviter d'utiliser l attribut directement (passer par les getters au max, autre que pour les boutons (vue, attribut, textField etc etc etc )
 
 Si tu t'en sens améliorer le graphique, mais en gardant les mêmes noms (important car c'est sur celui si que le listener prends les attributs
+
+* UML
+* JAVADOC
+* PACKAGE
+
+* SCRIPT SQL pour remplir un peu la BDD
