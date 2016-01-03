@@ -20,6 +20,7 @@ public class FenetreAdministration extends JFrame implements ActionListener{
 	JButton boutonClient = new JButton("Client");
 	JButton boutonLigne = new JButton("Ligne");
 	JButton boutonAnnuler = new JButton("Retour");
+	JButton boutonStats = new JButton("Statistiques");
 	
 	public Connect connect;
 
@@ -31,6 +32,7 @@ public class FenetreAdministration extends JFrame implements ActionListener{
 		boutonClient.addActionListener(this);
 		boutonAnnuler.addActionListener(this);
 		boutonLigne.addActionListener(this);
+		boutonStats.addActionListener(this);
 		
 		Color GrisFonce = new Color(0x222222);
 		Color BlancPale = new Color (0xCFBFAD);
@@ -49,6 +51,16 @@ public class FenetreAdministration extends JFrame implements ActionListener{
 		boutonVille.setFont(font_bouton);
 		//Changement couleur Police
 		boutonVille.setForeground(BlancPale);
+		
+		//Fond transparent
+		boutonStats.setOpaque(false);
+		boutonStats.setContentAreaFilled(false);
+		//Changement couleur bordure
+		boutonStats.setBorder(border);
+		//Changement Police
+		boutonStats.setFont(font_bouton);
+		//Changement couleur Police
+		boutonStats.setForeground(BlancPale);
 		
 		//Fond transparent
 		boutonClient.setOpaque(false);
@@ -104,7 +116,7 @@ public class FenetreAdministration extends JFrame implements ActionListener{
 		c.weighty = 0.5;
 		c.gridx = 0;
 		c.gridy = 1;
-		panel.add(boutonAnnuler,c);
+		panel.add(boutonStats,c);
 
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 0.5;
@@ -113,7 +125,12 @@ public class FenetreAdministration extends JFrame implements ActionListener{
 		c.gridy = 1;
 		panel.add(boutonLigne,c);
 
-
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.5;
+		c.weighty = 0.015;
+		c.gridx = 0;
+		c.gridy = 2;
+		panel.add(boutonAnnuler,c);
 
 		// Fond du panel
 		// couleur : gris foncé
@@ -149,6 +166,11 @@ public class FenetreAdministration extends JFrame implements ActionListener{
 		if(source==boutonAnnuler){
 			dispose();
 			new FenetreAccueil(this.connect);
+		}
+		
+		if(source==boutonStats){
+			dispose();
+			new FenetreChoixDateStat(this.connect);
 		}
 		
 	} 
