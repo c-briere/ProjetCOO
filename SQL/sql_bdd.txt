@@ -53,6 +53,7 @@ CREATE TABLE reservation
   datearrive date NOT NULL,
   dateretour date NOT NULL,
   prixtotal real NOT NULL,
+  nbpersonne integer,
   CONSTRAINT reservation_pkey PRIMARY KEY (idreservation),
   CONSTRAINT reservation_cleclient_fkey FOREIGN KEY (cleclient)
       REFERENCES client (idclient) MATCH SIMPLE
