@@ -1,49 +1,71 @@
 package traitement.tableau;
+
 import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
 import classe_defaut.Categorie;
 
+/**
+ * Création du tableau pour les catégories
+ * 
+ * @author BRIERE / CARDON
+ *
+ */
 public class TableCategorie extends AbstractTableModel {
-	
-          private String[] columnNames = { "Nom", "Place", "Prix"};
-          ArrayList<Categorie> list = null;
 
-         public TableCategorie(ArrayList<Categorie> list) {
-               this.list = list;
-          }
+	/*
+	 * HEADER pour le tableau
+	 */
+	private String[] columnNames = { "Nom", "Place", "Prix" };
+	/**
+	 * liste de catégorie
+	 */
+	ArrayList<Categorie> list = null;
 
-          public int getColumnCount() {
-               return columnNames.length;
-          }
+	/**
+	 * constructeur de la class
+	 * 
+	 * @param list
+	 */
+	public TableCategorie(ArrayList<Categorie> list) {
+		this.list = list;
+	}
 
-          public int getRowCount() {
-               return list.size();
-          }
+	public int getColumnCount() {
+		return columnNames.length;
+	}
 
-          public String getColumnName(int col) {
-               return columnNames[col];
-          }
+	public int getRowCount() {
+		return list.size();
+	}
 
-          public Object getValueAt(int row, int col) {
+	public String getColumnName(int col) {
+		return columnNames[col];
+	}
 
-               Categorie categorie = list.get(row);
+	/**
+	 * Insertion d'une valeur dans le tableau
+	 */
+	public Object getValueAt(int row, int col) {
 
-               switch (col) {
-               case 0:
-                    return categorie.getNom();
-               case 1:
-                    return categorie.getPlace();
-               case 2:
-                    return categorie.getPrix();
-               
-               default:
-                    return "unknown";
-               }
-          }
+		Categorie categorie = list.get(row);
 
-          public Class getColumnClass(int c) {
-               return getValueAt(0, c).getClass();
-          }
-     }
+		switch (col) {
+		case 0:
+			return categorie.getNom();
+		case 1:
+			return categorie.getPlace();
+		case 2:
+			return categorie.getPrix();
+
+		default:
+			return "unknown";
+		}
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public Class getColumnClass(int c) {
+		return getValueAt(0, c).getClass();
+	}
+}

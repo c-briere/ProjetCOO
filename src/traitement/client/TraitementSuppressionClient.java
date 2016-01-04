@@ -1,4 +1,5 @@
 package traitement.client;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -11,23 +12,36 @@ import BDD.Connect;
 import vue.client.FenetreGestionClient;
 import vue.client.FenetreSupprimerClient;
 
-
+/**
+ * Traitement pour pouvoir supprimer un client
+ * 
+ * @author BRIERE / CARDON
+ *
+ */
 public class TraitementSuppressionClient implements ActionListener {
-	
+	/**
+	 * connexion à la BDD
+	 */
 	public Connect connect;
 	public FenetreSupprimerClient fenetreSupprimerClient;
 
-	public TraitementSuppressionClient(
-			FenetreSupprimerClient fenetreSupprimerClient, Connect connect) {
-		this.connect= connect;
-		this.fenetreSupprimerClient=fenetreSupprimerClient;
+	/**
+	 * constructeur de la class
+	 * 
+	 * @param fenetreSupprimerClient
+	 * @param connect
+	 *            connexion à la base
+	 */
+	public TraitementSuppressionClient(FenetreSupprimerClient fenetreSupprimerClient, Connect connect) {
+		this.connect = connect;
+		this.fenetreSupprimerClient = fenetreSupprimerClient;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object e = arg0.getSource();
-		
-		if(e==fenetreSupprimerClient.getBouttonValider()){
+		// bouton valider
+		if (e == fenetreSupprimerClient.getBouttonValider()) {
 			String nom = this.fenetreSupprimerClient.getNom().getText();
 			String prenom = this.fenetreSupprimerClient.getPrenom().getText();
 			String date = this.fenetreSupprimerClient.getDate().getText();
@@ -36,24 +50,22 @@ public class TraitementSuppressionClient implements ActionListener {
 
 			try {
 				d = sdf.parse(date);
-			}catch (ParseException e1) {
+			} catch (ParseException e1) {
 				e1.printStackTrace();
 			}
-			
-			if(connect.gestionClient.supClient(nom,prenom, d)){
-				JOptionPane.showMessageDialog(null,"Suppression réussi");
+
+			if (connect.gestionClient.supClient(nom, prenom, d)) {
+				JOptionPane.showMessageDialog(null, "Suppression réussi");
 				this.fenetreSupprimerClient.dispose();
-				FenetreGestionClient c = new FenetreGestionClient(this.connect);
-			}
-			else{
-				JOptionPane.showMessageDialog(null,"Echec suppression ou le client n'existe pas");
+				new FenetreGestionClient(this.connect);
+			} else {
+				JOptionPane.showMessageDialog(null, "Echec suppression ou le client n'existe pas");
 
 			}
 
-			
 		}
-		
-		if(e==fenetreSupprimerClient.getBouttonAnnuler()){
+		// bouton annuler
+		if (e == fenetreSupprimerClient.getBouttonAnnuler()) {
 			fenetreSupprimerClient.dispose();
 			new FenetreGestionClient(connect);
 		}
