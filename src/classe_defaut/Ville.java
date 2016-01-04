@@ -1,15 +1,33 @@
 package classe_defaut;
+
 import java.util.ArrayList;
 
-
+/**
+ * Il existe deux types villes. La ville de départ du client et la ville où le
+ * client veut aller.
+ * 
+ * @author BRIERE / CARDON
+ *
+ */
 public class Ville {
-	
+	/**
+	 * nom de la ville
+	 */
 	private String nom;
+	/**
+	 * Liste des hôtels de la ville
+	 */
 	private ArrayList<Hotel> listHotel;
-	
-	public Ville(String nom){
-		this.nom=nom;
-		this.listHotel= new ArrayList<Hotel>();
+
+	/**
+	 * Constructeur de la class
+	 * 
+	 * @param nom
+	 *            nom de la ville
+	 */
+	public Ville(String nom) {
+		this.nom = nom;
+		this.listHotel = new ArrayList<Hotel>();
 	}
 
 	public String getNom() {
@@ -19,12 +37,22 @@ public class Ville {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	
-	public void addHotel(Hotel hotel){
+
+	/**
+	 * Ajout d'une hôtel dans la ville
+	 * 
+	 * @param hotel
+	 */
+	public void addHotel(Hotel hotel) {
 		this.listHotel.add(hotel);
 	}
-	
-	public void suppHotel(Hotel hotel){
+
+	/**
+	 * Suppression d'un hôtel dans la ville
+	 * 
+	 * @param hotel
+	 */
+	public void suppHotel(Hotel hotel) {
 		this.listHotel.remove(hotel);
 	}
 
@@ -35,7 +63,5 @@ public class Ville {
 	public void setListHotel(ArrayList<Hotel> listHotel) {
 		this.listHotel = listHotel;
 	}
-	
-	
-	
+
 }

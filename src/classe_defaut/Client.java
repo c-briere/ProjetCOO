@@ -1,19 +1,49 @@
 package classe_defaut;
+
 import java.util.Date;
 
-
+/**
+ * Le client représente la personne qui va réserver le transport et la chambre
+ * d'hôtel
+ * 
+ * @author BRIERE / CARDON
+ *
+ */
 public class Client {
-
+	/**
+	 * nom du client
+	 */
 	public String nom;
+	/**
+	 * Prénom du client
+	 */
 	public String prenom;
+	/**
+	 * date de naissance du client
+	 */
 	public Date dateNaissance;
+	/**
+	 * Ville du client
+	 */
 	public String ville;
-	
-	public Client(String nom, String prenom, Date dateNaissance, String ville){
-		this.nom=nom;
-		this.prenom=prenom;
-		this.dateNaissance=dateNaissance;
-		this.ville=ville;
+
+	/**
+	 * Constructeur de la classe
+	 * 
+	 * @param nom
+	 *            nom du client
+	 * @param prenom
+	 *            prénom du client
+	 * @param dateNaissance
+	 *            date de naissance
+	 * @param ville
+	 *            ville du client
+	 */
+	public Client(String nom, String prenom, Date dateNaissance, String ville) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+		this.ville = ville;
 	}
 
 	public String getNom() {
@@ -47,6 +77,5 @@ public class Client {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
-	
-	
+
 }
