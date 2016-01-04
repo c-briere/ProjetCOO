@@ -1,9 +1,16 @@
 package BDD;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * Connexion à la base de données POSTGRE
+ * 
+ * @author BRIERE / CARDON
+ *
+ */
 public class Connect {
-	
+
 	public GestionBDDClient gestionClient;
 	public GestionBDDVille gestionVille;
 	public GestionBDDHotel gestionHotel;
@@ -14,46 +21,46 @@ public class Connect {
 	public GestionBDDDate gestionDate;
 	public GestionBDDReservation gestionReservation;
 	public GestionStat gestionStat;
-	
-  public Connect() {      
 
-    try {
+	/**
+	 * Constructeur de la class Connect Création d'une connexion puis
+	 * transmition à d'autres class
+	 */
+	public Connect() {
 
-      Class.forName("org.postgresql.Driver");
+		try {
 
-      System.out.println("Driver O.K.");
+			Class.forName("org.postgresql.Driver");
 
+			System.out.println("Driver O.K.");
 
-      String url = "jdbc:postgresql://localhost:5432/ProjetCOO";
+			String url = "jdbc:postgresql://localhost:5432/ProjetCOO";
 
-      String user = "postgres";
+			String user = "postgres";
 
-      String passwd = "azerty";
+			String passwd = "azerty";
 
+			Connection conn = DriverManager.getConnection(url, user, passwd);
 
-      Connection conn = DriverManager.getConnection(url, user, passwd);
+			System.out.println("Connexion effective !");
 
-      System.out.println("Connexion effective !");         
-      
-      gestionClient = new GestionBDDClient(conn);
-      gestionVille = new GestionBDDVille(conn);
-      gestionHotel = new GestionBDDHotel(conn);
-      gestionCategorie = new GestionBDDCategorie(conn);
-      gestionChambre = new GestionBDDChambre(conn);
-      gestionLigne = new GestionBDDLigne(conn);
-      gestionTrajet = new GestionBDDTrajet(conn);
-      gestionDate = new GestionBDDDate(conn);
-      gestionReservation = new GestionBDDReservation(conn);
-      gestionStat = new GestionStat(conn);
+			gestionClient = new GestionBDDClient(conn);
+			gestionVille = new GestionBDDVille(conn);
+			gestionHotel = new GestionBDDHotel(conn);
+			gestionCategorie = new GestionBDDCategorie(conn);
+			gestionChambre = new GestionBDDChambre(conn);
+			gestionLigne = new GestionBDDLigne(conn);
+			gestionTrajet = new GestionBDDTrajet(conn);
+			gestionDate = new GestionBDDDate(conn);
+			gestionReservation = new GestionBDDReservation(conn);
+			gestionStat = new GestionStat(conn);
 
-    } catch (Exception e) {
+		} catch (Exception e) {
 
-      e.printStackTrace();
+			e.printStackTrace();
 
-    }      
-    
-    
+		}
 
-  }
+	}
 
 }
