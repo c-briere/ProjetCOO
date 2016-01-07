@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import classe_defaut.Ville;
 
 /**
- * Gestion des requêtes sur la ville
+ * Gestion des requÃªtes sur la ville
  * 
  * @author BRIERE / CARDON
  *
@@ -22,7 +22,7 @@ public class GestionBDDVille {
 	 * Constructeur de la class
 	 * 
 	 * @param conn
-	 *            connexion à la BDD (préalablement créée par la class Connect)
+	 *            connexion Ã  la BDD (prÃ©alablement crÃ©Ã©e par la class Connect)
 	 */
 	public GestionBDDVille(Connection conn) {
 		this.conn = conn;
@@ -108,7 +108,7 @@ public class GestionBDDVille {
 	}
 
 	/**
-	 * Détermine l'ID d'une ville
+	 * DÃ©termine l'ID d'une ville
 	 * 
 	 * @param ville
 	 *            nom de la ville
@@ -133,7 +133,7 @@ public class GestionBDDVille {
 	}
 
 	/**
-	 * Détermine l'ID de la ville pour les réservations La ville de départ sera
+	 * DÃ©termine l'ID de la ville pour les rÃ©servations La ville de dÃ©part sera
 	 * la ville du client
 	 * 
 	 * @param cle

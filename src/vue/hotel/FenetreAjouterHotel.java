@@ -19,6 +19,7 @@ import BDD.Connect;
 import traitement.hotel.TraitementAjoutHotel;
 
 /**
+ * FenÃªtre pour ajouter une chambre
  * 
  * @author BRIERE / CARDON
  *
@@ -43,7 +44,7 @@ public class FenetreAjouterHotel extends JFrame{
 		Color GrisFonce = new Color(0x222222);
 		Color BlancPale = new Color (0xCFBFAD);
 
-		//Bordure blanche d'épaisseur 3
+		//Bordure blanche d'Ã©paisseur 3
 		Border border = new LineBorder(BlancPale, 3);
 		// Regarder comment importer une police
 		Font font_bouton = new Font("Roboto", Font.PLAIN, 24);
@@ -85,7 +86,7 @@ public class FenetreAjouterHotel extends JFrame{
 		JLabel v = new JLabel("Hotel");
 		v.setFont(font_bouton);
 		v.setForeground(BlancPale);
-		// similaire à un margin-left : 25px;
+		// similaire Ã  un margin-left : 25px;
 		v.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
 		panel3.add(v,c);
 		
@@ -120,7 +121,7 @@ public class FenetreAjouterHotel extends JFrame{
 		
 
 		// Fond du panel
-		// couleur : gris foncé
+		// couleur : gris foncÃ©
 		panel3.setBackground(GrisFonce);
 		panel.setBackground(GrisFonce);
 

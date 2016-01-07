@@ -1,14 +1,14 @@
 package classe_defaut;
 
 /**
- * Les h魌els restants sont les h魌els qui ne sont pas complets
+ * Les h么tels restants sont les h么tels qui ne sont pas complets
  * 
  * @author BRIERE / CARDON
  *
  */
 public class HotelRestant {
 	/**
-	 * nom de l'h魌el
+	 * nom de l'h么tel
 	 */
 	private String nom;
 	/**
@@ -20,9 +20,9 @@ public class HotelRestant {
 	 * Constructeur de la class
 	 * 
 	 * @param nom
-	 *            nom de l'h魌el
+	 *            nom de l'h么tel
 	 * @param nbPlaceRestante
-	 *            nombre de places restantes dans l'h魌el
+	 *            nombre de places restantes dans l'h么tel
 	 */
 	public HotelRestant(String nom, int nbPlaceRestante) {
 		this.nom = nom;

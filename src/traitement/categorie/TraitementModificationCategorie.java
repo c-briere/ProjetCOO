@@ -10,7 +10,7 @@ import vue.categorie.FenetreModifCategorie;
 import vue.ville.FenetreGestionVille;
 
 /**
- * Traitement pour pouvoir modifier une catégorie
+ * Traitement pour pouvoir modifier une catÃ©gorie
  * 
  * @author BRIERE / CARDON
  *
@@ -19,11 +19,11 @@ public class TraitementModificationCategorie implements ActionListener {
 
 	public FenetreModifCategorie fenetreModifCategorie;
 	/**
-	 * connexion à la BDD
+	 * connexion Ã  la BDD
 	 */
 	public Connect connect;
 	/**
-	 * ID de l'hôtel
+	 * ID de l'hÃ´tel
 	 */
 	public int cleHotel;
 
@@ -32,9 +32,9 @@ public class TraitementModificationCategorie implements ActionListener {
 	 * 
 	 * @param fenetreModifCategorie
 	 * @param connect
-	 *            connexion à la BDD
+	 *            connexion Ã  la BDD
 	 * @param cleHotel
-	 *            ID de l'hôtel
+	 *            ID de l'hÃ´tel
 	 */
 	public TraitementModificationCategorie(FenetreModifCategorie fenetreModifCategorie, Connect connect, int cleHotel) {
 		this.fenetreModifCategorie = fenetreModifCategorie;
@@ -72,7 +72,7 @@ public class TraitementModificationCategorie implements ActionListener {
 							place, prix);
 					if (modif) {
 						this.fenetreModifCategorie.dispose();
-						JOptionPane.showMessageDialog(null, "Modification réussi");
+						JOptionPane.showMessageDialog(null, "Modification rÃ©ussi");
 
 						new FenetreGestionVille(connect);
 					} else {

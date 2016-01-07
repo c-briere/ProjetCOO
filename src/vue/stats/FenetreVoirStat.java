@@ -1,7 +1,7 @@
 package vue.stats;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,6 +22,13 @@ import classe_defaut.Ville;
 import traitement.tableau.TableTrajet;
 import vue.FenetreAccueil;
 
+/**
+ * Fenêtre qui affiche des statistiques La période a été sélectionnée
+ * précédement dans un autre formulaire
+ * 
+ * @author BRIERE / CARDON
+ *
+ */
 public class FenetreVoirStat extends JFrame implements ActionListener {
 
 	ArrayList<Ville> ville;
@@ -38,16 +45,16 @@ public class FenetreVoirStat extends JFrame implements ActionListener {
 		this.connect = connect;
 
 		Color GrisFonce = new Color(0x222222);
-		Color BlancPale = new Color (0xCFBFAD);
-		
+		Color BlancPale = new Color(0xCFBFAD);
+
 		boutonCancel = new JButton("Annuler");
-				
+
 		String villeNom = "";
 		for (int i = 0; i < ville.size(); i++) {
 			villeNom += ville.get(i).getNom() + " ";
 		}
-		
-		JLabel jlabel = new JLabel("Ville(s) les plus voyag�es " + villeNom);
+
+		JLabel jlabel = new JLabel("Ville(s) les plus voyagées " + villeNom);
 		jlabel.setForeground(BlancPale);
 		JLabel jlabel2 = new JLabel("Nombres de voyageurs " + nbDeVoyageur);
 		jlabel2.setForeground(BlancPale);
@@ -56,35 +63,35 @@ public class FenetreVoirStat extends JFrame implements ActionListener {
 		panel1.setLayout(new BoxLayout(panel1, BoxLayout.PAGE_AXIS));
 		panel1.add(jlabel, BorderLayout.NORTH);
 		panel1.add(jlabel2, BorderLayout.CENTER);
-		
+
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 		JTable tableau = new JTable(new TableTrajet(trajet));
 		tableau.setPreferredScrollableViewportSize(new Dimension(500, 200));
 		tableau.setFillsViewportHeight(true);
-        //Modification du HEADER du tableau
-        JTableHeader header = tableau.getTableHeader();
-        header.setBackground(GrisFonce);
-        header.setForeground(BlancPale);
+		// Modification du HEADER du tableau
+		JTableHeader header = tableau.getTableHeader();
+		header.setBackground(GrisFonce);
+		header.setForeground(BlancPale);
 		JScrollPane scrollPane = new JScrollPane(tableau);
-		
+
 		JPanel panel2 = new JPanel();
 		panel2.setLayout(new BoxLayout(panel2, BoxLayout.LINE_AXIS));
 		panel2.add(boutonCancel, BorderLayout.EAST);
 		boutonCancel.addActionListener(this);
-		
+
 		panel.add(panel1, BorderLayout.NORTH);
 		panel.add(scrollPane, BorderLayout.CENTER);
 		panel.add(panel2, BorderLayout.SOUTH);
-		
+
 		add(panel);
-		
+
 		// Fond du panel
-		// couleur : gris fonc�
+		// couleur : gris foncé
 		panel.setBackground(GrisFonce);
 		panel1.setBackground(GrisFonce);
 		panel2.setBackground(GrisFonce);
-		
+
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(800, 250);

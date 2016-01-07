@@ -10,7 +10,7 @@ import classe_defaut.Ligne;
 import classe_defaut.Ville;
 
 /**
- * Gestion des requêtes sur les lignes
+ * Gestion des requÃªtes sur les lignes
  * 
  * @author BRIERE / CARDON
  *
@@ -23,7 +23,7 @@ public class GestionBDDLigne {
 	 * Constructeur de la class
 	 * 
 	 * @param conn
-	 *            connexion à la BDD (préalablement créée par la class Connect
+	 *            connexion Ã  la BDD (prÃ©alablement crÃ©Ã©e par la class Connect
 	 */
 	public GestionBDDLigne(Connection conn) {
 		this.conn = conn;
@@ -124,12 +124,12 @@ public class GestionBDDLigne {
 	}
 
 	/**
-	 * Détermine l'id d'une ligne
+	 * DÃ©termine l'id d'une ligne
 	 * 
 	 * @param villeD
-	 *            nom de la ville de départ
+	 *            nom de la ville de dÃ©part
 	 * @param villeA
-	 *            nom de la ville d'arrivéee
+	 *            nom de la ville d'arrivÃ©ee
 	 * @return
 	 */
 	public int cleLigne(String villeD, String villeA) {
@@ -152,10 +152,10 @@ public class GestionBDDLigne {
 	}
 
 	/**
-	 * Voir les lignes disponibles au départ d'une ville
+	 * Voir les lignes disponibles au dÃ©part d'une ville
 	 * 
 	 * @param cleVilleDepart
-	 *            ID de la ville de départ
+	 *            ID de la ville de dÃ©part
 	 * @return
 	 */
 	public ArrayList<Ligne> voirLigneResaArrive(int cleVilleDepart) {

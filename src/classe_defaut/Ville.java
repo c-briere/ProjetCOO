@@ -3,7 +3,7 @@ package classe_defaut;
 import java.util.ArrayList;
 
 /**
- * Il existe deux types villes. La ville de départ du client et la ville où le
+ * Il existe deux types villes. La ville de dÃ©part du client et la ville oÃ¹ le
  * client veut aller.
  * 
  * @author BRIERE / CARDON
@@ -15,7 +15,7 @@ public class Ville {
 	 */
 	private String nom;
 	/**
-	 * Liste des hôtels de la ville
+	 * Liste des hÃ´tels de la ville
 	 */
 	private ArrayList<Hotel> listHotel;
 
@@ -39,7 +39,7 @@ public class Ville {
 	}
 
 	/**
-	 * Ajout d'une hôtel dans la ville
+	 * Ajout d'une hÃ´tel dans la ville
 	 * 
 	 * @param hotel
 	 */
@@ -48,7 +48,7 @@ public class Ville {
 	}
 
 	/**
-	 * Suppression d'un hôtel dans la ville
+	 * Suppression d'un hÃ´tel dans la ville
 	 * 
 	 * @param hotel
 	 */

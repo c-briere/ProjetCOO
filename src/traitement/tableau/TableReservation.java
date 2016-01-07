@@ -7,7 +7,7 @@ import javax.swing.table.AbstractTableModel;
 import classe_defaut.Reservation;
 
 /**
- * tableau pour les réservations
+ * tableau pour les rÃ©servations
  * 
  * @author BRIERE / CARDON
  *
@@ -19,7 +19,7 @@ public class TableReservation extends AbstractTableModel {
 	private String[] columnNames = { "Ville aller", "date depart", "Ville retour", "date retour", "nombre de personne",
 			"hotel", "categorie", "chambre", "prix total", "nom clien", "heure depart", "heure retour" };
 	/**
-	 * liste des réservations
+	 * liste des rÃ©servations
 	 */
 	ArrayList<Reservation> list = null;
 
@@ -27,7 +27,7 @@ public class TableReservation extends AbstractTableModel {
 	 * constructeur de la class
 	 * 
 	 * @param list
-	 *            liste des réservations
+	 *            liste des rÃ©servations
 	 */
 	public TableReservation(ArrayList<Reservation> list) {
 		this.list = list;

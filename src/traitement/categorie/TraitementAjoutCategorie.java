@@ -10,7 +10,7 @@ import vue.categorie.FenetreAjouterCategorie;
 import vue.ville.FenetreGestionVille;
 
 /**
- * Permet d'ajouter une catégorie
+ * Permet d'ajouter une catÃ©gorie
  * 
  * @author BRIERE / CARDON
  *
@@ -19,11 +19,11 @@ public class TraitementAjoutCategorie implements ActionListener {
 
 	public FenetreAjouterCategorie fenetreAjouterCategorie;
 	/**
-	 * connexion à la BDD
+	 * connexion Ã  la BDD
 	 */
 	public Connect connect;
 	/**
-	 * ID de l'hôtel
+	 * ID de l'hÃ´tel
 	 */
 	public int cleHotel;
 
@@ -32,9 +32,9 @@ public class TraitementAjoutCategorie implements ActionListener {
 	 * 
 	 * @param fenetreAjouterCategorie
 	 * @param connect
-	 *            connexion à la BDD
+	 *            connexion Ã© la BDD
 	 * @param cleHotel
-	 *            ID de l'hôtel
+	 *            ID de l'hÃ´tel
 	 */
 	public TraitementAjoutCategorie(FenetreAjouterCategorie fenetreAjouterCategorie, Connect connect, int cleHotel) {
 		this.fenetreAjouterCategorie = fenetreAjouterCategorie;
@@ -47,7 +47,7 @@ public class TraitementAjoutCategorie implements ActionListener {
 		Object o = arg0.getSource();
 		// bouton valider
 		if (o == this.fenetreAjouterCategorie.getBouttonValider()) {
-			// test pour savoir si le formulaire est bien complété
+			// test pour savoir si le formulaire est bien complÃ©tÃ©
 			if (!this.fenetreAjouterCategorie.getNom().getText().equals("")
 					&& !this.fenetreAjouterCategorie.getPlace().getText().equals("")
 					&& !this.fenetreAjouterCategorie.getPrix().getText().equals("")) {
@@ -63,11 +63,11 @@ public class TraitementAjoutCategorie implements ActionListener {
 				}
 				if (prix != 0 && place != 0) {
 					if (this.connect.gestionCategorie.addCategorie(cleHotel, nom, prix, place)) {
-						JOptionPane.showMessageDialog(null, "insertion effectuée");
+						JOptionPane.showMessageDialog(null, "insertion effectuÃ©e");
 						this.fenetreAjouterCategorie.dispose();
 						new FenetreGestionVille(this.connect);
 					} else {
-						JOptionPane.showMessageDialog(null, "Insertion échouée");
+						JOptionPane.showMessageDialog(null, "Insertion Ã©chouÃ©e");
 					}
 				}
 			}

@@ -18,14 +18,14 @@ public class GestionBDDDate {
 	 * Constructeur de la class
 	 * 
 	 * @param conn
-	 *            connexion à la BDD (préalablement créée par la class Connect
+	 *            connexion Ã  la BDD (prÃ©alablement crÃ©Ã©e par la class Connect
 	 */
 	public GestionBDDDate(Connection conn) {
 		this.conn = conn;
 	}
 
 	/**
-	 * Requête qui permet de déterminer les jours de la semaine
+	 * RequÃªte qui permet de dÃ©terminer les jours de la semaine
 	 * 
 	 * @param date
 	 * @return
@@ -66,7 +66,7 @@ public class GestionBDDDate {
 	}
 
 	/**
-	 * Détermine le nombre de jours entre deux dates
+	 * DÃ©termine le nombre de jours entre deux dates
 	 * 
 	 * @param dateAller
 	 * @param dateRetour

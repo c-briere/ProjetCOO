@@ -99,7 +99,7 @@ public class TraitementModifTrajet implements ActionListener {
 							heure, duree, nbPassager1, prixPassager1, nbPassager2, prixPassager2, annulable);
 					if (modif) {
 						this.fenetreModifPlanning.dispose();
-						JOptionPane.showMessageDialog(null, "Modification réussi");
+						JOptionPane.showMessageDialog(null, "Modification rÃ©ussi");
 
 						new FenetreGestionLigne(connect);
 					}

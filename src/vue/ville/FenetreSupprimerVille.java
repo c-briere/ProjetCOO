@@ -1,4 +1,5 @@
 package vue.ville;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -19,64 +20,60 @@ import BDD.Connect;
 import traitement.ville.TraitementSupprimerVille;
 
 /**
+ * FenÃªtre pour supprimer une ville
  * 
  * @author BRIERE / CARDON
  *
  */
-public class FenetreSupprimerVille extends JFrame{
+public class FenetreSupprimerVille extends JFrame {
 
 	private JTextField ville = new JTextField();
-	
+
 	public Connect connect;
 	private JButton bouttonValider = new JButton("Supprimer");
 	private JButton bouttonAnnuler = new JButton("Annuler");
 
-
-	
-	public FenetreSupprimerVille(Connect connect){
+	public FenetreSupprimerVille(Connect connect) {
 		super("Suppression d'une ville");
-		this.connect=connect;
+		this.connect = connect;
 
 		Color GrisFonce = new Color(0x222222);
-		Color BlancPale = new Color (0xCFBFAD);
+		Color BlancPale = new Color(0xCFBFAD);
 
-		//Bordure blanche d'épaisseur 3
+		// Bordure blanche d'Ã©paisseur 3
 		Border border = new LineBorder(BlancPale, 3);
 		// Regarder comment importer une police
 		Font font_bouton = new Font("Roboto", Font.PLAIN, 24);
-		
-		//Fond transparent
+
+		// Fond transparent
 		getBouttonAnnuler().setOpaque(false);
 		getBouttonAnnuler().setContentAreaFilled(false);
-		//Changement couleur bordure
+		// Changement couleur bordure
 		getBouttonAnnuler().setBorder(border);
-		//Changement Police
+		// Changement Police
 		getBouttonAnnuler().setFont(font_bouton);
-		//Changement couleur Police
+		// Changement couleur Police
 		getBouttonAnnuler().setForeground(BlancPale);
-		
-		//Fond transparent
+
+		// Fond transparent
 		getBouttonValider().setOpaque(false);
 		getBouttonValider().setContentAreaFilled(false);
-		//Changement couleur bordure
+		// Changement couleur bordure
 		getBouttonValider().setBorder(border);
-		//Changement Police
+		// Changement Police
 		getBouttonValider().setFont(font_bouton);
-		//Changement couleur Police
+		// Changement couleur Police
 		getBouttonValider().setForeground(BlancPale);
-		
-		getBouttonValider().addActionListener(new TraitementSupprimerVille(this,this.connect));
-		getBouttonAnnuler().addActionListener(new TraitementSupprimerVille(this,this.connect));
-		
-		
-		getVille().setPreferredSize(new Dimension(250,30));
+
+		getBouttonValider().addActionListener(new TraitementSupprimerVille(this, this.connect));
+		getBouttonAnnuler().addActionListener(new TraitementSupprimerVille(this, this.connect));
+
+		getVille().setPreferredSize(new Dimension(250, 30));
 
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 
-
-		
 		JPanel panel3 = new JPanel(new FlowLayout());
 		panel3.setLayout(new GridBagLayout());
 		c.fill = GridBagConstraints.BOTH;
@@ -85,54 +82,50 @@ public class FenetreSupprimerVille extends JFrame{
 		JLabel v = new JLabel("Ville");
 		v.setFont(font_bouton);
 		v.setForeground(BlancPale);
-		// similaire à un margin-left : 25px;
+		// similaire Ã  un margin-left : 25px;
 		v.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
-		panel3.add(v,c);
-			
+		panel3.add(v, c);
+
 		c.fill = GridBagConstraints.BOTH;
 		c.gridx = 1;
 		c.gridy = 0;
-		panel3.add(getVille(),c);
-		
-		
+		panel3.add(getVille(), c);
+
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 0.25;
 		c.weighty = 0.50;
 		c.gridwidth = 2;
 		c.gridx = 0;
 		c.gridy = 0;
-		panel.add(panel3,c);
-		
+		panel.add(panel3, c);
+
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 0.25;
 		c.weighty = 0.15;
 		c.gridwidth = 1;
 		c.gridx = 0;
 		c.gridy = 1;
-		panel.add(getBouttonValider(),c);
-		
+		panel.add(getBouttonValider(), c);
+
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 0.25;
 		c.weighty = 0.15;
 		c.gridwidth = 1;
 		c.gridx = 1;
 		c.gridy = 1;
-		panel.add(getBouttonAnnuler(),c);
-		
+		panel.add(getBouttonAnnuler(), c);
 
 		// Fond du panel
-		// couleur : gris foncé
+		// couleur : gris foncÃ©
 		panel3.setBackground(GrisFonce);
 		panel.setBackground(GrisFonce);
-		
+
 		this.getContentPane().add(panel);
-		setSize(500,300);
+		setSize(500, 300);
 		setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
-
-
 
 	/**
 	 * @return the bouttonValider
@@ -141,16 +134,13 @@ public class FenetreSupprimerVille extends JFrame{
 		return bouttonValider;
 	}
 
-
-
 	/**
-	 * @param bouttonValider the bouttonValider to set
+	 * @param bouttonValider
+	 *            the bouttonValider to set
 	 */
 	public void setBouttonValider(JButton bouttonValider) {
 		this.bouttonValider = bouttonValider;
 	}
-
-
 
 	/**
 	 * @return the ville
@@ -159,16 +149,13 @@ public class FenetreSupprimerVille extends JFrame{
 		return ville;
 	}
 
-
-
 	/**
-	 * @param ville the ville to set
+	 * @param ville
+	 *            the ville to set
 	 */
 	public void setVille(JTextField ville) {
 		this.ville = ville;
 	}
-
-
 
 	/**
 	 * @return the bouttonAnnuler
@@ -177,10 +164,9 @@ public class FenetreSupprimerVille extends JFrame{
 		return bouttonAnnuler;
 	}
 
-
-
 	/**
-	 * @param bouttonAnnuler the bouttonAnnuler to set
+	 * @param bouttonAnnuler
+	 *            the bouttonAnnuler to set
 	 */
 	public void setBouttonAnnuler(JButton bouttonAnnuler) {
 		this.bouttonAnnuler = bouttonAnnuler;

@@ -20,7 +20,7 @@ public class TraitementModificationClient implements ActionListener {
 
 	protected FenetreModifierClient fenetreModifierClient;
 	/**
-	 * connexion à la BDD
+	 * connexion Ã  la BDD
 	 */
 	public Connect connect;
 
@@ -29,7 +29,7 @@ public class TraitementModificationClient implements ActionListener {
 	 * 
 	 * @param fenetreModifierClient
 	 * @param connect
-	 *            connexion à la BDD
+	 *            connexion Ã  la BDD
 	 */
 	public TraitementModificationClient(FenetreModifierClient fenetreModifierClient, Connect connect) {
 		this.fenetreModifierClient = fenetreModifierClient;
@@ -70,7 +70,7 @@ public class TraitementModificationClient implements ActionListener {
 							ville);
 					if (modif) {
 						this.fenetreModifierClient.dispose();
-						JOptionPane.showMessageDialog(null, "Modification réussi");
+						JOptionPane.showMessageDialog(null, "Modification rÃ©ussi");
 
 						new FenetreGestionClient(connect);
 					}

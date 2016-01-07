@@ -1,4 +1,5 @@
 package vue.categorie;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -19,57 +20,57 @@ import BDD.Connect;
 import traitement.categorie.TraitementSuppressionCategorie;
 
 /**
+ * FenÃªte pour supprimer une catÃ©gorie
  * 
  * @author BRIERE / CARDON
  *
  */
-public class FenetreSupprimerCategorie extends JFrame{
-	
-private JTextField categorie = new JTextField();
-	
+public class FenetreSupprimerCategorie extends JFrame {
+
+	private JTextField categorie = new JTextField();
+
 	public Connect connect;
 	private JButton bouttonValider = new JButton("Supprimer");
 	private JButton bouttonAnnuler = new JButton("Annuler");
 	int cleHotel;
-		
+
 	public FenetreSupprimerCategorie(int cleHotel, Connect connect) {
-		super("Suppression d'une catégorie");
-		this.connect=connect;
-		this.cleHotel=cleHotel;
+		super("Suppression d'une catÃ©gorie");
+		this.connect = connect;
+		this.cleHotel = cleHotel;
 
 		Color GrisFonce = new Color(0x222222);
-		Color BlancPale = new Color (0xCFBFAD);
+		Color BlancPale = new Color(0xCFBFAD);
 
-		//Bordure blanche d'épaisseur 3
+		// Bordure blanche d'Ã©paisseur 3
 		Border border = new LineBorder(BlancPale, 3);
 		// Regarder comment importer une police
 		Font font_bouton = new Font("Roboto", Font.PLAIN, 24);
-		
-		//Fond transparent
+
+		// Fond transparent
 		getBouttonAnnuler().setOpaque(false);
 		getBouttonAnnuler().setContentAreaFilled(false);
-		//Changement couleur bordure
+		// Changement couleur bordure
 		getBouttonAnnuler().setBorder(border);
-		//Changement Police
+		// Changement Police
 		getBouttonAnnuler().setFont(font_bouton);
-		//Changement couleur Police
+		// Changement couleur Police
 		getBouttonAnnuler().setForeground(BlancPale);
-		
-		//Fond transparent
+
+		// Fond transparent
 		getBouttonValider().setOpaque(false);
 		getBouttonValider().setContentAreaFilled(false);
-		//Changement couleur bordure
+		// Changement couleur bordure
 		getBouttonValider().setBorder(border);
-		//Changement Police
+		// Changement Police
 		getBouttonValider().setFont(font_bouton);
-		//Changement couleur Police
+		// Changement couleur Police
 		getBouttonValider().setForeground(BlancPale);
-		
-		getBouttonValider().addActionListener(new TraitementSuppressionCategorie(this,this.connect,this.cleHotel));
-		getBouttonAnnuler().addActionListener(new TraitementSuppressionCategorie(this,this.connect,this.cleHotel));
-		
-		
-		getCategorie().setPreferredSize(new Dimension(250,30));
+
+		getBouttonValider().addActionListener(new TraitementSuppressionCategorie(this, this.connect, this.cleHotel));
+		getBouttonAnnuler().addActionListener(new TraitementSuppressionCategorie(this, this.connect, this.cleHotel));
+
+		getCategorie().setPreferredSize(new Dimension(250, 30));
 
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridBagLayout());
@@ -80,59 +81,53 @@ private JTextField categorie = new JTextField();
 		c.fill = GridBagConstraints.BOTH;
 		c.gridx = 0;
 		c.gridy = 0;
-		JLabel v = new JLabel("Catégorie");
+		JLabel v = new JLabel("CatÃ©gorie");
 		v.setFont(font_bouton);
 		v.setForeground(BlancPale);
-		// similaire à un margin-left : 25px;
+		// similaire Ã  un margin-left : 25px;
 		v.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
-		panel3.add(v,c);
-			
+		panel3.add(v, c);
+
 		c.fill = GridBagConstraints.BOTH;
 		c.gridx = 1;
 		c.gridy = 0;
-		panel3.add(getCategorie(),c);
-		
+		panel3.add(getCategorie(), c);
 
-		
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 0.25;
 		c.weighty = 0.50;
 		c.gridwidth = 2;
 		c.gridx = 0;
 		c.gridy = 0;
-		panel.add(panel3,c);
-		
+		panel.add(panel3, c);
+
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 0.25;
 		c.weighty = 0.15;
 		c.gridwidth = 1;
 		c.gridx = 0;
 		c.gridy = 1;
-		panel.add(getBouttonValider(),c);
-		
+		panel.add(getBouttonValider(), c);
+
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 0.25;
 		c.weighty = 0.15;
 		c.gridwidth = 1;
 		c.gridx = 1;
 		c.gridy = 1;
-		panel.add(getBouttonAnnuler(),c);
-		
+		panel.add(getBouttonAnnuler(), c);
 
 		// Fond du panel
-		// couleur : gris foncé
+		// couleur : gris foncÃ©
 		panel3.setBackground(GrisFonce);
 		panel.setBackground(GrisFonce);
-		
-
-
 
 		this.getContentPane().add(panel);
-		setSize(500,300);
+		setSize(500, 300);
 		setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-		
+
 	}
 
 	/**
@@ -143,7 +138,8 @@ private JTextField categorie = new JTextField();
 	}
 
 	/**
-	 * @param categorie the categorie to set
+	 * @param categorie
+	 *            the categorie to set
 	 */
 	public void setCategorie(JTextField categorie) {
 		this.categorie = categorie;
@@ -157,7 +153,8 @@ private JTextField categorie = new JTextField();
 	}
 
 	/**
-	 * @param bouttonValider the bouttonValider to set
+	 * @param bouttonValider
+	 *            the bouttonValider to set
 	 */
 	public void setBouttonValider(JButton bouttonValider) {
 		this.bouttonValider = bouttonValider;
@@ -171,7 +168,8 @@ private JTextField categorie = new JTextField();
 	}
 
 	/**
-	 * @param bouttonAnnuler the bouttonAnnuler to set
+	 * @param bouttonAnnuler
+	 *            the bouttonAnnuler to set
 	 */
 	public void setBouttonAnnuler(JButton bouttonAnnuler) {
 		this.bouttonAnnuler = bouttonAnnuler;

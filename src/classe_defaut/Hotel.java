@@ -3,18 +3,18 @@ package classe_defaut;
 import java.util.ArrayList;
 
 /**
- * Le client au moment de réserver choisit sa destination et ensuite son hôtel
+ * Le client au moment de rÃ©server choisit sa destination et ensuite son hÃ´tel
  * 
  * @author BRIERE / CARDON
  *
  */
 public class Hotel {
 	/**
-	 * nom de l'hôtel
+	 * nom de l'hÃ´tel
 	 */
 	private String nom;
 	/**
-	 * Liste de catégorie de chambres de l'hôtel
+	 * Liste de catÃ©gorie de chambres de l'hÃ´tel
 	 */
 	private ArrayList<Categorie> categorieChambre;
 
@@ -22,7 +22,7 @@ public class Hotel {
 	 * constructeur de la class
 	 * 
 	 * @param nom
-	 *            nom de l'hôtel
+	 *            nom de l'hÃ´tel
 	 */
 	public Hotel(String nom) {
 		this.nom = nom;
@@ -47,7 +47,7 @@ public class Hotel {
 	}
 
 	/**
-	 * Ajout d'une catégorie de chambre à l'hôtel
+	 * Ajout d'une catÃ©gorie de chambre Ã  l'hÃ´tel
 	 * 
 	 * @param c
 	 */
@@ -56,7 +56,7 @@ public class Hotel {
 	}
 
 	/**
-	 * Supression d'une catégorie de chambre dans l'hôtel
+	 * Supression d'une catÃ©gorie de chambre dans l'hÃ´tel
 	 * 
 	 * @param c
 	 */

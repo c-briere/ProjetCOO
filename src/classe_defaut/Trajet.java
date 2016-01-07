@@ -1,7 +1,7 @@
 package classe_defaut;
 
 /**
- * Un trajet représente un voyage sur une ligne avec une certaine capacité et un
+ * Un trajet reprÃ©sente un voyage sur une ligne avec une certaine capacitÃ© et un
  * horaire
  * 
  * @author BRIERE / CARDON
@@ -13,19 +13,19 @@ public class Trajet {
 	 */
 	public String jour;
 	/**
-	 * heure de départ
+	 * heure de dÃ©part
 	 */
 	public String heure;
 	/**
-	 * durée du trajet
+	 * durÃ©e du trajet
 	 */
 	public int duree;
 	/**
-	 * nombre de places en 1ère classe
+	 * nombre de places en 1Ã¨re classe
 	 */
 	public int nbPassager1ere;
 	/**
-	 * prix pour une place en 1ère classe
+	 * prix pour une place en 1Ã¨re classe
 	 */
 	public double prixPassager1ere;
 	/**
@@ -37,7 +37,7 @@ public class Trajet {
 	 */
 	public double prixPassager2eme;
 	/**
-	 * nombre de jours nécessaire pour pouvoir annuler une réservation
+	 * nombre de jours nÃ©cessaire pour pouvoir annuler une rÃ©servation
 	 */
 	public int annulage;
 
@@ -47,20 +47,20 @@ public class Trajet {
 	 * @param jour
 	 *            jour de la semaine du trajet
 	 * @param heure
-	 *            heure de départ
+	 *            heure de dÃ©part
 	 * @param duree
-	 *            durée du trajet
+	 *            durÃ©e du trajet
 	 * @param nbPassager1ere
-	 *            nombre de places en 1ère classe
+	 *            nombre de places en 1Ã¨re classe
 	 * @param prixPassager1er
-	 *            prix d'une place en 1ère classe
+	 *            prix d'une place en 1Ã¨re classe
 	 * @param nbPassager2eme
 	 *            nombre de places en 2nd classe
 	 * @param prixPassager2eme
 	 *            prix d'une place en 2nd classe
 	 * @param annulable
-	 *            nombre de jours nécessaire pour pouvoir annuler une
-	 *            réservation
+	 *            nombre de jours nÃ©cessaire pour pouvoir annuler une
+	 *            rÃ©servation
 	 */
 	public Trajet(String jour, String heure, int duree, int nbPassager1ere, double prixPassager1er, int nbPassager2eme,
 			double prixPassager2eme, int annulable) {

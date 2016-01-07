@@ -22,7 +22,7 @@ public class TraitementAjoutClient implements ActionListener {
 
 	public FenetreAjouterClient fenetreAjouterCLient;
 	/**
-	 * connexion à la BDD
+	 * connexion Ã  la BDD
 	 */
 	public Connect connect;
 
@@ -31,7 +31,7 @@ public class TraitementAjoutClient implements ActionListener {
 	 * 
 	 * @param fenetreAjouterClient
 	 * @param connect
-	 *            connexion à la BDD
+	 *            connexion Ã  la BDD
 	 */
 	public TraitementAjoutClient(FenetreAjouterClient fenetreAjouterClient, Connect connect) {
 		this.fenetreAjouterCLient = fenetreAjouterClient;
@@ -58,7 +58,7 @@ public class TraitementAjoutClient implements ActionListener {
 				if (connect.gestionClient.addClient(this.fenetreAjouterCLient.getNom().getText(),
 						this.fenetreAjouterCLient.getPrenom().getText(), d,
 						this.fenetreAjouterCLient.getVille().getText())) {
-					JOptionPane.showMessageDialog(null, "Insertion réussi");
+					JOptionPane.showMessageDialog(null, "Insertion rÃ©ussi");
 					fenetreAjouterCLient.dispose();
 					new FenetreGestionClient(this.connect);
 				}

@@ -19,7 +19,7 @@ public class TraitementSupprimerLigne implements ActionListener {
 
 	public FenetreSupprimerLigne fenetreSupprimerLigne;
 	/**
-	 * connexion à la BDD
+	 * connexion Ã  la BDD
 	 */
 	public Connect connect;
 
@@ -28,7 +28,7 @@ public class TraitementSupprimerLigne implements ActionListener {
 	 * 
 	 * @param fenetreSupprimerLigne
 	 * @param connect
-	 *            connexion à la BDD
+	 *            connexion Ã  la BDD
 	 */
 	public TraitementSupprimerLigne(FenetreSupprimerLigne fenetreSupprimerLigne, Connect connect) {
 		this.fenetreSupprimerLigne = fenetreSupprimerLigne;
@@ -50,7 +50,7 @@ public class TraitementSupprimerLigne implements ActionListener {
 				cleVilleAller = this.connect.gestionVille.cleVille(VilleAller);
 				cleVilleRetour = this.connect.gestionVille.cleVille(VilleRetour);
 				if (this.connect.gestionLigne.supLigne(cleVilleAller, cleVilleRetour)) {
-					JOptionPane.showMessageDialog(null, "Suppression réussi");
+					JOptionPane.showMessageDialog(null, "Suppression rÃ©ussi");
 					this.fenetreSupprimerLigne.dispose();
 					new FenetreGestionLigne(this.connect);
 

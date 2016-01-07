@@ -23,7 +23,7 @@ public class TraitementSuppressionChambre implements ActionListener {
 	 */
 	public Connect connect;
 	/**
-	 * Catégorie ID
+	 * CatÃ©gorie ID
 	 */
 	public int cleCategorie;
 
@@ -32,9 +32,9 @@ public class TraitementSuppressionChambre implements ActionListener {
 	 * 
 	 * @param fenetreSupprimerChambre
 	 * @param connect
-	 *            connexion à la BDD
+	 *            connexion Ã  la BDD
 	 * @param cleCategorie
-	 *            catégorie ID
+	 *            catÃ©gorie ID
 	 */
 	public TraitementSuppressionChambre(FenetreSupprimerChambre fenetreSupprimerChambre, Connect connect,
 			int cleCategorie) {
@@ -49,15 +49,15 @@ public class TraitementSuppressionChambre implements ActionListener {
 		Object o = arg0.getSource();
 		// bouton valider
 		if (o == this.fenetreSupprimerChambre.getBouttonValider()) {
-			// vérification du formulaire
+			// vÃ©rification du formulaire
 			if (!this.fenetreSupprimerChambre.getNom().getText().equals("")) {
 				if (this.connect.gestionChambre.suppChambre(this.fenetreSupprimerChambre.getNom().getText(),
 						this.cleCategorie)) {
-					JOptionPane.showMessageDialog(null, "Suppression réussi");
+					JOptionPane.showMessageDialog(null, "Suppression rÃ©ussi");
 					this.fenetreSupprimerChambre.dispose();
 					new FenetreGestionVille(this.connect);
 				} else {
-					JOptionPane.showMessageDialog(null, "Suppression échouée ou catégorie introuvable");
+					JOptionPane.showMessageDialog(null, "Suppression Ã©chouÃ©e ou catÃ©gorie introuvable");
 
 				}
 			}

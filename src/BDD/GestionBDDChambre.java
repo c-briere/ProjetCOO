@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import classe_defaut.Chambre;
 
 /**
- * Gestion des requêtes sur la chambre
+ * Gestion des requÃªtes sur la chambre
  * 
  * @author BRIERE / CARDON
  *
@@ -22,17 +22,17 @@ public class GestionBDDChambre {
 	 * Constructeur de la class
 	 * 
 	 * @param conn
-	 *            connexion à la BDD (préalablement créée par la class Connect)
+	 *            connexion Ã  la BDD (prÃ©alablement crÃ©Ã©e par la class Connect)
 	 */
 	public GestionBDDChambre(Connection conn) {
 		this.conn = conn;
 	}
 
 	/**
-	 * Requête SQL qui insert une chambre dans la BDD
+	 * RequÃªte SQL qui insert une chambre dans la BDD
 	 * 
 	 * @param cleCategorie
-	 *            ID de la catégorie
+	 *            ID de la catÃ©gorie
 	 * @param nom
 	 *            nom de la chambre
 	 * @return
@@ -84,10 +84,10 @@ public class GestionBDDChambre {
 	}
 
 	/**
-	 * Selectionne toutes les chambres d'une catégorie
+	 * Selectionne toutes les chambres d'une catÃ©gorie
 	 * 
 	 * @param cleCategorie
-	 *            ID catégorie
+	 *            ID catÃ©gorie
 	 * @return
 	 */
 	public ArrayList<Chambre> voirChambre(int cleCategorie) {
@@ -110,10 +110,10 @@ public class GestionBDDChambre {
 	}
 
 	/**
-	 * Création d'une liste de chambres
+	 * CrÃ©ation d'une liste de chambres
 	 * 
 	 * @param idCategorie
-	 *            ID catégorie
+	 *            ID catÃ©gorie
 	 * @param liste
 	 * @return
 	 */
@@ -153,12 +153,12 @@ public class GestionBDDChambre {
 	}
 
 	/**
-	 * Cherche l'id d'une chambre en fonction de son nom et de sa catégorie
+	 * Cherche l'id d'une chambre en fonction de son nom et de sa catÃ©gorie
 	 * 
 	 * @param denomination
 	 *            nom de la chambre
 	 * @param idCategorie
-	 *            ID catégorie
+	 *            ID catÃ©gorie
 	 * @return
 	 */
 	public int cleChambre(String denomination, int idCategorie) {

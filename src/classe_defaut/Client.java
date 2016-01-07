@@ -3,8 +3,8 @@ package classe_defaut;
 import java.util.Date;
 
 /**
- * Le client représente la personne qui va réserver le transport et la chambre
- * d'hôtel
+ * Le client reprÃ©sente la personne qui va rÃ©server le transport et la chambre
+ * d'hÃ´tel
  * 
  * @author BRIERE / CARDON
  *
@@ -15,7 +15,7 @@ public class Client {
 	 */
 	public String nom;
 	/**
-	 * Prénom du client
+	 * PrÃ©nom du client
 	 */
 	public String prenom;
 	/**
@@ -33,7 +33,7 @@ public class Client {
 	 * @param nom
 	 *            nom du client
 	 * @param prenom
-	 *            prénom du client
+	 *            prÃ©nom du client
 	 * @param dateNaissance
 	 *            date de naissance
 	 * @param ville

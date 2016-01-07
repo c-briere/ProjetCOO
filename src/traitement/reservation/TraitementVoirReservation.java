@@ -14,7 +14,7 @@ import vue.reservation.FenetreGestionVoirReservation;
 import vue.reservation.FenetreVoirResa;
 
 /**
- * Traitement pour sélectionner une réservation
+ * Traitement pour sÃ©lectionner une rÃ©servation
  * 
  * @author BRIERE / CARDON
  *

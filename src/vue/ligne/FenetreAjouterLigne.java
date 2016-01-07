@@ -1,4 +1,5 @@
 package vue.ligne;
+
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -20,6 +21,7 @@ import classe_defaut.Ville;
 import traitement.ligne.TraitementAjoutLigne;
 
 /**
+ * FenÃªtre pour ajouter une ligne
  * 
  * @author BRIERE / CARDON
  *
@@ -27,98 +29,93 @@ import traitement.ligne.TraitementAjoutLigne;
 public class FenetreAjouterLigne extends JFrame {
 	private JComboBox<String> choixVilleAller;
 	private JComboBox<String> choixVilleRetour;
-	
+
 	Connect connect;
-	
+
 	private JButton bouttonValider = new JButton("Valider");
 	private JButton bouttonAnnuler = new JButton("Annuler");
 
 	public FenetreAjouterLigne(Connect connect, ArrayList<Ville> ville) {
 		super("Choix de la ville");
-		this.connect=connect;
+		this.connect = connect;
 		setChoixVilleAller(new JComboBox<>());
-		for(int i =0;i<ville.size();i++){
+		for (int i = 0; i < ville.size(); i++) {
 			getChoixVilleAller().addItem(ville.get(i).getNom());
 		}
 
 		setChoixVilleRetour(new JComboBox<>());
-		for(int i =0;i<ville.size();i++){
+		for (int i = 0; i < ville.size(); i++) {
 			getChoixVilleRetour().addItem(ville.get(i).getNom());
 		}
 
 		Color GrisFonce = new Color(0x222222);
-		Color BlancPale = new Color (0xCFBFAD);
+		Color BlancPale = new Color(0xCFBFAD);
 
-		//Bordure blanche d'épaisseur 3
+		// Bordure blanche d'Ã©paisseur 3
 		Border border = new LineBorder(BlancPale, 3);
 		// Regarder comment importer une police
-		Font font_bouton = new Font("Roboto", Font.PLAIN, 24);		
-
+		Font font_bouton = new Font("Roboto", Font.PLAIN, 24);
 
 		getBouttonValider().addActionListener(new TraitementAjoutLigne(this, this.connect));
 		getBouttonAnnuler().addActionListener(new TraitementAjoutLigne(this, this.connect));
 
-
-		//Fond transparent
+		// Fond transparent
 		getBouttonAnnuler().setOpaque(false);
 		getBouttonAnnuler().setContentAreaFilled(false);
-		//Changement couleur bordure
+		// Changement couleur bordure
 		getBouttonAnnuler().setBorder(border);
-		//Changement Police
+		// Changement Police
 		getBouttonAnnuler().setFont(font_bouton);
-		//Changement couleur Police
+		// Changement couleur Police
 		getBouttonAnnuler().setForeground(BlancPale);
-		
-		//Fond transparent
+
+		// Fond transparent
 		getBouttonValider().setOpaque(false);
 		getBouttonValider().setContentAreaFilled(false);
-		//Changement couleur bordure
+		// Changement couleur bordure
 		getBouttonValider().setBorder(border);
-		//Changement Police
+		// Changement Police
 		getBouttonValider().setFont(font_bouton);
-		//Changement couleur Police
+		// Changement couleur Police
 		getBouttonValider().setForeground(BlancPale);
-		
+
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
-		
+
 		JPanel panel3 = new JPanel(new FlowLayout());
 		panel3.setLayout(new GridBagLayout());
 		c.fill = GridBagConstraints.BOTH;
 		c.gridx = 0;
-		c.gridy = 0;		
-		JLabel v = new JLabel("Choix de la ville de départ");
+		c.gridy = 0;
+		JLabel v = new JLabel("Choix de la ville de dÃ©part");
 		v.setFont(font_bouton);
 		v.setForeground(BlancPale);
-		// similaire à un margin-left : 25px;
+		// similaire Ã  un margin-left : 25px;
 		v.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
-		panel3.add(v,c);
-		
+		panel3.add(v, c);
+
 		c.fill = GridBagConstraints.BOTH;
 		c.gridx = 1;
 		c.gridy = 0;
-		panel3.add(getChoixVilleAller(),c);
+		panel3.add(getChoixVilleAller(), c);
 
-
-		
 		JPanel panel4 = new JPanel(new FlowLayout());
 		panel4.setLayout(new GridBagLayout());
 		c.fill = GridBagConstraints.BOTH;
 		c.gridx = 0;
-		c.gridy = 0;		
+		c.gridy = 0;
 		JLabel p = new JLabel("Choix de la ville de retour");
 		p.setFont(font_bouton);
 		p.setForeground(BlancPale);
-		// similaire à un margin-left
+		// similaire Ã  un margin-left
 		p.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 30));
-		panel4.add(p,c);
-		
+		panel4.add(p, c);
+
 		c.fill = GridBagConstraints.BOTH;
 		c.gridx = 1;
 		c.gridy = 0;
-		panel4.add(getChoixVilleRetour(),c);
-
+		panel4.add(getChoixVilleRetour(), c);
 
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 0.25;
@@ -126,7 +123,7 @@ public class FenetreAjouterLigne extends JFrame {
 		c.gridwidth = 2;
 		c.gridx = 0;
 		c.gridy = 0;
-		panel.add(panel3,c);
+		panel.add(panel3, c);
 
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 0.25;
@@ -134,37 +131,35 @@ public class FenetreAjouterLigne extends JFrame {
 		c.gridwidth = 2;
 		c.gridx = 0;
 		c.gridy = 1;
-		panel.add(panel4,c);
-		
+		panel.add(panel4, c);
+
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 0.25;
 		c.weighty = 0.15;
 		c.gridwidth = 1;
 		c.gridx = 0;
 		c.gridy = 2;
-		panel.add(getBouttonValider(),c);
-		
+		panel.add(getBouttonValider(), c);
+
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 0.25;
 		c.weighty = 0.15;
 		c.gridwidth = 1;
 		c.gridx = 1;
 		c.gridy = 2;
-		panel.add(getBouttonAnnuler(),c);
+		panel.add(getBouttonAnnuler(), c);
 
 		// Fond du panel
-		// couleur : gris foncé
+		// couleur : gris foncÃ©
 		panel3.setBackground(GrisFonce);
 		panel4.setBackground(GrisFonce);
 		panel.setBackground(GrisFonce);
 
 		this.getContentPane().add(panel);
-		setSize(500,300);
+		setSize(500, 300);
 		setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-
-
 
 	}
 
@@ -176,7 +171,8 @@ public class FenetreAjouterLigne extends JFrame {
 	}
 
 	/**
-	 * @param bouttonValider the bouttonValider to set
+	 * @param bouttonValider
+	 *            the bouttonValider to set
 	 */
 	public void setBouttonValider(JButton bouttonValider) {
 		this.bouttonValider = bouttonValider;
@@ -190,7 +186,8 @@ public class FenetreAjouterLigne extends JFrame {
 	}
 
 	/**
-	 * @param choixVilleAller the choixVilleAller to set
+	 * @param choixVilleAller
+	 *            the choixVilleAller to set
 	 */
 	public void setChoixVilleAller(JComboBox<String> choixVilleAller) {
 		this.choixVilleAller = choixVilleAller;
@@ -204,7 +201,8 @@ public class FenetreAjouterLigne extends JFrame {
 	}
 
 	/**
-	 * @param choixVilleRetour the choixVilleRetour to set
+	 * @param choixVilleRetour
+	 *            the choixVilleRetour to set
 	 */
 	public void setChoixVilleRetour(JComboBox<String> choixVilleRetour) {
 		this.choixVilleRetour = choixVilleRetour;
@@ -218,7 +216,8 @@ public class FenetreAjouterLigne extends JFrame {
 	}
 
 	/**
-	 * @param bouttonAnnuler the bouttonAnnuler to set
+	 * @param bouttonAnnuler
+	 *            the bouttonAnnuler to set
 	 */
 	public void setBouttonAnnuler(JButton bouttonAnnuler) {
 		this.bouttonAnnuler = bouttonAnnuler;

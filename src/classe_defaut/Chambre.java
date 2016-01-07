@@ -1,7 +1,7 @@
 package classe_defaut;
 
 /**
- * Les clients réservent en plus du transport un chambre d'hôtel
+ * Les clients rÃ©servent en plus du transport un chambre d'hÃ´tel
  * 
  * @author BRIERE / CARDON
  *

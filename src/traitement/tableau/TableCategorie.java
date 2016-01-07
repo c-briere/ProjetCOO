@@ -7,7 +7,7 @@ import javax.swing.table.AbstractTableModel;
 import classe_defaut.Categorie;
 
 /**
- * Création du tableau pour les catégories
+ * CrÃ©ation du tableau pour les catÃ©gories
  * 
  * @author BRIERE / CARDON
  *
@@ -19,7 +19,7 @@ public class TableCategorie extends AbstractTableModel {
 	 */
 	private String[] columnNames = { "Nom", "Place", "Prix" };
 	/**
-	 * liste de catégorie
+	 * liste de catÃ©gorie
 	 */
 	ArrayList<Categorie> list = null;
 

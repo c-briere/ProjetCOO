@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import classe_defaut.Trajet;
 
 /**
- * Gestion des requêtes sur les trajets
+ * Gestion des requÃªtes sur les trajets
  * 
  * @author BRIERE / CARDON
  *
@@ -23,7 +23,7 @@ public class GestionBDDTrajet {
 	 * Constructeur de la class
 	 * 
 	 * @param conn
-	 *            connexion à la BDD (préalablement créée par la class Connect)
+	 *            connexion Ã  la BDD (prÃ©alablement crÃ©Ã©e par la class Connect)
 	 */
 	public GestionBDDTrajet(Connection conn) {
 		this.conn = conn;
@@ -36,15 +36,15 @@ public class GestionBDDTrajet {
 	 *            ID de la ligne
 	 * @param jour
 	 * @param heure
-	 *            heure du départ
+	 *            heure du dÃ©part
 	 * @param duree
-	 *            durée du trajet
+	 *            durÃ©e du trajet
 	 * @param nbPassager1
 	 * @param prixPassager1
 	 * @param nbPassager2
 	 * @param prixPassager2
 	 * @param annulable
-	 *            nombre de jours nécessaire pour pouvoir annuler
+	 *            nombre de jours nÃ©cessaire pour pouvoir annuler
 	 * @return
 	 */
 	public boolean addTrajet(int cleLigne, String jour, String heure, int duree, int nbPassager1, double prixPassager1,
@@ -73,7 +73,7 @@ public class GestionBDDTrajet {
 	 *            ID de la ligne
 	 * @param duree
 	 * @param heure
-	 *            heure de départ
+	 *            heure de dÃ©part
 	 * @param jour
 	 * @return
 	 */
@@ -104,7 +104,7 @@ public class GestionBDDTrajet {
 	}
 
 	/**
-	 * Sélectionne les informations d'une ligne
+	 * SÃ©lectionne les informations d'une ligne
 	 * 
 	 * @param cleLigne
 	 *            ID ligne
@@ -137,14 +137,14 @@ public class GestionBDDTrajet {
 	}
 
 	/**
-	 * Sélectionne les informations d'une ligne
+	 * SÃ©lectionne les informations d'une ligne
 	 * 
 	 * @param cleLigne
 	 *            ID ligne
 	 * @param jour
 	 * @param duree
 	 * @param heure
-	 *            heure de départ
+	 *            heure de dÃ©part
 	 * @return
 	 */
 	public Trajet searchTrajet(int cleLigne, String jour, int duree, String heure) {
@@ -181,14 +181,14 @@ public class GestionBDDTrajet {
 	 *            ID ligne
 	 * @param jour
 	 * @param heure
-	 *            heure de départ
+	 *            heure de dÃ©part
 	 * @param duree
 	 * @param nbPassager1
 	 * @param prixPassager1
 	 * @param nbPassager2
 	 * @param prixPassager2
 	 * @param annulable
-	 *            nombre de jour nécessaire pour annuler
+	 *            nombre de jour nÃ©cessaire pour annuler
 	 * @return
 	 */
 	public boolean modifTrajet(Trajet trajet, int cleLigne, String jour, String heure, int duree, int nbPassager1,

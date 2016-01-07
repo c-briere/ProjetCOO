@@ -13,7 +13,7 @@ import java.util.Date;
 import classe_defaut.Client;
 
 /**
- * Gestion des requêtes sur le client
+ * Gestion des requÃªtes sur le client
  * 
  * @author BRIERE / CARDON
  *
@@ -26,7 +26,7 @@ public class GestionBDDClient {
 	 * Constructeur de la class
 	 * 
 	 * @param conn
-	 *            connexion à la BDD (préalablement créée par la class Connect
+	 *            connexion Ã  la BDD (prÃ©alablement crÃ©Ã©e par la class Connect
 	 */
 	public GestionBDDClient(Connection conn) {
 		this.conn = conn;
@@ -38,7 +38,7 @@ public class GestionBDDClient {
 	 * @param nom
 	 *            nom du client
 	 * @param prenom
-	 *            prénom du client
+	 *            prÃ©nom du client
 	 * @param date
 	 *            date de naissance du client
 	 * @param ville
@@ -100,7 +100,7 @@ public class GestionBDDClient {
 	 * @param nom
 	 *            nom du client
 	 * @param prenom
-	 *            prénom du client
+	 *            prÃ©nom du client
 	 * @param d
 	 *            date de naissance
 	 * @return
@@ -136,7 +136,7 @@ public class GestionBDDClient {
 	 * @param nom
 	 *            nom du client
 	 * @param prenom
-	 *            prénom du client
+	 *            prÃ©nom du client
 	 * @param date
 	 *            date de naissance
 	 * @param ville
@@ -171,7 +171,7 @@ public class GestionBDDClient {
 	 * @param nom
 	 *            nom du client
 	 * @param prenom
-	 *            prénom du client
+	 *            prÃ©nom du client
 	 * @param d
 	 *            date de naissance
 	 * @param ville
@@ -205,7 +205,7 @@ public class GestionBDDClient {
 	 * @param nom
 	 *            nom du client
 	 * @param prenom
-	 *            prénom du client
+	 *            prÃ©nom du client
 	 * @param s
 	 *            date de naissance (en string)
 	 * @return

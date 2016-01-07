@@ -67,7 +67,7 @@ public class TraitementAjoutTrajet implements ActionListener {
 					&& nbPassager1 != 0 && nbPassager2 != 0 && annulable != 0) {
 				if (this.connect.gestionTrajet.addTrajet(cleLigne, jour, heure, duree, nbPassager1, prixPassager1,
 						nbPassager2, prixPassager2, annulable)) {
-					JOptionPane.showMessageDialog(null, "Insertion réussi");
+					JOptionPane.showMessageDialog(null, "Insertion rÃ©ussi");
 					this.fenetreAjouterPlanning.dispose();
 					new FenetreGestionLigne(this.connect);
 

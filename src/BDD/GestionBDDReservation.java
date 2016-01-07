@@ -13,7 +13,7 @@ import classe_defaut.Reservation;
 import classe_defaut.Ville;
 
 /**
- * Gestion des requêtes sur les réservations
+ * Gestion des requÃªtes sur les rÃ©servations
  * 
  * @author BRIERE / CARDON
  *
@@ -26,14 +26,14 @@ public class GestionBDDReservation {
 	 * Constructeur de la class
 	 * 
 	 * @param conn
-	 *            connexion à la BDD (préalablement créée par la class Connect)
+	 *            connexion Ã  la BDD (prÃ©alablement crÃ©Ã©e par la class Connect)
 	 */
 	public GestionBDDReservation(Connection conn) {
 		this.conn = conn;
 	}
 
 	/**
-	 * Création d'une réservation
+	 * CrÃ©ation d'une rÃ©servation
 	 * 
 	 * @param heureAller
 	 * @param heureRetour
@@ -89,7 +89,7 @@ public class GestionBDDReservation {
 	}
 
 	/**
-	 * Ajout de la réservation
+	 * Ajout de la rÃ©servation
 	 * 
 	 * @param cleClient
 	 * @param cleVilleDepart
@@ -130,7 +130,7 @@ public class GestionBDDReservation {
 	}
 
 	/**
-	 * Détermine l'ID d'une réservation
+	 * DÃ©termine l'ID d'une rÃ©servation
 	 * 
 	 * @return
 	 */
@@ -150,13 +150,13 @@ public class GestionBDDReservation {
 	}
 
 	/**
-	 * Vérification pour savoir si on peut annuler une réservation Passée une
-	 * certaine période on ne peut annuler une réservation
+	 * VÃ©rification pour savoir si on peut annuler une rÃ©servation PassÃ©e une
+	 * certaine pÃ©riode on ne peut annuler une rÃ©servation
 	 * 
 	 * @param nom
 	 *            nom du client
 	 * @param id
-	 *            ID de la réservation
+	 *            ID de la rÃ©servation
 	 * @return
 	 */
 	public boolean verifSuppResa(String nom, String id) {
@@ -181,10 +181,10 @@ public class GestionBDDReservation {
 	}
 
 	/**
-	 * Suppression d'une réservation
+	 * Suppression d'une rÃ©servation
 	 * 
 	 * @param text
-	 *            ID réservation
+	 *            ID rÃ©servation
 	 * @return
 	 */
 	public boolean suppResa(String text) {
@@ -211,7 +211,7 @@ public class GestionBDDReservation {
 	}
 
 	/**
-	 * Sélectionne les réservations d'un client
+	 * SÃ©lectionne les rÃ©servations d'un client
 	 * 
 	 * @param cle
 	 *            ID client

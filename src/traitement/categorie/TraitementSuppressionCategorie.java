@@ -10,7 +10,7 @@ import vue.categorie.FenetreSupprimerCategorie;
 import vue.ville.FenetreGestionVille;
 
 /**
- * Traitement opur pouvoir supprimer une catégorie
+ * Traitement opur pouvoir supprimer une catÃ©gorie
  * 
  * @author BRIERE / CARDON
  *
@@ -23,7 +23,7 @@ public class TraitementSuppressionCategorie implements ActionListener {
 	 */
 	public Connect connect;
 	/**
-	 * ID de l'hôtel
+	 * ID de l'hÃ´tel
 	 */
 	public int cleHotel;
 
@@ -32,9 +32,9 @@ public class TraitementSuppressionCategorie implements ActionListener {
 	 * 
 	 * @param fenetreSupprimerCategorie
 	 * @param connect
-	 *            connexion à la BDD
+	 *            connexion Ã  la BDD
 	 * @param cleHotel
-	 *            ID de l'hôtel
+	 *            ID de l'hÃ´tel
 	 */
 	public TraitementSuppressionCategorie(FenetreSupprimerCategorie fenetreSupprimerCategorie, Connect connect,
 			int cleHotel) {
@@ -51,11 +51,11 @@ public class TraitementSuppressionCategorie implements ActionListener {
 			if (!this.fenetreSupprimerCategorie.getCategorie().getText().equals("")) {
 				if (this.connect.gestionCategorie.suppCategorie(this.fenetreSupprimerCategorie.getCategorie().getText(),
 						this.cleHotel)) {
-					JOptionPane.showMessageDialog(null, "Suppression réussi");
+					JOptionPane.showMessageDialog(null, "Suppression rÃ©ussi");
 					this.fenetreSupprimerCategorie.dispose();
 					new FenetreGestionVille(this.connect);
 				} else {
-					JOptionPane.showMessageDialog(null, "Suppression échouée ou catégorie introuvable");
+					JOptionPane.showMessageDialog(null, "Suppression Ã©chouÃ©e ou catÃ©gorie introuvable");
 
 				}
 			}

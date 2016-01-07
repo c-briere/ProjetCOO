@@ -20,7 +20,7 @@ import vue.client.FenetreSupprimerClient;
  */
 public class TraitementSuppressionClient implements ActionListener {
 	/**
-	 * connexion à la BDD
+	 * connexion Ã  la BDD
 	 */
 	public Connect connect;
 	public FenetreSupprimerClient fenetreSupprimerClient;
@@ -30,7 +30,7 @@ public class TraitementSuppressionClient implements ActionListener {
 	 * 
 	 * @param fenetreSupprimerClient
 	 * @param connect
-	 *            connexion à la base
+	 *            connexion Ã  la base
 	 */
 	public TraitementSuppressionClient(FenetreSupprimerClient fenetreSupprimerClient, Connect connect) {
 		this.connect = connect;
@@ -55,7 +55,7 @@ public class TraitementSuppressionClient implements ActionListener {
 			}
 
 			if (connect.gestionClient.supClient(nom, prenom, d)) {
-				JOptionPane.showMessageDialog(null, "Suppression réussi");
+				JOptionPane.showMessageDialog(null, "Suppression rÃ©ussi");
 				this.fenetreSupprimerClient.dispose();
 				new FenetreGestionClient(this.connect);
 			} else {

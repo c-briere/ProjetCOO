@@ -10,7 +10,7 @@ import vue.hotel.FenetreAjouterHotel;
 import vue.ville.FenetreGestionVille;
 
 /**
- * traitement pour l'ajout d'un hôtel
+ * traitement pour l'ajout d'un hÃ´tel
  * 
  * @author BRIERE / CARDON
  *
@@ -19,11 +19,11 @@ public class TraitementAjoutHotel implements ActionListener {
 
 	public FenetreAjouterHotel fenetreAjouterHotel;
 	/**
-	 * connexion à la BDD
+	 * connexion Ã  la BDD
 	 */
 	public Connect connect;
 	/**
-	 * ID de l'hôtel
+	 * ID de l'hÃ´tel
 	 */
 	public int cle;
 
@@ -32,9 +32,9 @@ public class TraitementAjoutHotel implements ActionListener {
 	 * 
 	 * @param fenetreAjouterHotel
 	 * @param connect
-	 *            connexion à la BDD
+	 *            connexion Ã  la BDD
 	 * @param cle
-	 *            ID de l'hôtel
+	 *            ID de l'hÃ´tel
 	 */
 	public TraitementAjoutHotel(FenetreAjouterHotel fenetreAjouterHotel, Connect connect, int cle) {
 		this.fenetreAjouterHotel = fenetreAjouterHotel;
@@ -54,7 +54,7 @@ public class TraitementAjoutHotel implements ActionListener {
 		if (o == this.fenetreAjouterHotel.getBouttonValider()) {
 			if (!this.fenetreAjouterHotel.getHotel().getText().equals("")) {
 				if (this.connect.gestionHotel.addHotel(cle, this.fenetreAjouterHotel.getHotel().getText())) {
-					JOptionPane.showMessageDialog(null, "Insertion réussi");
+					JOptionPane.showMessageDialog(null, "Insertion rÃ©ussi");
 					this.fenetreAjouterHotel.dispose();
 					new FenetreGestionVille(this.connect);
 

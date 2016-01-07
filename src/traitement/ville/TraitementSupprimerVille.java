@@ -19,7 +19,7 @@ public class TraitementSupprimerVille implements ActionListener {
 
 	public FenetreSupprimerVille fenetreSupprimerVille;
 	/**
-	 * connexion à la BDD
+	 * connexion Ã  la BDD
 	 */
 	public Connect connect;
 
@@ -28,7 +28,7 @@ public class TraitementSupprimerVille implements ActionListener {
 	 * 
 	 * @param fenetreSupprimerVille
 	 * @param connect
-	 *            connexion à la BDD
+	 *            connexion Ã  la BDD
 	 */
 	public TraitementSupprimerVille(FenetreSupprimerVille fenetreSupprimerVille, Connect connect) {
 		this.fenetreSupprimerVille = fenetreSupprimerVille;
@@ -41,7 +41,7 @@ public class TraitementSupprimerVille implements ActionListener {
 		// bouton valider
 		if (e == this.fenetreSupprimerVille.getBouttonValider()) {
 			if (connect.gestionVille.supVille(this.fenetreSupprimerVille.getVille().getText())) {
-				JOptionPane.showMessageDialog(null, "Suppression réussi");
+				JOptionPane.showMessageDialog(null, "Suppression rÃ©ussi");
 				this.fenetreSupprimerVille.dispose();
 			} else {
 				JOptionPane.showMessageDialog(null, "Echec suppression ou la ville n'existe pas");

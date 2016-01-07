@@ -21,7 +21,7 @@ import vue.FenetreAccueil;
 import vue.reservation.FenetreGestionReservation;
 
 /**
- * Traitement opur pouvoir passer une réservation
+ * Traitement opur pouvoir passer une rÃ©servation
  * 
  * @author BRIERE / CARDON
  *
@@ -34,7 +34,7 @@ public class TraitementReservation implements ActionListener {
 	 */
 	public Connect connect;
 	/**
-	 * date du début du voyage
+	 * date du dÃ©but du voyage
 	 */
 	public Date aller;
 	/**
@@ -86,7 +86,7 @@ public class TraitementReservation implements ActionListener {
 			this.fenetreGestionReservation.dispose();
 			new FenetreAccueil(this.connect);
 		}
-		// deuxième bouton suivant (le formulaire s'affiche étape par étape)
+		// deuxiÃ©me bouton suivant (le formulaire s'affiche Ã©tape par Ã©tape)
 		if (o == this.fenetreGestionReservation.getBouttonNextChoixDate()) {
 			if (!this.fenetreGestionReservation.getDateArrive().getText().equals("")
 					&& !this.fenetreGestionReservation.getDateDepart().getText().equals("")
@@ -114,12 +114,12 @@ public class TraitementReservation implements ActionListener {
 					this.fenetreGestionReservation.choixAller(cleVilleArrive, dateDepart, dateArrive, cleLigneAller,
 							cleLigneRetour, ligne, ligneRetour, jourDepart, jourArrivee, nbPersonne, villeRetour);
 				} else {
-					JOptionPane.showMessageDialog(null, "Aucun aller et/ou retour disponible à ses dates");
+					JOptionPane.showMessageDialog(null, "Aucun aller et/ou retour disponible Ã  ses dates");
 				}
 			}
 
 		}
-		// bouton suivant (sélection du premier trajet)
+		// bouton suivant (sÃ©lection du premier trajet)
 		if (o == this.fenetreGestionReservation.getBouttonNextChoixAller()) {
 			String heureAller = (String) this.fenetreGestionReservation.getTableau().getModel()
 					.getValueAt(this.fenetreGestionReservation.getTableau().getSelectedRow(), 1);
@@ -139,7 +139,7 @@ public class TraitementReservation implements ActionListener {
 			this.fenetreGestionReservation.clearChoixAller();
 			this.fenetreGestionReservation.choixRetour(heureAller, classeAller, prixAller);
 		}
-		// bouton suivant (sélection du trajet retour)
+		// bouton suivant (sÃ©lection du trajet retour)
 		if (o == this.fenetreGestionReservation.getBouttonNextChoixRetour()) {
 			String heureRetour = (String) this.fenetreGestionReservation.getTableau().getModel()
 					.getValueAt(this.fenetreGestionReservation.getTableau().getSelectedRow(), 1);
@@ -166,7 +166,7 @@ public class TraitementReservation implements ActionListener {
 			this.fenetreGestionReservation.choixHotel(heureRetour, classeRetour, prixRetour, hotel);
 
 		}
-		// bouton suivant (sélection de l'hôtel)
+		// bouton suivant (sÃ©lection de l'hÃ´tel)
 		if (o == this.fenetreGestionReservation.getBouttonNextChoixHotel()) {
 			int idHotel;
 			idHotel = this.connect.gestionHotel.cleHotel(
@@ -183,7 +183,7 @@ public class TraitementReservation implements ActionListener {
 			this.fenetreGestionReservation.clearChoixHotel();
 			this.fenetreGestionReservation.choixCategorie(idHotel, categorie);
 		}
-		// bouton suivant (sélection de la catégorie)
+		// bouton suivant (sÃ©lection de la catÃ©gorie)
 		if (o == this.fenetreGestionReservation.getBouttonNextChoixCategorie()) {
 			int idCategorie;
 			idCategorie = this.connect.gestionCategorie.cleCategorie(
@@ -198,7 +198,7 @@ public class TraitementReservation implements ActionListener {
 			this.fenetreGestionReservation.clearChoixCategorie();
 			this.fenetreGestionReservation.choixChambre(idCategorie, chambre);
 		}
-		// bouton suivant (sélection de la chambre)
+		// bouton suivant (sÃ©lection de la chambre)
 		if (o == this.fenetreGestionReservation.getBouttonNextChoixChambre()) {
 			int idChambre, nbJour;
 			idChambre = this.connect.gestionChambre.cleChambre(
@@ -238,7 +238,7 @@ public class TraitementReservation implements ActionListener {
 					this.fenetreGestionReservation.getReservation().getNbPersonne());
 			if (verif) {
 				int cleResa = this.connect.gestionReservation.cleResa();
-				JOptionPane.showMessageDialog(null, "Insertion réussi : numero de resarvation : " + cleResa);
+				JOptionPane.showMessageDialog(null, "Insertion rÃ©ussi : numero de resarvation : " + cleResa);
 				this.fenetreGestionReservation.clearRecapitulatif();
 				this.fenetreGestionReservation.dispose();
 				new FenetreAccueil(connect);

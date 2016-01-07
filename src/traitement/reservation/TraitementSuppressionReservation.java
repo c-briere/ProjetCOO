@@ -10,7 +10,7 @@ import vue.reservation.FenetreChoixGestionReservation;
 import vue.reservation.FenetreGestionSuppressionReservation;
 
 /**
- * traitement pour supprimer une réservation
+ * traitement pour supprimer une rÃ©servation
  * 
  * @author BRIERE / CARDON
  *
@@ -57,14 +57,14 @@ public class TraitementSuppressionReservation implements ActionListener {
 							.suppResa(this.fenetreGestionSuppressionReservation.getNumeroResa().getText());
 					if (supp) {
 						this.fenetreGestionSuppressionReservation.dispose();
-						JOptionPane.showMessageDialog(null, "Suppression réussi");
+						JOptionPane.showMessageDialog(null, "Suppression rÃ©ussi");
 					} else {
 						JOptionPane.showMessageDialog(null, "Echec suppression");
 
 					}
 				} else {
 					JOptionPane.showMessageDialog(null,
-							"Impossible de supprimer cette reservation/aucune reservation à ce nom ou  numéro");
+							"Impossible de supprimer cette reservation/aucune reservation Ã  ce nom ou  numÃ©ro");
 
 				}
 			}

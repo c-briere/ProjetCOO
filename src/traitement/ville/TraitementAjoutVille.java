@@ -19,7 +19,7 @@ public class TraitementAjoutVille implements ActionListener {
 
 	public FenetreAjouterVille fenetreAjouterVille;
 	/**
-	 * connexion à la BDD
+	 * connexion Ã  la BDD
 	 */
 	public Connect connect;
 
@@ -28,7 +28,7 @@ public class TraitementAjoutVille implements ActionListener {
 	 * 
 	 * @param fenetreAjouterVille
 	 * @param connect
-	 *            connexion à la BDD
+	 *            connexion Ã  la BDD
 	 */
 	public TraitementAjoutVille(FenetreAjouterVille fenetreAjouterVille, Connect connect) {
 		this.fenetreAjouterVille = fenetreAjouterVille;
@@ -42,7 +42,7 @@ public class TraitementAjoutVille implements ActionListener {
 		if (o == this.fenetreAjouterVille.getBouttonValider()) {
 			if (!this.fenetreAjouterVille.getVille().getText().equals("")) {
 				if (this.connect.gestionVille.addVille(this.fenetreAjouterVille.getVille().getText())) {
-					JOptionPane.showMessageDialog(null, "Insertion réussi");
+					JOptionPane.showMessageDialog(null, "Insertion rÃ©ussi");
 					this.fenetreAjouterVille.dispose();
 					new FenetreGestionVille(this.connect);
 

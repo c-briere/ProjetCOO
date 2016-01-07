@@ -7,7 +7,7 @@ import javax.swing.table.AbstractTableModel;
 import classe_defaut.Trajet;
 
 /**
- * tableau pour les réservations
+ * tableau pour les rÃ©servations
  * 
  * @author BRIERE / CARDON
  *

@@ -3,8 +3,8 @@ package classe_defaut;
 import java.util.ArrayList;
 
 /**
- * La ligne est une liaison entre deux villes La ligne ne se suffit pas à
- * elle-même pour faire voyager des clients. Il faudra y ajouter des trajets
+ * La ligne est une liaison entre deux villes La ligne ne se suffit pas Ã 
+ * elle-mÃªme pour faire voyager des clients. Il faudra y ajouter des trajets
  * 
  * @author BRIERE / CARDON
  *
@@ -15,11 +15,11 @@ public class Ligne {
 	 */
 	public Ville villeAller;
 	/**
-	 * départ de la ligne
+	 * dÃ©part de la ligne
 	 */
 	public Ville villeRetour;
 	/**
-	 * liste des trajets ratachés à la ligne
+	 * liste des trajets ratachÃ©s Ã  la ligne
 	 */
 	public ArrayList<Trajet> trajet;
 
@@ -29,7 +29,7 @@ public class Ligne {
 	 * @param villeAller
 	 *            destination de la ligne
 	 * @param villeRetour
-	 *            ville de départ de la ligne
+	 *            ville de dÃ©part de la ligne
 	 */
 	public Ligne(Ville villeAller, Ville villeRetour) {
 		this.villeAller = villeAller;
@@ -62,7 +62,7 @@ public class Ligne {
 	}
 
 	/**
-	 * ajout d'une trajet à la ligne
+	 * ajout d'une trajet Ã  la ligne
 	 * 
 	 * @param t
 	 */
@@ -71,7 +71,7 @@ public class Ligne {
 	}
 
 	/**
-	 * supression d'un trajet à la ligne
+	 * supression d'un trajet Ã  la ligne
 	 * 
 	 * @param t
 	 */

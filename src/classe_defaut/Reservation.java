@@ -1,7 +1,7 @@
 package classe_defaut;
 
 /**
- * Le client passe des réservations. Il réserve son transport et son séjour
+ * Le client passe des rÃ©servations. Il rÃ©serve son transport et son sÃ©jour
  * 
  * @author BRIERE / CARDON
  *
@@ -12,11 +12,11 @@ public class Reservation {
 	 */
 	public Ville villeAller;
 	/**
-	 * date du départ du voyage
+	 * date du dÃ©part du voyage
 	 */
 	public String dateAller;
 	/**
-	 * Départ du voyage
+	 * DÃ©part du voyage
 	 */
 	public Ville villeRetour;
 	/**
@@ -32,27 +32,27 @@ public class Reservation {
 	 */
 	public int nbPersonne;
 	/**
-	 * Hôtel réservé
+	 * HÃ´tel rÃ©servÃ©
 	 */
 	public Hotel hotel;
 	/**
-	 * catégorie de la chambre réservée
+	 * catÃ©gorie de la chambre rÃ©servÃ©e
 	 */
 	public Categorie categorie;
 	/**
-	 * chambre réservée
+	 * chambre rÃ©servÃ©e
 	 */
 	public Chambre chambre;
 	/**
-	 * Nombre de nuitées
+	 * Nombre de nuitÃ©es
 	 */
 	public int nbDeNuit;
 	/**
-	 * Prix de la catégorie de la chambre (par extension prix de l'hôtel)
+	 * Prix de la catÃ©gorie de la chambre (par extension prix de l'HÃ´tel)
 	 */
 	public double prixHotel;
 	/**
-	 * Prix du transport + prix de l'hôtel
+	 * Prix du transport + prix de l'HÃ´tel
 	 */
 	public double prixTotal;
 	/**
@@ -60,11 +60,11 @@ public class Reservation {
 	 */
 	public String nom;
 	/**
-	 * Heure de départ
+	 * Heure de dÃ©part
 	 */
 	public String heureAller;
 	/**
-	 * Heure de départ pour le retour
+	 * Heure de dÃ©part pour le retour
 	 */
 	public String heureRetour;
 
@@ -76,7 +76,7 @@ public class Reservation {
 	 * @param dateAller
 	 *            date du voyage
 	 * @param villeRetour
-	 *            départ du voyage
+	 *            dÃ©part du voyage
 	 * @param dateRetour
 	 *            date de la fin du voyage
 	 * @param prixTransport
@@ -84,21 +84,21 @@ public class Reservation {
 	 * @param nbPersonne
 	 *            nombre de personnes participantes au voyage
 	 * @param hotel
-	 *            hôtel réservé pour le voyage
+	 *            HÃ´tel rÃ©servÃ© pour le voyage
 	 * @param categorie
-	 *            catégorie de la chambre
+	 *            catÃ©gorie de la chambre
 	 * @param chambre
-	 *            chambre réservée
+	 *            chambre rÃ©servÃ©e
 	 * @param nbDeNuit
-	 *            nombre de nuitées
+	 *            nombre de nuitÃ©es
 	 * @param prixHotel
-	 *            prix de l'hôtel
+	 *            prix de l'HÃ´tel
 	 * @param prixTotal
-	 *            prix de l'hôtel + prix du transport
+	 *            prix de l'HÃ´tel + prix du transport
 	 * @param nom
 	 *            nom du client
 	 * @param heureAller
-	 *            horaire de départ du voyage
+	 *            horaire de dÃ©part du voyage
 	 * @param heureRetour
 	 *            horaire de fin du voyage
 	 */

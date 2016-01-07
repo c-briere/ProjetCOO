@@ -22,7 +22,7 @@ public class TraitementGestionStat implements ActionListener {
 
 	public FenetreChoixDateStat fenetreChoixDateStat;
 	/**
-	 * connexion à la BDD
+	 * connexion Ã  la BDD
 	 */
 	public Connect connect;
 
@@ -31,7 +31,7 @@ public class TraitementGestionStat implements ActionListener {
 	 * 
 	 * @param fenetreChoixDateStat
 	 * @param connect
-	 *            connexion à la BDD
+	 *            connexion Ã  la BDD
 	 */
 	public TraitementGestionStat(FenetreChoixDateStat fenetreChoixDateStat, Connect connect) {
 		this.fenetreChoixDateStat = fenetreChoixDateStat;

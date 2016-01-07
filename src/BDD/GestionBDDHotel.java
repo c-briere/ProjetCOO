@@ -12,7 +12,7 @@ import classe_defaut.Hotel;
 import classe_defaut.HotelRestant;
 
 /**
- * Gestion des requêtes sur l'hôtel
+ * Gestion des requÃªtes sur l'hÃ´tel
  * 
  * @author BRIERE / CARDON
  *
@@ -25,19 +25,19 @@ public class GestionBDDHotel {
 	 * Constructeur de la class
 	 * 
 	 * @param conn
-	 *            connexion à la BDD (préalablement créée par la class Connect
+	 *            connexion Ã  la BDD (prÃ©alablement crÃ©Ã©e par la class Connect
 	 */
 	public GestionBDDHotel(Connection conn) {
 		this.conn = conn;
 	}
 
 	/**
-	 * Ajout d'un hôtel
+	 * Ajout d'un hÃ´tel
 	 * 
 	 * @param cle
-	 *            ID hôtel
+	 *            ID hÃ´tel
 	 * @param nom
-	 *            nom de l'hôtel
+	 *            nom de l'hÃ´tel
 	 * @return
 	 */
 	public boolean addHotel(int cle, String nom) {
@@ -58,12 +58,12 @@ public class GestionBDDHotel {
 	}
 
 	/**
-	 * Suppression d'un hôtel
+	 * Suppression d'un hÃ´tel
 	 * 
 	 * @param cle
-	 *            ID hôtel
+	 *            ID hÃ´tel
 	 * @param hotel
-	 *            nom de l'hôtel
+	 *            nom de l'hÃ´tel
 	 * @return
 	 */
 	public boolean deleteHotel(int cle, String hotel) {
@@ -91,10 +91,10 @@ public class GestionBDDHotel {
 	}
 
 	/**
-	 * Selectionne les hôtels d'une ville
+	 * Selectionne les hÃ´tels d'une ville
 	 * 
 	 * @param cle
-	 *            ID hôtel
+	 *            ID hÃ´tel
 	 * @return
 	 */
 	public ArrayList<Hotel> voirHotel(int cle) {
@@ -118,10 +118,10 @@ public class GestionBDDHotel {
 	}
 
 	/**
-	 * Détermine l'ID d'un hôtel
+	 * DÃ©termine l'ID d'un hÃ´tel
 	 * 
 	 * @param hotel
-	 *            nom de l'hôtel
+	 *            nom de l'hÃ´tel
 	 * @param cleVille
 	 *            ID de la ville
 	 * @return
@@ -145,15 +145,15 @@ public class GestionBDDHotel {
 	}
 
 	/**
-	 * Liste des disponibilités
+	 * Liste des disponibilitÃ©s
 	 * 
 	 * @param cleVilleArrive
-	 *            ID ville d'arrivée
+	 *            ID ville d'arrivÃ©e
 	 * @param nbPersonneVoyage
 	 * @param arrive
-	 *            date d'arrivée
+	 *            date d'arrivÃ©e
 	 * @param depart
-	 *            date de départ
+	 *            date de dÃ©part
 	 * @param liste
 	 * @return
 	 */
@@ -195,14 +195,14 @@ public class GestionBDDHotel {
 	}
 
 	/**
-	 * Sélectionne toutes les chambres réservées
+	 * SÃ©lectionne toutes les chambres rÃ©servÃ©es
 	 * 
 	 * @param cleVilleArrive
-	 *            ID ville d'arrivée
+	 *            ID ville d'arrivÃ©e
 	 * @param arrive
-	 *            date d'arrivée
+	 *            date d'arrivÃ©e
 	 * @param depart
-	 *            date du départ
+	 *            date du dÃ©part
 	 * @return
 	 */
 	public ArrayList<Integer> listChambreNonDipos(int cleVilleArrive, Date arrive, Date depart) {

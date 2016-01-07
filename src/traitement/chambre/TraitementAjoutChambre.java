@@ -23,7 +23,7 @@ public class TraitementAjoutChambre implements ActionListener {
 	 */
 	public Connect connect;
 	/**
-	 * ID de la catégorie
+	 * ID de la catÃ©gorie
 	 */
 	public int cleCategorie;
 
@@ -32,9 +32,9 @@ public class TraitementAjoutChambre implements ActionListener {
 	 * 
 	 * @param fenetreAjouterChambre
 	 * @param connect
-	 *            conenxion à la BDD
+	 *            conenxion Ã  la BDD
 	 * @param cleCategorie
-	 *            Catégorie ID
+	 *            CatÃ©gorie ID
 	 */
 	public TraitementAjoutChambre(FenetreAjouterChambre fenetreAjouterChambre, Connect connect, int cleCategorie) {
 		this.fenetreAjouterChambre = fenetreAjouterChambre;
@@ -45,16 +45,16 @@ public class TraitementAjoutChambre implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object o = arg0.getSource();
-		// test pour savoir si la formulaire est complété
+		// test pour savoir si la formulaire est complÃ©tÃ©
 		if (o == this.fenetreAjouterChambre.getBouttonValider()) {
 			if (!this.fenetreAjouterChambre.getNom().getText().equals("")) {
 				String nom = this.fenetreAjouterChambre.getNom().getText();
 				if (this.connect.gestionChambre.addChambre(cleCategorie, nom)) {
-					JOptionPane.showMessageDialog(null, "insertion effectuée");
+					JOptionPane.showMessageDialog(null, "insertion effectuÃ©e");
 					this.fenetreAjouterChambre.dispose();
 					new FenetreGestionVille(this.connect);
 				} else {
-					JOptionPane.showMessageDialog(null, "Insertion échouée");
+					JOptionPane.showMessageDialog(null, "Insertion Ã©chouÃ©e");
 				}
 
 			}

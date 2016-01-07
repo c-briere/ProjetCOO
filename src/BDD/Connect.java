@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 /**
- * Connexion à la base de données POSTGRE
+ * Connexion Ã  la base de donnÃ©es POSTGRE
  * 
  * @author BRIERE / CARDON
  *
@@ -23,8 +23,8 @@ public class Connect {
 	public GestionStat gestionStat;
 
 	/**
-	 * Constructeur de la class Connect Création d'une connexion puis
-	 * transmition à d'autres class
+	 * Constructeur de la class Connect CrÃ©ation d'une connexion puis
+	 * transmition Ã  d'autres class
 	 */
 	public Connect() {
 

@@ -18,7 +18,7 @@ import vue.trajet.FenetreSupprimerPlanning;
 public class TraitementSuppressionPlanning implements ActionListener {
 	public FenetreSupprimerPlanning fenetreSupprimerPlanning;
 	/**
-	 * connexion à la base
+	 * connexion Ã  la base
 	 */
 	public Connect connect;
 	/**
@@ -56,7 +56,7 @@ public class TraitementSuppressionPlanning implements ActionListener {
 					Integer.parseInt(this.fenetreSupprimerPlanning.getDuree().getText()),
 					this.fenetreSupprimerPlanning.getHeure().getText(),
 					this.fenetreSupprimerPlanning.getJour().getSelectedItem().toString())) {
-				JOptionPane.showMessageDialog(null, "Suppression réussi");
+				JOptionPane.showMessageDialog(null, "Suppression rÃ©ussi");
 				this.fenetreSupprimerPlanning.dispose();
 				new FenetreGestionLigne(this.connect);
 			} else {

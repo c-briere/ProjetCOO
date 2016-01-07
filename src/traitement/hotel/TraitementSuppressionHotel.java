@@ -10,7 +10,7 @@ import vue.hotel.FenetreSupprimerHotel;
 import vue.ville.FenetreGestionVille;
 
 /**
- * traitement pour la supression d'un hôtel
+ * traitement pour la supression d'un hÃ´tel
  * 
  * @author BRIERE / CARDON
  *
@@ -19,11 +19,11 @@ public class TraitementSuppressionHotel implements ActionListener {
 
 	public FenetreSupprimerHotel fenetreSupprimerHotel;
 	/**
-	 * connexion à la BDD
+	 * connexion Ã  la BDD
 	 */
 	public Connect connect;
 	/**
-	 * ID de l'hôtel
+	 * ID de l'hÃ´tel
 	 */
 	public int cle;
 
@@ -32,9 +32,9 @@ public class TraitementSuppressionHotel implements ActionListener {
 	 * 
 	 * @param fenetreSupprimerHotel
 	 * @param connect
-	 *            connexion à la BDD
+	 *            connexion Ã  la BDD
 	 * @param cle
-	 *            ID de l'hôtel
+	 *            ID de l'hÃ´tel
 	 */
 	public TraitementSuppressionHotel(FenetreSupprimerHotel fenetreSupprimerHotel, Connect connect, int cle) {
 		this.fenetreSupprimerHotel = fenetreSupprimerHotel;
@@ -48,7 +48,7 @@ public class TraitementSuppressionHotel implements ActionListener {
 		// bouton valider
 		if (e == this.fenetreSupprimerHotel.getBouttonValider()) {
 			if (this.connect.gestionHotel.deleteHotel(cle, this.fenetreSupprimerHotel.getHotel().getText())) {
-				JOptionPane.showMessageDialog(null, "Suppression réussi");
+				JOptionPane.showMessageDialog(null, "Suppression rÃ©ussi");
 				this.fenetreSupprimerHotel.dispose();
 				new FenetreGestionVille(this.connect);
 			} else {

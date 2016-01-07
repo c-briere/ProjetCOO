@@ -10,7 +10,7 @@ import classe_defaut.Trajet;
 import classe_defaut.Ville;
 
 /**
- * Gestion des requêtes sur les statistiques
+ * Gestion des requÃªtes sur les statistiques
  * 
  * @author BRIERE / CARDON
  *
@@ -23,19 +23,19 @@ public class GestionStat {
 	 * Constructeur de la class
 	 * 
 	 * @param conn
-	 *            connexion à la BDD (préalablement créée par la class Connect)
+	 *            connexion Ã  la BDD (prÃ©alablement crÃ©Ã©e par la class Connect)
 	 */
 	public GestionStat(Connection conn) {
 		this.conn = conn;
 	}
 
 	/**
-	 * Détermine la ville la plus populaire sur une période
+	 * DÃ©termine la ville la plus populaire sur une pÃ©riode
 	 * 
 	 * @param date1
-	 *            début de la période
+	 *            dÃ©but de la pÃ©riode
 	 * @param date2
-	 *            fin de la période
+	 *            fin de la pÃ©riode
 	 * @return
 	 */
 	public ArrayList<Ville> villeLesPlusDemandes(String date1, String date2) {
@@ -61,12 +61,12 @@ public class GestionStat {
 	}
 
 	/**
-	 * Nombre de voyageurs durant la période
+	 * Nombre de voyageurs durant la pÃ©riode
 	 * 
 	 * @param date1
-	 *            début de la période
+	 *            dÃ©but de la pÃ©riode
 	 * @param date2
-	 *            fin de la période
+	 *            fin de la pÃ©riode
 	 * @return
 	 */
 	public int nbDeVoyageur(String date1, String date2) {
@@ -90,12 +90,12 @@ public class GestionStat {
 	}
 
 	/**
-	 * Liste des lignes ne figurants dans aucun trajet sur une période
+	 * Liste des lignes ne figurants dans aucun trajet sur une pÃ©riode
 	 * 
 	 * @param date1
-	 *            début de la période
+	 *            dÃ©but de la pÃ©riode
 	 * @param date2
-	 *            fin de la période
+	 *            fin de la pÃ©riode
 	 * @return
 	 */
 	public ArrayList<Trajet> ligneNonUtilise(String date1, String date2) {
@@ -138,12 +138,12 @@ public class GestionStat {
 	}
 
 	/**
-	 * Détermine les lignes qui ont eu au moins une réservation sur la période
+	 * DÃ©termine les lignes qui ont eu au moins une rÃ©servation sur la pÃ©riode
 	 * 
 	 * @param date1
-	 *            début de la période
+	 *            dÃ©but de la pÃ©riode
 	 * @param date2
-	 *            fin de la période
+	 *            fin de la pÃ©riode
 	 * @return
 	 */
 	public ArrayList<Integer> ligneUtilise(String date1, String date2) {

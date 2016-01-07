@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import classe_defaut.Categorie;
 
 /**
- * Gestion des requêtes sur la catégorie
+ * Gestion des requÃªtes sur la catÃ©gorie
  * 
  * @author BRIERE / CARDON
  *
@@ -22,21 +22,21 @@ public class GestionBDDCategorie {
 	 * Constructeur de la class
 	 * 
 	 * @param conn
-	 *            connexion à la BDD (préalablement créée par la class Connect
+	 *            connexion Ã  la BDD (prÃ©alablement crÃ©Ã©e par la class Connect
 	 */
 	public GestionBDDCategorie(Connection conn) {
 		this.conn = conn;
 	}
 
 	/**
-	 * Requête SQL qui ajoute une catégorie dans la BDD
+	 * RequÃªte SQL qui ajoute une catÃ©gorie dans la BDD
 	 * 
 	 * @param cleHotel
 	 *            ID de l'hotel
 	 * @param nom
-	 *            nom de la catégorie
+	 *            nom de la catÃ©gorie
 	 * @param prix
-	 *            prix de la catégorie
+	 *            prix de la catÃ©gorie
 	 * @param place
 	 *            nombre de place
 	 * @return
@@ -59,12 +59,12 @@ public class GestionBDDCategorie {
 	}
 
 	/**
-	 * Requête qui supprime une catégorie
+	 * RequÃªte qui supprime une catÃ©gorie
 	 * 
 	 * @param categorie
-	 *            nom de la catégorie
+	 *            nom de la catÃ©gorie
 	 * @param cleHotel
-	 *            ID de l'hôtel
+	 *            ID de l'hÃ´tel
 	 * @return
 	 */
 	public boolean suppCategorie(String categorie, int cleHotel) {
@@ -91,10 +91,10 @@ public class GestionBDDCategorie {
 	}
 
 	/**
-	 * Requête SQL qui affiche toutes les catégories d'un hôtel
+	 * RequÃªte SQL qui affiche toutes les catÃ©gories d'un hÃ´tel
 	 * 
 	 * @param cleHotel
-	 *            ID de l'hôtel
+	 *            ID de l'hÃ´tel
 	 * @return
 	 */
 	public ArrayList<Categorie> voirCategorie(int cleHotel) {
@@ -119,13 +119,13 @@ public class GestionBDDCategorie {
 	}
 
 	/**
-	 * Requête SQL qui cherche l'ID d'une catégorie en donnant son nom et son
-	 * hôtel
+	 * RequÃªte SQL qui cherche l'ID d'une catÃ©gorie en donnant son nom et son
+	 * hÃ´tel
 	 * 
 	 * @param cleHotel
-	 *            ID de l'hôtel
+	 *            ID de l'hÃ´tel
 	 * @param nom
-	 *            nom de la catégorie
+	 *            nom de la catÃ©gorie
 	 * @return
 	 */
 	public int verifCategorie(int cleHotel, String nom) {
@@ -147,16 +147,16 @@ public class GestionBDDCategorie {
 	}
 
 	/**
-	 * Modification de la table catégorie
+	 * Modification de la table catÃ©gorie
 	 * 
 	 * @param cleCategorie
-	 *            ID de la catégorie
+	 *            ID de la catÃ©gorie
 	 * @param nom
-	 *            nom de la catégorie
+	 *            nom de la catÃ©gorie
 	 * @param place
 	 *            nombre de place
 	 * @param prix
-	 *            prix de la catégorie
+	 *            prix de la catÃ©gorie
 	 * @return
 	 */
 	public boolean ModifClient(int cleCategorie, String nom, Double place, int prix) {
@@ -179,13 +179,13 @@ public class GestionBDDCategorie {
 	}
 
 	/**
-	 * Recherche de l'id d'une catégorie en fonction de l'hôtel et du nom de la
-	 * catégorie
+	 * Recherche de l'id d'une catÃ©gorie en fonction de l'hÃ´tel et du nom de la
+	 * catÃ©gorie
 	 * 
 	 * @param categorie
-	 *            nom de la catégorie
+	 *            nom de la catÃ©gorie
 	 * @param cle
-	 *            ID de l'hôtel
+	 *            ID de l'hÃ´tel
 	 * @return
 	 */
 	public int cleCategorie(String categorie, int cle) {
@@ -208,7 +208,7 @@ public class GestionBDDCategorie {
 	}
 
 	/**
-	 * Création d'une liste de catégories
+	 * CrÃ©ation d'une liste de catÃ©gories
 	 * 
 	 * @param idHotel
 	 * @param liste

@@ -19,7 +19,7 @@ public class TraitementAjoutLigne implements ActionListener {
 
 	public FenetreAjouterLigne fenetreAjouterLigne;
 	/**
-	 * connexion à la BDD
+	 * connexion Ã  la BDD
 	 */
 	public Connect connect;
 
@@ -28,7 +28,7 @@ public class TraitementAjoutLigne implements ActionListener {
 	 * 
 	 * @param fenetreAjouterLigne
 	 * @param connect
-	 *            connexion à la BDD
+	 *            connexion Ã  la BDD
 	 */
 	public TraitementAjoutLigne(FenetreAjouterLigne fenetreAjouterLigne, Connect connect) {
 		this.fenetreAjouterLigne = fenetreAjouterLigne;
@@ -50,7 +50,7 @@ public class TraitementAjoutLigne implements ActionListener {
 				cleVilleAller = this.connect.gestionVille.cleVille(VilleAller);
 				cleVilleRetour = this.connect.gestionVille.cleVille(VilleRetour);
 				if (this.connect.gestionLigne.addLigne(VilleAller, VilleRetour, cleVilleAller, cleVilleRetour)) {
-					JOptionPane.showMessageDialog(null, "Insertion réussi");
+					JOptionPane.showMessageDialog(null, "Insertion rÃ©ussi");
 					this.fenetreAjouterLigne.dispose();
 					new FenetreGestionLigne(this.connect);
 

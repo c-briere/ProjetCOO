@@ -3,7 +3,7 @@ package classe_defaut;
 import java.util.ArrayList;
 
 /**
- * Chaque chambre appartient à une catégorie La catégorie est représentée par un
+ * Chaque chambre appartient Ã  une catÃ©gorie La catÃ©gorie est reprÃ©sentÃ©e par un
  * nom, un prix et un nombre de places
  * 
  * @author BRIERE / CARDON
@@ -11,19 +11,19 @@ import java.util.ArrayList;
  */
 public class Categorie {
 	/**
-	 * nom de la catégorie
+	 * nom de la catÃ©gorie
 	 */
 	private String nom;
 	/**
-	 * Nombre de place maximum pour la catégorie
+	 * Nombre de place maximum pour la catÃ©gorie
 	 */
 	private int place;
 	/**
-	 * prix à payer pour cette catégorie
+	 * prix Ã  payer pour cette catÃ©gorie
 	 */
 	private double prix;
 	/**
-	 * Chaque chambre appartient à une catégorie
+	 * Chaque chambre appartient Ã© une catÃ©gorie
 	 */
 	private ArrayList<Chambre> listChambre;
 
@@ -31,11 +31,11 @@ public class Categorie {
 	 * Constructeur de la class
 	 * 
 	 * @param nom
-	 *            nom de la catégorie
+	 *            nom de la catÃ©gorie
 	 * @param place
-	 *            nombre de place disponible dans la catégorie
+	 *            nombre de place disponible dans la catÃ©gorie
 	 * @param prix
-	 *            prix à payer pour la catégorie
+	 *            prix Ã  payer pour la catÃ©gorie
 	 */
 	public Categorie(String nom, int place, double prix) {
 		this.nom = nom;
@@ -69,7 +69,7 @@ public class Categorie {
 	}
 
 	/**
-	 * Ajout d'une chambre dans la catégorie
+	 * Ajout d'une chambre dans la catÃ©gorie
 	 * 
 	 * @param c
 	 */
@@ -78,7 +78,7 @@ public class Categorie {
 	}
 
 	/**
-	 * Enlever une chambre de la catégorie
+	 * Enlever une chambre de la catÃ©gorie
 	 * 
 	 * @param c
 	 */
